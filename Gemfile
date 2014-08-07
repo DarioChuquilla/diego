@@ -38,7 +38,11 @@ gem 'jquery-rails'
 # gem 'debugger'
 gem 'devise'
 gem 'cancan'
+gem "therubyracer"
 gem "twitter-bootstrap-rails"
+gem "bootstrap-sass"
+gem 'bootswatch-rails'
+
 
 group :development, :test do
 #  gem 'rspec-rails'
