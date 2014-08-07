@@ -1,3 +1,8 @@
+PATH
+  remote: ./vendor/Lumen-bootstap
+  specs:
+    Lumen-bootstrap-rails (0.0.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -135,6 +140,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  Lumen-bootstrap-rails (= 0.0.1)!
   better_errors
   binding_of_caller
   bootstrap-sass

@@ -42,7 +42,7 @@ gem "therubyracer"
 gem "twitter-bootstrap-rails"
 gem "bootstrap-sass"
 gem 'bootswatch-rails'
-
+gem 'Lumen-bootstrap-rails', '0.0.1' , :path => './vendor/Lumen-bootstap'
 
 group :development, :test do
 #  gem 'rspec-rails'
