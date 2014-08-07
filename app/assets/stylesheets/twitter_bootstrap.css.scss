@@ -1,8 +1,8 @@
 // First import Bootswatch theme variables http://bit.ly/KIu8IN
-@import 'bootswatch/slate/variables';
+@import 'bootswatch/simplex/variables';
 
 // Use Twitter Bootstrap
-@import 'bootstrap';
+@import 'bootstrap-custom';
 
 // And finally Bootswatch style
-@import "bootswatch/slate/bootswatch"
+@import "bootswatch/simplex/bootswatch"
