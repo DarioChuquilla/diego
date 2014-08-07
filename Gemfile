@@ -36,3 +36,26 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'debugger'
+gem 'devise'
+gem 'cancan'
+gem "twitter-bootstrap-rails"
+
+group :development, :test do
+#  gem 'rspec-rails'
+#  gem "capybara"
+#  gem 'cucumber-rails', :require => false
+#  gem 'database_cleaner'
+#  gem 'factory_girl'
+#  gem 'factory_girl_rails'
+#  gem 'shoulda-matchers'
+#  gem 'wkhtmltopdf-binary'
+#  gem 'selenium-webdriver'
+  gem 'better_errors'
+  gem 'binding_of_caller'
+#  gem 'capistrano'
+#  gem 'jasmine-rails'
+#  gem 'pry'
+#  gem 'pry-remote'
+#  gem 'pry-stack_explorer'
+#  gem 'pry-debugger'
+end
