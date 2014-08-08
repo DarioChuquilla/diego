@@ -48,8 +48,10 @@
       <div data-role="page">
         <div data-role="panel" data-display="overlay" id="mypanel">
         <ul data-role="listview">
+            <li><%= link_to "Home", root_path %></li>
+            <li><%= link_to "Manage Hotels", admin_hotels_path %></li>
+            <li class="ui-li ui-li-divider ui-bar-b ui-first-child" data-role="list-divider" role="heading"></li>
             <li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>
-            <li>------------------------------</li>
             <li><a href="#my-header" data-rel="close">Close panel</a></li>
           </ul>
           <!-- panel content goes here -->
