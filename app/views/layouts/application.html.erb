@@ -46,7 +46,7 @@
     </head>
     <body class="ui-mobile-viewport ui-overlay-c">
       <div data-role="page">
-        <div data-role="panel" data-display="overlay" id="mypanel">
+        <div data-role="panel" data-display="overlay" id="admin_panel">
         <ul data-role="listview">
             <li><%= link_to "Home", root_path %></li>
             <li><%= link_to "Manage Hotels", admin_hotels_path %></li>
@@ -61,7 +61,7 @@
         <div data-role="header">
           <h1> Diego Hotels</h1>
           <% if user_signed_in? %>
-          <a href="#mypanel">Open panel</a>
+            <a href="#admin_panel" class="ui-btn ui-shadow ui-corner-all ui-icon-grid ui-btn-icon-notext">grid</a>
           <% else %>
 
           <%= link_to "Sign In", new_user_session_path,"class" => "ui-btn-right", :method => :get %>
