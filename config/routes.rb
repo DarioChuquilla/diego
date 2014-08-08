@@ -1,17 +1,14 @@
 Diego::Application.routes.draw do
 
-  get "hotel/index"
-
-  
-
-  
-
   root :to =>'home#index'
   
   get "home/index"
 
   devise_for :users, :controllers => { :registrations => 'registration' }#, :sessions => "sessions" }
 
+  namespace :admin do
+    resources :hotels
+  end
   
   resources :hotel, only:[:show] do
     member do
