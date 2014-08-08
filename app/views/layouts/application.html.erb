@@ -44,14 +44,22 @@
       
 
     </head>
-    <body>
+    <body class="ui-mobile-viewport ui-overlay-c">
       <div data-role="page">
+        <div data-role="panel" data-display="overlay" id="mypanel">
+        <ul data-role="listview">
+            <li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>
+            <li>------------------------------</li>
+            <li><a href="#my-header" data-rel="close">Close panel</a></li>
+          </ul>
+          <!-- panel content goes here -->
+          
+          
+        </div><!-- /panel -->
         <div data-role="header">
           <h1> Diego Hotels</h1>
           <% if user_signed_in? %>
-          <h3>you have succesfully signed in</h3>
-          <%= link_to "Sign Out", destroy_user_session_path, :method => :delete %>
-
+          <a href="#mypanel">Open panel</a>
           <% else %>
 
           <%= link_to "Sign In", new_user_session_path,"class" => "ui-btn-right", :method => :get %>
