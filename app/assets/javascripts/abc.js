@@ -1,0 +1,1 @@
+$.attrFn = $.attrFn || {};

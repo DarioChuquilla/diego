@@ -39,6 +39,9 @@ gem 'devise'
 gem 'cancan'
 gem "therubyracer", :platforms => :ruby
 
+gem 'sqlite3-ruby', :require => 'sqlite3'
+
+
 group :development, :test do
 #  gem 'rspec-rails'
 #  gem "capybara"
