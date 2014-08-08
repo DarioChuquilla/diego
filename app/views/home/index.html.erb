@@ -1,1 +1,4 @@
 <iframe width="600" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=Quito%2C%20Pichincha%2C%20Ecuador&key=AIzaSyDXGufBORq45JOUYe3Kc_bG87r-9skTr3w"></iframe>
+<% @hotels.each do |hotel| %>
+  <h1><%= hotel.name %></h1>
+<% end %>
