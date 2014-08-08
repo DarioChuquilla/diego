@@ -4,7 +4,7 @@
 
   <% @hotels.each do |hotel| %>
   <li >
-    <a href="#">
+    <a href="<%= hotel_path hotel  %>">
     <img src="http://www.hotelesquito.com.ec/pictures/mercure_alameda.jpg"/>
     <h2><%= hotel.name %></h2>
     <p><%= hotel.description.truncate(100, separator: ' ') %></p>
