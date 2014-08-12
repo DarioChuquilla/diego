@@ -47,6 +47,7 @@
           <ul data-role="listview">
             <li><%= link_to "Home", root_path %></li>
             <li><%= link_to "Manage Hotels", admin_hotels_path %></li>
+            <%= content_for :hotel_links %>
             <li class="ui-li ui-li-divider ui-bar-b ui-first-child" data-role="list-divider" role="heading"></li>
             <li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>
             <li><a href="#my-header" data-rel="close">Close panel</a></li>

@@ -85,8 +85,5 @@ class Admin::PromotionsController < Admin::BaseController
       format.json { head :no_content }
     end
   end
-  private 
-  def get_hotel
-    @hotel = Hotel.find params[:hotel_id]
-  end
+  
 end

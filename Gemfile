@@ -37,6 +37,10 @@ gem 'jquery-rails'
 # gem 'debugger'
 gem 'devise'
 gem 'cancan'
+
+gem 'carrierwave'
+gem 'mini_magick'
+
 gem "therubyracer", :platforms => :ruby
 
 gem 'sqlite3-ruby', :require => 'sqlite3'

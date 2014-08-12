@@ -1,0 +1,22 @@
+<% content_for :hotel_links do %>
+  <li><%= link_to 'New Hotel photo', new_admin_hotel_photo_path(@hotel) %></li>
+<% end %>
+<h1>Listing hotel_photos</h1>
+
+<table>
+  <tr>
+    <th>Photo</th>
+    <th>Actions</th>
+  </tr>
+
+<% @hotel_photos.each do |hotel_photo| %>
+  <tr>
+    <td> <%= image_tag(hotel_photo.photo.thumb.url) if hotel_photo.photo? %></td>
+    <td><%= link_to 'Show', admin_hotel_photo_path(@hotel, hotel_photo) %> | <%= link_to 'Edit', edit_admin_hotel_photo_path(@hotel, hotel_photo) %> | <%= link_to 'Destroy', admin_hotel_photo_path(@hotel, hotel_photo), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+

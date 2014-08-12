@@ -9,6 +9,7 @@ Diego::Application.routes.draw do
   namespace :admin do
     resources :hotels do
       resources :promotions
+      resources :hotel_photos, path: 'photos', as: 'photos'
     end 
   end
   
