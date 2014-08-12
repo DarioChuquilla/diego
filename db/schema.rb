@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140812062748) do
+ActiveRecord::Schema.define(:version => 20140812165821) do
 
   create_table "hotel_photos", :force => true do |t|
     t.integer  "hotel_id"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(:version => 20140812062748) do
     t.string   "longitude"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.integer  "user_id"
   end
 
   add_index "hotels", ["latitude"], :name => "index_hotels_on_latitude"

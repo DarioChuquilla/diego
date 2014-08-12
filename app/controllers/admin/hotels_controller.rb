@@ -2,7 +2,7 @@ class Admin::HotelsController < Admin::BaseController
   # GET /hotels
   # GET /hotels.json
   def index
-    @hotels = Hotel.all
+    @hotels = Hotel.find_all_by_user_id current_user.id
 
     respond_to do |format|
       format.html # index.html.erb
@@ -41,10 +41,11 @@ class Admin::HotelsController < Admin::BaseController
   # POST /hotels.json
   def create
     @hotel = Hotel.new(params[:hotel])
+    @hotel.user = current_user
 
     respond_to do |format|
       if @hotel.save
-        format.html { redirect_to @hotel, notice: 'Hotel was successfully created.' }
+        format.html { redirect_to admin_hotels_path, notice: 'Hotel was successfully created.' }
         format.json { render json: @hotel, status: :created, location: @hotel }
       else
         format.html { render action: "new" }
