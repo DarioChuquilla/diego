@@ -7,7 +7,9 @@ Diego::Application.routes.draw do
   devise_for :users, :controllers => { :registrations => 'registration' }#, :sessions => "sessions" }
 
   namespace :admin do
-    resources :hotels
+    resources :hotels do
+      resources :promotions
+    end 
   end
   
   resources :hotel, only:[:show] do

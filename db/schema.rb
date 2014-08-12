@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140812034648) do
+ActiveRecord::Schema.define(:version => 20140812051404) do
 
   create_table "hotels", :force => true do |t|
     t.string   "name"
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(:version => 20140812034648) do
     t.decimal  "percentage_discount"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
+    t.integer  "id_hotel"
   end
 
   create_table "users", :force => true do |t|

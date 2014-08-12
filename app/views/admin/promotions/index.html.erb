@@ -1,0 +1,21 @@
+<h1>Listing promotions</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @promotions.each do |promotion| %>
+  <tr>
+    <td><%= link_to 'Show', admin_hotel_promotion_path(@hotel,promotion) %></td>
+    <td><%= link_to 'Edit', edit_admin_hotel_promotion_path(@hotel,promotion) %></td>
+    <td><%= link_to 'Destroy', admin_hotel_promotion_path(@hotel,promotion), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Promotion', new_admin_hotel_promotion_path %>
