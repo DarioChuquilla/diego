@@ -40,14 +40,17 @@
       <%= javascript_include_tag "application" %>
       <script src="http://code.jquery.com/mobile/1.4.3/jquery.mobile-1.4.3.min.js"></script>
       
+      <script type="text/javascript">
+          $.mobile.ajaxEnabled = false;
+      </script>
       
-      
+      <%= content_for :page_specific_javascript_early %>
 
     </head>
     <body class="ui-mobile-viewport ui-overlay-c">
       <div data-role="page">
         <div data-role="panel" data-display="overlay" id="admin_panel">
-        <ul data-role="listview">
+          <ul data-role="listview">
             <li><%= link_to "Home", root_path %></li>
             <li><%= link_to "Manage Hotels", admin_hotels_path %></li>
             <li class="ui-li ui-li-divider ui-bar-b ui-first-child" data-role="list-divider" role="heading"></li>
@@ -61,7 +64,7 @@
         <div data-role="header">
           <h1> Diego Hotels</h1>
           <% if user_signed_in? %>
-            <a href="#admin_panel" class="ui-btn ui-shadow ui-corner-all ui-icon-grid ui-btn-icon-notext">grid</a>
+          <a href="#admin_panel" class="ui-btn ui-shadow ui-corner-all ui-icon-grid ui-btn-icon-notext">grid</a>
           <% else %>
 
           <%= link_to "Sign In", new_user_session_path,"class" => "ui-btn-right", :method => :get %>
@@ -76,7 +79,7 @@
       </div>
 
 
-      
+      <%= content_for :page_specific_javascript_late %>
       
 
     </body>
