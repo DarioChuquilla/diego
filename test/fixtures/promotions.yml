@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  initial_date: 2014-08-11
+  end_date: 2014-08-11
+  description: MyText
+  code: MyString
+  percentage_discount: 9.99
+
+two:
+  name: MyString
+  initial_date: 2014-08-11
+  end_date: 2014-08-11
+  description: MyText
+  code: MyString
+  percentage_discount: 9.99
