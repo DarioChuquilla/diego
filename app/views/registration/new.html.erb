@@ -1,3 +1,7 @@
+<% content_for :page_specific_javascript_late do %>
+  <%= javascript_include_tag "registration.js.coffee" %>
+<% end %>
+
 <h2>Sign up</h2>
 
 <%= form_tag(user_registration_path,:method => 'post') %>
@@ -35,7 +39,7 @@
   </tr>
 
   <tr>
-    <td><%= submit_tag nil, :class => "form_submit"%></td>
+    <td><%= submit_tag "Sign up", :class => "form_submit"%></td>
   </tr>
 </table>
 <br />

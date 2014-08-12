@@ -36,13 +36,7 @@
       <!-- Size should be 32 x 32 pixels -->
       <%= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>
 
-      <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.3/jquery.mobile.structure-1.4.3.min.css" />
       <%= javascript_include_tag "application" %>
-      <script src="http://code.jquery.com/mobile/1.4.3/jquery.mobile-1.4.3.min.js"></script>
-      
-      <script type="text/javascript">
-          $.mobile.ajaxEnabled = false;
-      </script>
       
       <%= content_for :page_specific_javascript_early %>
 

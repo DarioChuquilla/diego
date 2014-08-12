@@ -9,6 +9,8 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require_tree .
+ *= require jquery.mobile.structure-1.4.3.min.css
+ *= require diego
+ *= require diego.icons
  */
 
