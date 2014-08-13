@@ -24,11 +24,12 @@
 
 <div class="field">
   <%= f.label :initial_date %><br />
-  <%= f.text_field :initial_date %>
+  <%= f.text_field :initial_date,"data-role" => "datebox","data-options" => '{"mode":"calbox", "useNewStyle":true,"overrideDateFormat":"%d/%m/%Y","overrideDateFieldOrder": ["d", "m", "y"],"calUsePickers": true, "calNoHeader": true,"calShowDays": false,"calMonthMode": true}'%>
 </div>
+
 <div class="field">
   <%= f.label :end_date %><br />
-  <%= f.text_field :end_date %>
+  <%= f.text_field :end_date ,"data-role" => "datebox","data-options" => '{"mode":"calbox", "useNewStyle":true, "overrideDateFormat":"%d/%m/%Y","overrideDateFieldOrder": ["d", "m", "y"],"calUsePickers": true, "calNoHeader": true,"calShowDays": false,"calMonthMode": true}' %>
 </div>
 
 <div class="field">
@@ -39,11 +40,6 @@
 <div class="field">
   <%= f.label :percentage_discount %><br />
   <%= f.text_field :percentage_discount %>
-</div>
-
-<div class="field">
-  <%= f.label :id_hotel %><br />
-  <%= f.text_field :id_hotel %>
 </div>
 
 <div class="actions">

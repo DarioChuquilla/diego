@@ -2,18 +2,32 @@
 
 <table>
   <tr>
+    <th>Name</th>
+    <th>Code</th>
+    <th>Initial date</th>
+    <th>End date</th>
+    <th>Description</th>
+    <th>Percentage discount</th>
+    <th>Id hotel</th>
     <th></th>
     <th></th>
     <th></th>
   </tr>
 
-<% @promotions.each do |promotion| %>
+  <% @promotions.each do |promotion| %>
   <tr>
+    <td><%= promotion.name %></td>
+    <td><%= promotion.code %></td>
+    <td><%= promotion.initial_date %></td>
+    <td><%= promotion.end_date %></td>
+    <td><%= promotion.description %></td>
+    <td><%= promotion.percentage_discount %></td>
+        
     <td><%= link_to 'Show', admin_hotel_promotion_path(@hotel,promotion) %></td>
     <td><%= link_to 'Edit', edit_admin_hotel_promotion_path(@hotel,promotion) %></td>
     <td><%= link_to 'Destroy', admin_hotel_promotion_path(@hotel,promotion), method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
-<% end %>
+  <% end %>
 </table>
 
 <br />

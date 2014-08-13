@@ -15,7 +15,9 @@
       <![endif]-->
 
       <%= stylesheet_link_tag "application", :media => "all" %>
-
+  <!--
+      <link type="text/css" href="http://cdn.jtsage.com/datebox/latest/jqm-datebox.min.css" rel="stylesheet" /> 
+  -->
       <!-- For third-generation iPad with high-resolution Retina display: -->
       <!-- Size should be 144 x 144 pixels -->
       <%= favicon_link_tag 'apple-touch-icon-144x144-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '144x144' %>
@@ -39,6 +41,14 @@
       <%= javascript_include_tag "application" %>
       
       <%= content_for :page_specific_javascript_early %>
+  
+  
+<!--  
+  <script type="text/javascript" src="http://cdn.jtsage.com/datebox/latest/jqm-datebox.core.min.js"></script>
+  <script type="text/javascript" src="http://cdn.jtsage.com/datebox/latest/jqm-datebox.mode.calbox.min.js"></script>
+  <script type="text/javascript" src="http://cdn.jtsage.com/datebox/i18n/jquery.mobile.datebox.i18n.en_US.utf8.js"></script> 
+--> 
+
 
     </head>
     <body class="ui-mobile-viewport ui-overlay-c">

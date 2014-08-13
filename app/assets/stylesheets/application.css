@@ -10,6 +10,7 @@
  *
  *= require_self
  *= require jquery.mobile.structure-1.4.3.min.css
+ *= require jqm-datebox.min.css
  *= require diego
  *= require diego.icons
  */

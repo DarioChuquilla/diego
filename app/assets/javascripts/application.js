@@ -13,4 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.mobile-1.4.3.min.js
+//= require jqm-datebox.core.min.js
+//= require jqm-datebox.mode.calbox.min.js
+//= require jquery.mobile.datebox.i18n.en_US.utf8.js
 //= require home

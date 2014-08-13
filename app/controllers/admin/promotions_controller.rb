@@ -3,8 +3,8 @@ class Admin::PromotionsController < Admin::BaseController
   # GET /promotions.json
   def index 
     get_hotel
-    @promotions = Promotion.all
-
+    #@promotions = Promotion.all
+    @promotions = Promotion.find_all_by_hotel_id params[:hotel_id]
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @promotions }
@@ -14,6 +14,7 @@ class Admin::PromotionsController < Admin::BaseController
   # GET /promotions/1
   # GET /promotions/1.json
   def show
+
     @promotion = Promotion.find(params[:id])
 
     respond_to do |format|
@@ -27,7 +28,7 @@ class Admin::PromotionsController < Admin::BaseController
   def new
     get_hotel
     @promotion = Promotion.new
-
+    @promotion.hotel_id = params[:hotel_id]
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @promotion }
@@ -36,6 +37,7 @@ class Admin::PromotionsController < Admin::BaseController
 
   # GET /promotions/1/edit
   def edit
+    get_hotel
     @promotion = Promotion.find(params[:id])
   end
 
@@ -44,11 +46,11 @@ class Admin::PromotionsController < Admin::BaseController
   def create
     get_hotel
     @promotion = Promotion.new(params[:promotion])
-    @promotion.id_hotel=params[:hotel_id]
+    @promotion.hotel_id=params[:hotel_id]
     #abort(params.inspect)
     respond_to do |format|
       if @promotion.save
-        format.html { redirect_to @promotion, notice: 'Promotion was successfully created.' }
+        format.html { redirect_to admin_hotel_promotions_path(@hotel), notice: 'Promotion was successfully created.' }
         format.json { render json: @promotion, status: :created, location: @promotion }
       else
         format.html { render action: "new" }
@@ -64,7 +66,7 @@ class Admin::PromotionsController < Admin::BaseController
 
     respond_to do |format|
       if @promotion.update_attributes(params[:promotion])
-        format.html { redirect_to @promotion, notice: 'Promotion was successfully updated.' }
+        format.html { redirect_to admin_hotel_promotion_path(@promotion), notice: 'Promotion was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
