@@ -13,26 +13,33 @@
       <%= stylesheet_link_tag "application", :media => "all" %>
   <!--
       <link type="text/css" href="http://cdn.jtsage.com/datebox/latest/jqm-datebox.min.css" rel="stylesheet" /> 
-  -->
-      <!-- For third-generation iPad with high-resolution Retina display: -->
-      <!-- Size should be 144 x 144 pixels -->
-      <%= favicon_link_tag 'apple-touch-icon-144x144-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '144x144' %>
-      <!-- For iPhone with high-resolution Retina display: -->
-      <!-- Size should be 114 x 114 pixels -->
-      <%= favicon_link_tag 'apple-touch-icon-114x114-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '114x114' %>
-      <!-- For first- and second-generation iPad: -->
-      <!-- Size should be 72 x 72 pixels -->
-      <%= favicon_link_tag 'apple-touch-icon-72x72-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '72x72' %>
-      <!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
-      <!-- Size should be 57 x 57 pixels -->
-      <%= favicon_link_tag 'apple-touch-icon-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png' %>
-      <!-- For all other devices -->
-      <!-- Size should be 32 x 32 pixels -->
-      <%= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>
-      <%= javascript_include_tag "application" %>
-      <%= content_for :page_specific_javascript_early %>
-  
-  
+    -->
+    <!-- For third-generation iPad with high-resolution Retina display: -->
+    <!-- Size should be 144 x 144 pixels -->
+    <%= favicon_link_tag 'apple-touch-icon-144x144-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '144x144' %>
+    <!-- For iPhone with high-resolution Retina display: -->
+    <!-- Size should be 114 x 114 pixels -->
+    <%= favicon_link_tag 'apple-touch-icon-114x114-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '114x114' %>
+    <!-- For first- and second-generation iPad: -->
+    <!-- Size should be 72 x 72 pixels -->
+    <%= favicon_link_tag 'apple-touch-icon-72x72-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '72x72' %>
+    <!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+    <!-- Size should be 57 x 57 pixels -->
+    <%= favicon_link_tag 'apple-touch-icon-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png' %>
+    <!-- For all other devices -->
+    <!-- Size should be 32 x 32 pixels -->
+    <%= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>
+    <%= javascript_include_tag "application" %>
+
+    <script>
+      // Picture element HTML shim|v it for old IE (pairs with Picturefill.js)
+      document.createElement( "picture" );
+    </script>
+    <script async="true" src="/assets/picturefill.min.js?body=1"></script>
+
+    <%= content_for :page_specific_javascript_early %>
+
+
 <!--  
   <script type="text/javascript" src="http://cdn.jtsage.com/datebox/latest/jqm-datebox.core.min.js"></script>
   <script type="text/javascript" src="http://cdn.jtsage.com/datebox/latest/jqm-datebox.mode.calbox.min.js"></script>
@@ -40,36 +47,36 @@
 --> 
 
 
-    </head>
-    <body class="ui-mobile-viewport ui-overlay-c">
-      <div data-role="page">
-        <div data-role="panel" data-display="overlay" id="admin_panel">
-          <ul data-role="listview">
-            <li><%= link_to "Home", root_path %></li>
-            <li><%= link_to "Manage Hotels", admin_hotels_path %></li>
-            <%= content_for :hotel_links %>
-            <li class="ui-li ui-li-divider ui-bar-b ui-first-child" data-role="list-divider" role="heading"></li>
-            <li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>
-            <li><a href="#my-header" data-rel="close">Close panel</a></li>
-          </ul>
-          <!-- panel content goes here -->
-        </div><!-- /panel -->
-        <div data-role="header">
-          <h1>
-            <%= link_to "Diego Hotels", root_path %>
-          </h1>
-          <% if user_signed_in? %>
-            <a href="#admin_panel" class="ui-btn ui-shadow ui-corner-all ui-icon-grid ui-btn-icon-notext">grid</a>
-            <%= link_to "Sign Out", destroy_user_session_path, "class" => "ui-btn-right", :method => :delete %>
-          <% else %>
-            <%= link_to "Sign In", new_user_session_path,"class" => "ui-btn-right", :method => :get %>
-            <%= link_to "Sign up", new_user_registration_path, "class" => "ui-btn-left", :method => :get %>
-          <% end %>
-        </div>
-        <div data-role="content">
-          <%= yield %>
-        </div>
-      </div>
-      <%= content_for :page_specific_javascript_late %>
-    </body>
-    </html>
+</head>
+<body class="ui-mobile-viewport ui-overlay-c">
+  <div data-role="page">
+    <div data-role="panel" data-display="overlay" id="admin_panel">
+      <ul data-role="listview">
+        <li><%= link_to "Home", root_path %></li>
+        <li><%= link_to "Manage Hotels", admin_hotels_path %></li>
+        <%= content_for :hotel_links %>
+        <li class="ui-li ui-li-divider ui-bar-b ui-first-child" data-role="list-divider" role="heading"></li>
+        <li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>
+        <li><a href="#my-header" data-rel="close">Close panel</a></li>
+      </ul>
+      <!-- panel content goes here -->
+    </div><!-- /panel -->
+    <div data-role="header">
+      <h1>
+        <%= link_to "Diego Hotels", root_path %>
+      </h1>
+      <% if user_signed_in? %>
+      <a href="#admin_panel" class="ui-btn ui-shadow ui-corner-all ui-icon-grid ui-btn-icon-notext">grid</a>
+      <%= link_to "Sign Out", destroy_user_session_path, "class" => "ui-btn-right", :method => :delete %>
+      <% else %>
+      <%= link_to "Sign In", new_user_session_path,"class" => "ui-btn-right", :method => :get %>
+      <%= link_to "Sign up", new_user_registration_path, "class" => "ui-btn-left", :method => :get %>
+      <% end %>
+    </div>
+    <div data-role="content">
+      <%= yield %>
+    </div>
+  </div>
+  <%= content_for :page_specific_javascript_late %>
+</body>
+</html>
