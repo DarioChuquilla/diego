@@ -1,5 +1,10 @@
 <p id="notice"><%= notice %></p>
 
+<%#= image_tag(@hotel_photo.photo.main.url) if @hotel_photo.photo? %>
+
+<img sizes="(min-width: 40em) 80vw, 100vw"
+srcset="<%= @hotel_photo.photo.main.url %> 375w, <%= @hotel_photo.photo.logo.url %> 480w, <%= @hotel_photo.photo.banner.url %> 600w, <%= @hotel_photo.photo_url %> 768w" 
+alt="hotel image" />
 
 <%= link_to 'Edit', edit_admin_hotel_photo_path(@hotel, @hotel_photo) %> |
 <%= link_to 'Back', admin_hotel_photos_path(@hotel) %>
