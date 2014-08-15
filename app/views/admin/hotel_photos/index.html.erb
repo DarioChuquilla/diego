@@ -1,33 +1,37 @@
-<% content_for :hotel_links do %>
-<li><%= link_to 'New Hotel photo', new_admin_hotel_photo_path(@hotel) %></li>
-<% end %>
+<%= render :partial => 'links', :locals => { :hotel => @hotel } %>
 <h1>Listing hotel_photos</h1>
 
 <table data-role="table" class="ui-responsive">
   <thead>
     <tr>
-      <th>Photo</th>
       <th>Actions</th>
+      <th>Photo</th>
     </tr>
   </thead>
   <tbody>
     <% @hotel_photos.each do |hotel_photo| %>
     <tr>
-      <td><%= image_tag(hotel_photo.photo.thumb.url) if hotel_photo.photo? %></td>
       <td>
+        <a href="#popupBasic-<%= hotel_photo.id %>" data-rel="popup" data-role="button" data-icon="arrow-d" data-iconpos="notext">Actions</a> 
+        <div data-role="popup" id="popupBasic-<%= hotel_photo.id %>">
+          <ul data-role="listview">
+            <li><%= link_to 'Show', admin_hotel_photo_path(@hotel, hotel_photo) %> </li>
+            <li><%= link_to 'Edit', edit_admin_hotel_photo_path(@hotel, hotel_photo) %> </li>
+            <li><%= link_to 'Destroy', admin_hotel_photo_path(@hotel, hotel_photo), method: :delete, data: { confirm: 'Are you sure?' } %> </li>
+          </ul>
+        </div>
         <div data-mini="true" data-type="horizontal" data-role="controlgroup" class="ui-corner-all ui-controlgroup ui-controlgroup-horizontal ui-mini">
           <div class="ui-controlgroup-controls">
-            <%= link_to 'Show', admin_hotel_photo_path(@hotel, hotel_photo), data: { role: "button", corners: "true", theme: 'c', iconpos: "notext", icon: "delete" }, class: "ui-btn ui-btn-icon-notext" %>
-            <%= link_to 'Edit', edit_admin_hotel_photo_path(@hotel, hotel_photo), data: { role: "button", corners: "true", theme: 'c', iconpos: "notext", icon: "delete" }, class: "ui-btn ui-btn-icon-notext" %>
-            <%= link_to 'Destroy', admin_hotel_photo_path(@hotel, hotel_photo), method: :delete, data: { confirm: 'Are you sure?', role: "button", corners: "true", theme: 'c', iconpos: "notext", icon: "delete" }, class: "ui-btn ui-btn-icon-notext" %>
           </div>
         </div>
       </td>
+      <td><%= image_tag(hotel_photo.photo.thumb.url) if hotel_photo.photo? %></td>
     </tr>
     <% end %>
   </tbody>
 </table>
 
 <br />
-
-<%= link_to 'New Hotel photo', new_admin_hotel_photo_path(@hotel) %>
+<div data-role="controlgroup" data-mini="true" data-type="horizontal">
+<%= link_to 'New photo', new_admin_hotel_photo_path(@hotel), data: {role: "button"} %>
+</div>

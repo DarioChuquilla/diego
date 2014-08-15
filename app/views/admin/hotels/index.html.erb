@@ -15,7 +15,7 @@
   <% @hotels.each do |hotel| %>
   <tr>
     <td>
-      <a href="#popupBasic-<%= hotel.id %>" data-rel="popup" data-role="button" data-icon="arrow-d" data-iconpos="notext">Delete</a> 
+      <a href="#popupBasic-<%= hotel.id %>" data-rel="popup" data-role="button" data-icon="arrow-d" data-iconpos="notext">Actions</a> 
       <div data-role="popup" id="popupBasic-<%= hotel.id %>">
         <ul data-role="listview">
           <li><%= link_to 'Show', admin_hotel_path(hotel) %> </li>
@@ -35,5 +35,6 @@
 </table>
 
 <br />
-
-<%= link_to 'New Hotel', new_admin_hotel_path %>
+<div data-role="controlgroup" data-mini="true" data-type="horizontal">
+<%= link_to 'New Hotel', new_admin_hotel_path, data: {role: "button"} %>
+</div>
