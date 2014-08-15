@@ -3,30 +3,35 @@
 
 <table>
   <tr>
+    <th>Actions</th>
     <th>Name</th>
     <th>Description</th>
     <th>Latitude</th>
     <th>Longitude</th>
     <th>Telephone</th>
     <th>Email</th>
-    <th></th>
-    <th></th>
-    <th></th>
   </tr>
 
-<% @hotels.each do |hotel| %>
+  <% @hotels.each do |hotel| %>
   <tr>
+    <td>
+      <a href="#popupBasic-<%= hotel.id %>" data-rel="popup" data-role="button" data-icon="arrow-d" data-iconpos="notext">Delete</a> 
+      <div data-role="popup" id="popupBasic-<%= hotel.id %>">
+        <ul data-role="listview">
+          <li><%= link_to 'Show', admin_hotel_path(hotel) %> </li>
+          <li><%= link_to 'Edit', edit_admin_hotel_path(hotel) %> </li>
+          <li><%= link_to 'Destroy', admin_hotel_path(hotel), method: :delete, data: { confirm: 'Are you sure?' } %> </li>
+        </ul>
+      </div>
+    </td>
     <td><%= hotel.name %></td>
     <td><%= hotel.description %></td>
     <td><%= hotel.latitude %></td>
     <td><%= hotel.longitude %></td>
     <td><%= hotel.telephone %></td>
     <td><%= hotel.email %></td>
-    <td><%= link_to 'Show', admin_hotel_path(hotel) %></td>
-    <td><%= link_to 'Edit', edit_admin_hotel_path(hotel) %></td>
-    <td><%= link_to 'Destroy', admin_hotel_path(hotel), method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
-<% end %>
+  <% end %>
 </table>
 
 <br />
