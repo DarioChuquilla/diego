@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140813040912) do
+ActiveRecord::Schema.define(:version => 20140815051311) do
 
   create_table "hotel_photos", :force => true do |t|
     t.integer  "hotel_id"
@@ -28,6 +28,8 @@ ActiveRecord::Schema.define(:version => 20140813040912) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.integer  "user_id"
+    t.string   "telephone"
+    t.string   "email"
   end
 
   add_index "hotels", ["latitude"], :name => "index_hotels_on_latitude"
@@ -60,6 +62,9 @@ ActiveRecord::Schema.define(:version => 20140813040912) do
     t.datetime "updated_at",                             :null => false
     t.string   "username"
     t.string   "remember_token"
+    t.string   "frist_name"
+    t.string   "last_name"
+    t.string   "mobile"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
