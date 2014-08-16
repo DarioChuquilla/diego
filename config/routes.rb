@@ -1,5 +1,11 @@
 Diego::Application.routes.draw do
 
+  # get "reports/index"
+
+  # get "reports/received"
+
+  # get "reports/done"
+
   root :to =>'home#index'
   
   get "home/index"
@@ -10,7 +16,13 @@ Diego::Application.routes.draw do
     resources :hotels do
       resources :promotions
       resources :hotel_photos, path: 'photos', as: 'photos'
-    end 
+    end
+    resources :reports, only: [:index ] do
+      collection do
+        get :received
+        get :done
+      end
+    end
   end
   
   resources :hotel, only:[:show] do

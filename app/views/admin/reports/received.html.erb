@@ -1,0 +1,69 @@
+<% content_for :page_specific_styles do %>
+<%= stylesheet_link_tag 'admin/reports.css' %>
+<% end %>
+<h1>Received reservations</h1>
+<form>
+  <input id="filterTable-input" data-type="search">
+</form>
+<table data-role="table" class="ui-responsive" data-mode="columntoggle" data-filter="true" data-input="#filterTable-input" id="reposts-received">
+  <thead>
+    <tr>
+      <th>Hotel</th>
+      <th data-priority="7">Room</th>
+      <th data-priority="7">Initial Date</th>
+      <th data-priority="7">End date</th>
+      <th data-priority="7">Total time</th>
+      <th data-priority="7">Cost</th>
+      <th data-priority="7">Total</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Carmelo</td>
+      <td>2A</td>
+      <td>19/07/2014</td>
+      <td>21/07/2014</td>
+      <td>2</td>
+      <td>$ 25.00</td>
+      <td>$ 50.00</td>
+    </tr>
+    <tr>
+      <td>Carmelo</td>
+      <td>2A</td>
+      <td>19/07/2014</td>
+      <td>21/07/2014</td>
+      <td>2</td>
+      <td>$ 25.00</td>
+      <td>$ 50.00</td>
+    </tr>
+    <tr>
+      <td>Rebeca</td>
+      <td>2A</td>
+      <td>19/07/2014</td>
+      <td>21/07/2014</td>
+      <td>2</td>
+      <td>$ 25.00</td>
+      <td>$ 50.00</td>
+    </tr>
+    <tr>
+      <td>Francia</td>
+      <td>2A</td>
+      <td>19/07/2014</td>
+      <td>21/07/2014</td>
+      <td>2</td>
+      <td>$ 25.00</td>
+      <td>$ 50.00</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>Total</td>
+      <td>$ 200.00</td>
+    </tr>
+  </tfoot>
+</table>

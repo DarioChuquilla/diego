@@ -31,6 +31,8 @@
     <%= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>
     <%= javascript_include_tag "application" %>
 
+    <%= content_for :page_specific_styles %>
+
     <script>
       // Picture element HTML shim|v it for old IE (pairs with Picturefill.js)
       document.createElement( "picture" );
@@ -54,6 +56,7 @@
       <ul data-role="listview">
         <li><%= link_to "Home", root_path %></li>
         <li><%= link_to "Manage Hotels", admin_hotels_path %></li>
+        <li><%= link_to 'Reservations', received_admin_reports_path %></li>
         <%= content_for :hotel_links %>
         <li class="ui-li ui-li-divider ui-bar-b ui-first-child" data-role="list-divider" role="heading"></li>
         <li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>
