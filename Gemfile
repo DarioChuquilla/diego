@@ -58,7 +58,7 @@ group :development, :test do
 #  gem 'selenium-webdriver'
   gem 'better_errors'
   gem 'binding_of_caller'
-#  gem 'capistrano'
+  gem 'capistrano', '2.15.5'
 #  gem 'jasmine-rails'
 #  gem 'pry'
 #  gem 'pry-remote'
