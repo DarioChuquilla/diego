@@ -36,16 +36,30 @@
     <script>
       // Picture element HTML shim|v it for old IE (pairs with Picturefill.js)
       document.createElement( "picture" );
+      $(function () {
+        $("#slider").excoloSlider({
+          autoPlay:  true,
+          delay: 0,
+          playReverse: false,
+          interval:  5000
+      });
+      });
     </script>
+
+
     <script async="true" src="/assets/picturefill.min.js?body=1"></script>
 
     <%= content_for :page_specific_javascript_early %>
+
+
 
 
 <!--  
   <script type="text/javascript" src="http://cdn.jtsage.com/datebox/latest/jqm-datebox.core.min.js"></script>
   <script type="text/javascript" src="http://cdn.jtsage.com/datebox/latest/jqm-datebox.mode.calbox.min.js"></script>
   <script type="text/javascript" src="http://cdn.jtsage.com/datebox/i18n/jquery.mobile.datebox.i18n.en_US.utf8.js"></script> 
+
+
 --> 
 
 

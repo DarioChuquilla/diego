@@ -16,4 +16,5 @@
 //= require jqm-datebox.core.min.js
 //= require jqm-datebox.mode.calbox.min.js
 //= require jquery.mobile.datebox.i18n.en_US.utf8.js
+//= require jquery.excoloSlider.min.js
 //= require home
