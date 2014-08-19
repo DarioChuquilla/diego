@@ -44,7 +44,7 @@ preview:
   database: diego_preview
   pool: 5
   username: postgres
-  password: 
+  password: z1VunY8kMPAGE
 
 production:
   adapter: postgresql
@@ -52,4 +52,4 @@ production:
   database: diego_production
   pool: 5
   username: postgres
-  password: 
+  password: z1VunY8kMPAGE
