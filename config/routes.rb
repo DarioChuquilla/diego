@@ -26,7 +26,7 @@ Diego::Application.routes.draw do
   end
   
   resources :hotel, only:[:show] do
-    member do
+    collection do
       get :nearest
       get :price
       get :cities

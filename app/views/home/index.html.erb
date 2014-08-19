@@ -1,14 +1,13 @@
 <iframe width="100%" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=Quito%2C%20Pichincha%2C%20Ecuador&key=AIzaSyDXGufBORq45JOUYe3Kc_bG87r-9skTr3w"></iframe>
-<ul data-role="listview" data-filter="true" data-filter-placeholder="Buscar..." data-inset="true">
-  <% @hotels.each do |hotel| %>
-  <li >
-    <a href="<%= hotel_path hotel  %>">
-      <img src="http://www.hotelesquito.com.ec/pictures/mercure_alameda.jpg"/>
-      <h2><%= hotel.name %></h2>
-      <p><%= hotel.description.truncate(100, separator: ' ') %></p>
-    </a>
-  </li>
-  <% end %>
-</ul>
+<div data-role="footer">
+  <div class="ui-grid-b">
+    <div class="ui-block-a"><a href="<%= nearest_hotel_index_path %>" data-role="button"><%= image_tag "location.png", alt: "Locations" %></a></div>
+    <div class="ui-block-b"><a href="#" data-role="button"><%= image_tag "bubble.png", alt: "Locations" %></a></div>
+    <div class="ui-block-c"><a href="#" data-role="button"><%= image_tag "city.png", alt: "Locations" %></a></div>
+    <div class="ui-block-a"><a href="#" data-role="button"><%= image_tag "banknote.png", alt: "Locations" %></a></div>
+    <div class="ui-block-b"><a href="#" data-role="button"><%= image_tag "tag.png", alt: "Locations" %></a></div>
+    <div class="ui-block-c"><a href="#" data-role="button"><%= image_tag "information.png", alt: "Locations" %></a></div>
+  </div>
+</div>
 
 
