@@ -25,7 +25,7 @@ class ApplicationController < ActionController::Base
   end
 
   def set_locale
-    I18n.locale = extract_locale_from_accept_language_header || I18n.default_locale
+    I18n.locale = params[:locale] || extract_locale_from_accept_language_header || I18n.default_locale
     Rails.application.routes.default_url_options[:locale]= I18n.locale
     logger.debug{"============ I18N.LOCALE #{I18n.locale.inspect}"}
   end
