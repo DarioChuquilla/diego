@@ -44,6 +44,7 @@ gem 'mini_magick'
 gem "therubyracer", :platforms => :ruby
 
 gem 'i18n'
+gem 'i18n_data'
 gem 'geocoder'
 
 

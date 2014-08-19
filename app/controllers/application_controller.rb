@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::Base
+  require 'i18n_data'
   protect_from_forgery
+  before_filter :set_locale
 
   def login_process
     p "ApplicationController::login_process"
@@ -15,7 +17,15 @@ class ApplicationController < ActionController::Base
         }
       end
     end
-    
+  end
+
+  private
+  def extract_locale_from_accept_language_header
+    request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/).first
+  end
+
+  def set_locale
+    I18n.locale = extract_locale_from_accept_language_header || I18n.default_locale
   end
 
 end
