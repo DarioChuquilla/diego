@@ -1,5 +1,6 @@
 class Promotion < ActiveRecord::Base
-  attr_accessible :code, :description, :end_date, :initial_date, :name , :percentage_discount, :hotel_id
+  mount_uploader :photo, PhotoUploader
+  attr_accessible :name, :photo, :hotel_id
   belongs_to :hotel
-  validates :code, :description, :end_date, :initial_date, :name , :percentage_discount,:hotel_id, :presence => true
+  validates_presence_of :name, :photo, :hotel_id
 end

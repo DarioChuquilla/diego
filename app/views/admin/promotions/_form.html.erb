@@ -13,36 +13,23 @@
 <% end %>
 
 <div class="field">
-  <%= f.label :name %><br />
+  <%= f.label :name %>
   <%= f.text_field :name %>
 </div>
 
-<div class="field">
-  <%= f.label :code %><br />
-  <%= f.text_field :code %>
-</div>
+<%= image_tag(@promotion.photo_url) if @promotion.photo? %>
 
 <div class="field">
-  <%= f.label :initial_date %><br />
-  <%= f.text_field :initial_date,"data-role" => "datebox","data-options" => '{"mode":"calbox", "useNewStyle":true,"overrideDateFormat":"%d/%m/%Y","overrideDateFieldOrder": ["d", "m", "y"],"calUsePickers": true, "calNoHeader": true,"calShowDays": false,"calMonthMode": true}'%>
-</div>
-
-<div class="field">
-  <%= f.label :end_date %><br />
-  <%= f.text_field :end_date ,"data-role" => "datebox","data-options" => '{"mode":"calbox", "useNewStyle":true, "overrideDateFormat":"%d/%m/%Y","overrideDateFieldOrder": ["d", "m", "y"],"calUsePickers": true, "calNoHeader": true,"calShowDays": false,"calMonthMode": true}' %>
-</div>
-
-<div class="field">
-  <%= f.label :description %><br />
-  <%= f.text_area :description %>
-</div>
-
-<div class="field">
-  <%= f.label :percentage_discount %><br />
-  <%= f.text_field :percentage_discount %>
+  <%= f.file_field :photo %>
 </div>
 
 <div class="actions">
-  <%= f.submit %>
+  <div data-role="controlgroup" data-mini="true" data-type="horizontal">
+    <%= f.submit %>
+    <% if @promotion.photo.present? %>
+      <%= link_to 'Show', admin_hotel_promotion_path(@hotel, @promotion), data: {role: "button"} %>
+    <% end %>
+    <%= link_to 'Back', admin_hotel_promotions_path(@hotel), data: {role: "button"} %>
+  </div>
 </div>
 <% end %>

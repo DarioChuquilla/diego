@@ -1,5 +1,5 @@
 Diego::Application.routes.draw do
-  scope "(:locale)", :locale => /en|EC/ do
+  scope "(:locale)" do
     # get "reports/index"
 
     # get "reports/received"
