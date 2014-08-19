@@ -43,7 +43,8 @@ gem 'mini_magick'
 
 gem "therubyracer", :platforms => :ruby
 
-gem 'sqlite3-ruby', :require => 'sqlite3'
+gem 'i18n'
+gem 'geocoder'
 
 
 group :development, :test do
