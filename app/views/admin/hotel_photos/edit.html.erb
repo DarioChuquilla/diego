@@ -1,4 +1,4 @@
 <h1>Editing hotel_photo</h1>
-
-<%= render 'form' %>
-
+<%= form_for [:admin, @hotel, @hotel_photo], :url => admin_hotel_photo_path(@hotel), :html => {:multipart => true} do |f| %>
+<%= render :partial => "form", :object => f %>
+<% end %>

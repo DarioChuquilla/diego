@@ -66,7 +66,7 @@ class Admin::HotelPhotosController < Admin::BaseController
 
     respond_to do |format|
       if @hotel_photo.update_attributes(params[:hotel_photo])
-        format.html { redirect_to @hotel_photo, notice: 'Hotel photo was successfully updated.' }
+        format.html { redirect_to admin_hotel_photo_path(params[:hotel_id], @hotel_photo), notice: 'Hotel photo was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -83,7 +83,7 @@ class Admin::HotelPhotosController < Admin::BaseController
     @hotel_photo.destroy
 
     respond_to do |format|
-      format.html { redirect_to hotel_photos_url }
+      format.html { redirect_to admin_hotel_photos_url }
       format.json { head :no_content }
     end
   end
