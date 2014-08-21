@@ -47,6 +47,15 @@ en:
       send_instructions: "You will receive an email with instructions about how to unlock your account in a few minutes."
       send_paranoid_instructions: "If your account exists, you will receive an email with instructions about how to unlock it in a few minutes."
       unlocked: "Your account has been unlocked successfully. Please sign in to continue."
+    shared:
+      sign_up: "Sign up"
+      sign_in: "Sign in"
+      sign_out: "Sign out"
+      forgot_your_password: "Forgot your password?"
+      confirmation_instructions:
+        not_received: "Didn't receive confirmation instructions?"
+      unlock_instructions:
+        not_received: "Didn't receive unlock instructions?"
   errors:
     messages:
       already_confirmed: "was already confirmed, please try signing in"

@@ -4,7 +4,6 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><%= content_for?(:title) ? yield(:title) : "Diego" %></title>
   <%= csrf_meta_tags %>
   <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
     <!--[if lt IE 9]>
@@ -81,7 +80,7 @@
     </div><!-- /panel -->
     <div data-role="header">
       <h1>
-        <%= link_to "Diego Hotels", root_path %>
+        <%= link_to (content_for?(:title) ? "#{yield(:title)} - MOOTELOS.com" : "MOOTELOS.com"), root_path %>
       </h1>
       <% if user_signed_in? %>
       <a href="#admin_panel" class="ui-btn ui-shadow ui-corner-all ui-icon-grid ui-btn-icon-notext">grid</a>

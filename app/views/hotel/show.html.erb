@@ -1,3 +1,6 @@
+<% content_for :title do %>
+  <%= @hotel.name %>
+<% end %>
 <div class="slider">
   <% @hotel.hotel_photos.each_with_index do |photo, index| %>
   <%= image_tag(photo.photo.main.url) if photo.photo? %>

@@ -1,52 +1,52 @@
 <%= form_for [:admin, @hotel] do |f| %>
-<% if @hotel.errors.any? %>
-<div id="error_explanation">
-  <h2><%= pluralize(@hotel.errors.count, "error") %> prohibited this hotel from being saved:</h2>
+  <% if @hotel.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@hotel.errors.count, "error") %> prohibited this hotel from being saved:</h2>
 
-  <ul>
-    <% @hotel.errors.full_messages.each do |msg| %>
-    <li><%= msg %></li>
-    <% end %>
-  </ul>
-</div>
-<% end %>
-
-<div class="field">
-  <%= f.label :name %><br />
-  <%= f.text_field :name %>
-</div>
-<div class="field">
-  <%= f.label :description %><br />
-  <%= f.text_area :description %>
-</div>
-<div class="field">
-  <%= f.label :latitude %><br />
-  <%= f.text_field :latitude %>
-</div>
-<div class="field">
-  <%= f.label :longitude %><br />
-  <%= f.text_field :longitude %>
-</div>
-
-<div class="field">
-  <%= f.label :telephone %><br />
-  <%= f.text_field :telephone %>
-</div>
-
-<div class="field">
-  <%= f.label :email %><br />
-  <%= f.text_field :email %>
-</div>
-
-
-
-<div class="actions">
-  <div data-role="controlgroup" data-mini="true" data-type="horizontal">
-    <%= f.submit %>
-    <% if @hotel.name.present? %>
-      <%= link_to 'Show', admin_hotel_path(@hotel), data: {role: "button"} %>
-    <% end %>
-    <%= link_to 'Cancel', admin_hotels_path, data: {role: "button"} %>
+    <ul>
+      <% @hotel.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+      <% end %>
+    </ul>
   </div>
-</div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :latitude %><br />
+    <%= f.text_field :latitude %>
+  </div>
+  <div class="field">
+    <%= f.label :longitude %><br />
+    <%= f.text_field :longitude %>
+  </div>
+
+  <div class="field">
+    <%= f.label :telephone %><br />
+    <%= f.text_field :telephone %>
+  </div>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </div>
+
+
+
+  <div class="actions">
+    <div data-role="controlgroup" data-mini="true" data-type="horizontal">
+      <%= f.submit %>
+      <% if @hotel.name.present? %>
+        <%= link_to 'Show', admin_hotel_path(@hotel), data: {role: "button"} %>
+      <% end %>
+      <%= link_to 'Cancel', admin_hotels_path, data: {role: "button"} %>
+    </div>
+  </div>
 <% end %>

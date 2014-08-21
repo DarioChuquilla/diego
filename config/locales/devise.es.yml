@@ -47,6 +47,15 @@ es:
       send_instructions: "Usted recibirá un correo electrónico con instrucciones sobre cómo desbloquear su cuenta en unos pocos minutos."
       send_paranoid_instructions: "Si existe la cuenta, usted recibirá un correo electrónico con instrucciones sobre cómo desbloquearlo en pocos minutos."
       unlocked: "Su cuenta ha sido desbloqueado con éxito. Por favor inicie sesión para continuar."
+    shared:
+      sign_up: "Registrarse"
+      sign_in: "Iniciar sesión"
+      sign_out: "Salir"
+      forgot_your_password: "Recordar contraseña"
+      confirmation_instructions:
+        not_received: "Enviar correo de confirmación nuevamente."
+      unlock_instructions:
+        not_received: "Enviar instrucciones para desbloquear."
   errors:
     messages:
       already_confirmed: "ya se confirmó, intenta iniciar sesión"

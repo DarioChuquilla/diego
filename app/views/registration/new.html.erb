@@ -1,46 +1,51 @@
 <% content_for :page_specific_javascript_late do %>
-  <%= javascript_include_tag "registration.js.coffee" %>
+<%= javascript_include_tag "registration.js.coffee" %>
 <% end %>
 
-<h2>Sign up</h2>
+<h2><%= t('home.sign_up') %></h2>
 
-<%= form_tag(user_registration_path,:method => 'post') %>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), id: "registration_form") do |f| %>
 <%= devise_error_messages! %>
-<table>
+  <table>
 
-  <tr>
-    <td>Username : </td>
-    <td><%=text_field_tag "user[username]",@user.username %></td>
-  </tr>
+    <tr>
+      <td><%= f.label :username %> </td>
+      <td><%= f.text_field :username %></td>
+    </tr>
 
-  <tr>
-    <td>Email : </td>
-    <td><%=email_field_tag "user[email]",@user.email %></td>
-  </tr>
+    <tr>
+      <td><%= f.label :email %> </td>
+      <td><%= f.email_field :email %></td>
+    </tr>
 
-  <tr>
-    <td>Password : </td>
-    <td><%=password_field_tag "user[password]",@user.password %></td>
-  </tr>
+    <tr>
+      <td><%= f.label :password %> </td>
+      <td><%= f.password_field :password %></td>
+    </tr>
 
-  <tr>
-    <td>Retype password : </td>
-    <td><%=password_field_tag "user[password_confirmation]",@user.password_confirmation %></td>
-  </tr>
+    <tr>
+      <td><%= f.label :password_confirmation %> </td>
+      <td><%= f.password_field :password_confirmation %></td>
+    </tr>
 
-  <tr>
-    <td>Name : </td>
-    <td><%=text_field_tag "hotel[name]" ,@hotel.name %></td>
-  </tr>
+    <%= f.fields_for :hotels do |h| %>
+      
+      <tr>
+        <td><%= h.label :name %> </td>
+        <td><%= h.text_field :name %></td>
+      </tr>
+      
+      <tr>
+        <td><%= h.label :description %> </td>
+        <td><%= h.text_field :description %></td>
+      </tr>
 
-  <tr>
-    <td>Description : </td>
-    <td><%=text_area_tag "hotel[description]" ,@hotel.description ,:rows => 10, :cols => 25 %></td>
-  </tr>
+    <% end %>
 
-  <tr>
-    <td><%= submit_tag "Sign up", :class => "form_submit"%></td>
-  </tr>
-</table>
-<br />
-<%= render :partial => "devise/shared/links" %>
+    <tr>
+      <td><%= submit_tag "Sign up", :class => "form_submit"%></td>
+    </tr>
+  </table>
+  <br />
+  <%= render :partial => "devise/shared/links" %>
+<% end %>
