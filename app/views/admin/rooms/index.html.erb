@@ -1,3 +1,8 @@
+<% content_for :hotel_links do %>
+  <li><%= link_to 'Photos', admin_hotel_photos_path(@hotel) %></li>
+  <li><%= link_to 'Rooms', admin_hotel_rooms_path(@hotel) %></li>
+  <li><%= link_to 'Promotions', admin_hotel_promotions_path(@hotel) %></li>
+<% end %>
 <h1>Listing rooms</h1>
 
 <table>
