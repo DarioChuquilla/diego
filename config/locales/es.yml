@@ -1,4 +1,8 @@
 es:
+  home:
+    sign_up: "Registrarse"
+    sign_in: "Iniciar sesión"
+    sign_out: "Salir"
   errors:
     # The default format to use in full error messages.
     format: "%{attribute} %{message}"

@@ -2,6 +2,10 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
+  home:
+    sign_up: "Sign up"
+    sign_in: "Sign in"
+    sign_out: "Sign out"
   errors:
     # The default format to use in full error messages.
     format: "%{attribute} %{message}"
