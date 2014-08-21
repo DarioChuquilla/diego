@@ -23,8 +23,8 @@
         </ul>
       </div>
     </td>
-    <td><%= hotel.name %></td>
-    <td><%= hotel.description %></td>
+    <td><%= link_to hotel.name, admin_hotel_path(hotel) %></td>
+    <td><%= hotel.description.truncate(50, separator: ' ') %></td>
     <td><%= hotel.latitude %></td>
     <td><%= hotel.longitude %></td>
     <td><%= hotel.telephone %></td>

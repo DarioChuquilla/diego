@@ -49,7 +49,7 @@ class Admin::HotelPhotosController < Admin::BaseController
     @hotel_photo.hotel_id = params[:hotel_id]
     respond_to do |format|
       if @hotel_photo.save
-        format.html { redirect_to admin_hotel_photo_url(@hotel, @hotel_photo), notice: 'Hotel photo was successfully created.' }
+        format.html { redirect_to admin_hotel_photos_url, notice: 'Hotel photo was successfully created.' }
         format.json { render json: @hotel_photo, status: :created, location: @hotel_photo }
       else
         format.html { render action: "new" }

@@ -1,7 +1,7 @@
 <%= render :partial => 'links', :locals => { :hotel => @hotel } %>
 <h1>Listing hotel_photos</h1>
 
-<table data-role="table" class="ui-responsive">
+<table class="ui-responsive">
   <thead>
     <tr>
       <th>Actions</th>
@@ -25,7 +25,7 @@
           </div>
         </div>
       </td>
-      <td><%= image_tag(hotel_photo.photo.thumb.url) if hotel_photo.photo? %></td>
+      <td><%= link_to image_tag(hotel_photo.photo.thumb.url), admin_hotel_photo_path(@hotel, hotel_photo) if hotel_photo.photo? %></td>
     </tr>
     <% end %>
   </tbody>

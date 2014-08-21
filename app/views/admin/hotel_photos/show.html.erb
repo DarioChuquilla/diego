@@ -4,7 +4,7 @@
 <%#= image_tag(@hotel_photo.photo.main.url) if @hotel_photo.photo? %>
 
 <img sizes="(min-width: 40em) 80vw, 100vw"
-srcset="<%= @hotel_photo.photo.main.url %> 375w, <%= @hotel_photo.photo.logo.url %> 480w, <%= @hotel_photo.photo.banner.url %> 600w, <%= @hotel_photo.photo_url %> 768w" 
+srcset="<%= @hotel_photo.photo.logo.url %> 375w, <%= @hotel_photo.photo.main.url %> 480w, <%= @hotel_photo.photo.banner.url %> 600w, <%= @hotel_photo.photo_url %> 768w" 
 alt="hotel image" />
 
 <div data-role="controlgroup" data-mini="true" data-type="horizontal">
