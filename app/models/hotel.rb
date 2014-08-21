@@ -3,5 +3,6 @@ class Hotel < ActiveRecord::Base
   validates_presence_of :name, :description
   belongs_to :user
   has_many :promotions
+  has_many :rooms
   has_many :hotel_photos
 end

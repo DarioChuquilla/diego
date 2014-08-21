@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @room.name %>
+</p>
+<p>
+  <b>Description:</b>
+  <%= @room.description %>
+</p>
+<p>
+  <b>Amount:</b>
+  <%= @room.amount %>
+</p>
+<p>
+<div data-role="controlgroup" data-mini="true" data-type="horizontal">
+  <%= link_to 'Edit', edit_admin_hotel_room_path(@room.hotel_id) %> |
+  <%= link_to 'Back', admin_hotel_rooms_path(@room.hotel_id) %>
+</div>

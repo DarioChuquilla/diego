@@ -1,0 +1,36 @@
+<h1>Listing rooms</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Amount</th>
+  </tr>
+
+  <% @rooms.each do |room| %>
+
+
+  <tr>
+    <td>
+      <a href="#popupBasic-<%= room.id %>" data-rel="popup" data-role="button" data-icon="arrow-d" data-iconpos="notext">Actions</a> 
+      <div data-role="popup" id="popupBasic-<%= room.id %>">
+        <ul data-role="listview">
+          <li><%= link_to 'Show', admin_hotel_room_path(@hotel, room) %> </li>
+          <li><%= link_to 'Edit', edit_admin_hotel_room_path(@hotel, room) %> </li>
+          <li><%= link_to 'Destroy', admin_hotel_room_path(@hotel, room), method: :delete, data: { confirm: 'Are you sure?' } %> </li>
+        </ul>
+      </div>
+    </td>
+    <td><%= room.name %></td>
+    <td><%= room.description %></td>
+    <td><%= room.amount %></td>
+  </tr>
+
+  <% end %>
+</table>
+
+<br />
+<div data-role="controlgroup" data-mini="true" data-type="horizontal">
+<%= link_to 'New Room', new_admin_hotel_room_path, data: {role: "button"} %>
+</div>
