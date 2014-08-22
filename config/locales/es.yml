@@ -10,6 +10,13 @@ es:
         password: "Contraseña"
         password_confirmation: "Confirmar contraseña"
         remember_me: "Recordarme"
+      hotel:
+        name: "Nombre"
+        description: "Descripción"
+        latitude: "Latitud"
+        longitude: "Longitud"
+        telephone: "Teléfono"
+        email: "Correo electrónico"
   home:
     sign_up: "Registrarse"
     sign_in: "Iniciar sesión"
@@ -37,6 +44,8 @@ es:
         new_hotel: "Nuevo motel"
       show:
         back: "Lista de moteles"
+      edit:
+        title: "Editar %{name}"
     labels:
       actions: "Acciones"
       name: "Nombre"
@@ -53,12 +62,20 @@ es:
       comments: "Comentarios"
       destroy: "Eliminar"
       are_you_sure: "¿Desea eliminar?"
+      cancel: "Cancelar"
   helpers:
     submit:
       user:
         create: "Crear usuario"
         update: "Actualizar usuario"
+      hotel:
+        create: "Crear motel"
+        update: "Actualizar motel"
   errors:
+    template:
+      header:
+        one: "1 error impide que este %{resource} sea guardado:"
+        other: "%{count} errores impiden que este %{resource} sea guardado:"
     # The default format to use in full error messages.
     format: "%{attribute} %{message}"
     # The values :model, :attribute and :value are always available for interpolation
@@ -91,6 +108,7 @@ es:
       other_than: "debe ser deferente a %{count}"
       odd: "debe ser impar"
       even: "debe ser par"
+
 #   date:
 #     formats:
 #       # Use the strftime parameters for formats.

@@ -35,9 +35,9 @@
   <div data-role="controlgroup" data-mini="true" data-type="horizontal">
     <%= f.submit %>
     <% if @room.name.present? %>
-    <%= link_to 'Show',  admin_hotel_room_path(@hotel, @room), data: {role: "button"} %>
+    <%= link_to t("admin.labels.show"),  admin_hotel_room_path(@hotel, @room), data: {role: "button"} %>
     <% end %>
-    <%= link_to 'Cancel', admin_hotel_rooms_path(@room.hotel_id), data: {role: "button"} %>
+    <%= link_to t("admin.labels.cancel"), admin_hotel_rooms_path(@room.hotel_id), data: {role: "button"} %>
   </div>
 </div>
 

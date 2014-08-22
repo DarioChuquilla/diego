@@ -1,8 +1,7 @@
 <%= form_for [:admin, @hotel] do |f| %>
   <% if @hotel.errors.any? %>
   <div id="error_explanation">
-    <h2><%= pluralize(@hotel.errors.count, "error") %> prohibited this hotel from being saved:</h2>
-
+  <h2><%= t "errors.template.header", count: @hotel.errors.count, resource: Hotel.model_name.human %></h2>
     <ul>
       <% @hotel.errors.full_messages.each do |msg| %>
       <li><%= msg %></li>
@@ -12,29 +11,29 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br />
+    <%= f.label :name %>
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :description %><br />
+    <%= f.label :description %>
     <%= f.text_area :description %>
   </div>
   <div class="field">
-    <%= f.label :latitude %><br />
+    <%= f.label :latitude %>
     <%= f.text_field :latitude %>
   </div>
   <div class="field">
-    <%= f.label :longitude %><br />
+    <%= f.label :longitude %>
     <%= f.text_field :longitude %>
   </div>
 
   <div class="field">
-    <%= f.label :telephone %><br />
+    <%= f.label :telephone %>
     <%= f.text_field :telephone %>
   </div>
 
   <div class="field">
-    <%= f.label :email %><br />
+    <%= f.label :email %>
     <%= f.text_field :email %>
   </div>
 
@@ -44,9 +43,9 @@
     <div data-role="controlgroup" data-mini="true" data-type="horizontal">
       <%= f.submit %>
       <% if @hotel.name.present? %>
-        <%= link_to 'Show', admin_hotel_path(@hotel), data: {role: "button"} %>
+        <%= link_to t("admin.labels.show"), admin_hotel_path(@hotel), data: {role: "button"} %>
       <% end %>
-      <%= link_to 'Cancel', admin_hotels_path, data: {role: "button"} %>
+      <%= link_to t("admin.labels.cancel"), admin_hotels_path, data: {role: "button"} %>
     </div>
   </div>
 <% end %>

@@ -35,8 +35,9 @@ legend,
 /* Form labels (overrides font-weight bold in bars, and mini font-size) */
 .ui-mobile label,
 div.ui-controlgroup-label {
-	font-weight: normal;
+	font-weight: bold;
 	font-size: 16px;
+	color: #000;
 }
 /* Separators
 -----------------------------------------------------------------------------------------------------------*/
