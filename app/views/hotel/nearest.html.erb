@@ -4,7 +4,7 @@
   <% @hotels.each do |hotel| %>
   <li >
     <a href="<%= hotel_path hotel  %>">
-      <%= image_tag(hotel.hotel_photos.first.photo.thumb.url) %>
+      <%= image_tag(hotel.hotel_photos.first.photo.thumb.url) if hotel.hotel_photos.present? %>
       <h2><%= hotel.name %></h2>
       <p><%= hotel.description.truncate(100, separator: ' ') %></p>
     </a>

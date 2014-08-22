@@ -21,7 +21,7 @@
     <tbody>
       <% @hotel.rooms.each do |room| %>
         <tr>
-          <td>2</td>
+          <td><%= image_tag(room.room_photos.first.photo.thumb.url) if room.hotel_photos.present? %></td>
           <td><%= link_to room.name, room_hotel_path(@hotel, room) %></td>
           <td><%= number_to_currency(room.amount) %></td>
         </tr>
