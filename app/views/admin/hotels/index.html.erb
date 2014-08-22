@@ -19,6 +19,9 @@
         <ul data-role="listview">
           <li><%= link_to t("admin.labels.show"), admin_hotel_path(hotel) %> </li>
           <li><%= link_to t("admin.labels.edit"), edit_admin_hotel_path(hotel) %> </li>
+          <li><%= link_to t("admin.labels.photos"), admin_hotel_photos_path(hotel) %> </li>
+          <li><%= link_to t("admin.labels.rooms"), admin_hotel_rooms_path(hotel) %> </li>
+          <li><%= link_to t("admin.labels.promotions"), admin_hotel_promotions_path(hotel) %> </li>
           <li><%= link_to t("admin.labels.destroy"), admin_hotel_path(hotel), method: :delete, data: { confirm: t("admin.labels.are_you_sure") } %> </li>
         </ul>
       </div>

@@ -1,58 +1,58 @@
 <% content_for :hotel_links do %>
-  <li><%= link_to 'Photos', admin_hotel_photos_path(@hotel) %></li>
-  <li><%= link_to 'Rooms', admin_hotel_rooms_path(@hotel) %></li>
-  <li><%= link_to 'Promotions', admin_hotel_promotions_path(@hotel) %></li>
+  <li><%= link_to t("admin.labels.photos"), admin_hotel_photos_path(@hotel) %></li>
+  <li><%= link_to t("admin.labels.rooms"), admin_hotel_rooms_path(@hotel) %></li>
+  <li><%= link_to t("admin.labels.promotions"), admin_hotel_promotions_path(@hotel) %></li>
 <% end %>
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Name:</b>
+  <b><%= t "admin.labels.name" %></b>
   <%= @hotel.name %>
 </p>
 
 <p>
-  <b>Description:</b>
+  <b><%= t "admin.labels.description" %></b>
   <%= @hotel.description %>
 </p>
 
 <p>
-  <b>Latitude:</b>
+  <b><%= t "admin.labels.latitude" %></b>
   <%= @hotel.latitude %>
 </p>
 
 <p>
-  <b>Longitude:</b>
+  <b><%= t "admin.labels.longitude" %></b>
   <%= @hotel.longitude %>
 </p>
 
 <p>
-  <b>Telephone:</b>
+  <b><%= t "admin.labels.telephone" %></b>
   <%= @hotel.telephone %>
 </p>
 
 <p>
-  <b>Email:</b>
+  <b><%= t "admin.labels.email" %></b>
   <%= @hotel.email %>
 </p>
 
 <p>
-  <b>Promotions:</b>
+  <b><%= t "admin.labels.promotions" %></b>
   <%=@hotel.promotions.count %>
 </p>
 
 <p>
-  <b>Rooms:</b>
+  <b><%= t "admin.labels.rooms" %></b>
   <%=@hotel.promotions.count %>
 </p>
 
 <p>
-  <b>Comments:</b>
+  <b><%= t "admin.labels.comments" %></b>
   <%=@hotel.promotions.count %>
 </p>
 
 
 
 <div data-role="controlgroup" data-mini="true" data-type="horizontal">
-<%= link_to 'Edit', edit_admin_hotel_path(@hotel), data: {role: "button"} %>
-<%= link_to 'Back', admin_hotels_path, data: {role: "button"} %>
+<%= link_to t("admin.labels.edit"), edit_admin_hotel_path(@hotel), data: {role: "button"} %>
+<%= link_to t("admin.hotels.show.back"), admin_hotels_path, data: {role: "button"} %>
 </div>

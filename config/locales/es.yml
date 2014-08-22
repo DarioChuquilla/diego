@@ -35,6 +35,8 @@ es:
       index:
         title: "Mi lista de moteles"
         new_hotel: "Nuevo motel"
+      show:
+        back: "Lista de moteles"
     labels:
       actions: "Acciones"
       name: "Nombre"
@@ -45,6 +47,10 @@ es:
       email: "Correo electrónico"
       show: "Detalles"
       edit: "Editar"
+      photos: "Fotos del motel"
+      rooms: "Habitaciones"
+      promotions: "Promociones"
+      comments: "Comentarios"
       destroy: "Eliminar"
       are_you_sure: "¿Desea eliminar?"
   helpers:
