@@ -52,6 +52,7 @@ en:
       sign_in: "Sign in"
       sign_out: "Sign out"
       forgot_your_password: "Forgot your password?"
+      send_instructions: "Send me reset password instructions"
       confirmation_instructions:
         not_received: "Didn't receive confirmation instructions?"
       unlock_instructions:

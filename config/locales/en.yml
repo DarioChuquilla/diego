@@ -12,13 +12,20 @@ en:
         email: "Email"
         password: "Password"
         password_confirmation: "Password confirmation"
-      hotel:
-        name: "Name"
-        description: "Description"
+        remember_me: "Remember me"
   home:
     sign_up: "Sign up"
     sign_in: "Sign in"
     sign_out: "Sign out"
+    main_menu:
+      title: "Main menu"
+      manage_hotels: "Manage hotels"
+      reservations: "Reservations"
+      sign_out: "Sign out"
+    forms:
+      hotel_name: "Motel"
+      hotel_description: "Description"
+      sign_in: "Sign in"
   hotels:
     nearest: "Nearest"
     comments: "Comments"
@@ -28,9 +35,9 @@ en:
     room: "Room"
   helpers:
     submit:
-      site_wide_coupon:
-        create: "Create Coupon"
-        update: "Update Coupon"
+      user:
+        create: "Create user"
+        update: "Update user"
   errors:
     # The default format to use in full error messages.
     format: "%{attribute} %{message}"

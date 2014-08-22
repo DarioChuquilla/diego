@@ -31,19 +31,19 @@
     <%= f.fields_for :hotels do |h| %>
       
       <tr>
-        <td><%= h.label :name %> </td>
+        <td><%= h.label :name, t("home.forms.hotel_name") %> </td>
         <td><%= h.text_field :name %></td>
       </tr>
       
       <tr>
-        <td><%= h.label :description %> </td>
+        <td><%= h.label :description, t("home.forms.hotel_description") %> </td>
         <td><%= h.text_area :description %></td>
       </tr>
 
     <% end %>
 
     <tr>
-      <td><%= submit_tag "Sign up", :class => "form_submit"%></td>
+      <td><%= f.submit %></td>
     </tr>
   </table>
   <br />

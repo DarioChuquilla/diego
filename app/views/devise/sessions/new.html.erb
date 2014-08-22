@@ -2,7 +2,7 @@
   <%= javascript_include_tag "registration.js.coffee" %>
 <% end %>
 
-<h2>Sign in</h2>
+<h2><%= t "home.sign_in" %></h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 <% flash.each do |name, msg| %>
@@ -25,7 +25,7 @@
 </div>
 <% end -%>
 
-<div><%= f.submit "Sign in" %></div>
+<div><%= f.submit t("home.forms.sign_in") %></div>
 <% end %>
 
 <%= render "devise/shared/links" %>

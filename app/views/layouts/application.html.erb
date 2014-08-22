@@ -29,9 +29,7 @@
     <!-- Size should be 32 x 32 pixels -->
     <%= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>
     <%= javascript_include_tag "application" %>
-
     <%= content_for :page_specific_styles %>
-
     <script>
       // Picture element HTML shim|v it for old IE (pairs with Picturefill.js)
       document.createElement( "picture" );
@@ -45,55 +43,41 @@
         });
       });
     </script>
-
-
     <script async="true" src="/assets/picturefill.min.js?body=1"></script>
-
     <%= content_for :page_specific_javascript_early %>
-
-
-
-
 <!--  
   <script type="text/javascript" src="http://cdn.jtsage.com/datebox/latest/jqm-datebox.core.min.js"></script>
   <script type="text/javascript" src="http://cdn.jtsage.com/datebox/latest/jqm-datebox.mode.calbox.min.js"></script>
   <script type="text/javascript" src="http://cdn.jtsage.com/datebox/i18n/jquery.mobile.datebox.i18n.en_US.utf8.js"></script> 
-
-
 --> 
-
-
 </head>
 <body class="ui-mobile-viewport ui-overlay-c">
   <div data-role="page" id="main-page">
-    <div data-role="panel" data-display="overlay" id="admin_panel">
-      <ul data-role="listview">
-        <li><%= link_to "Home", root_path %></li>
-        <li><%= link_to "Manage Hotels", admin_hotels_path %></li>
-        <li><%= link_to 'Reservations', received_admin_reports_path %></li>
-        <%= content_for :hotel_links %>
-        <li class="ui-li ui-li-divider ui-bar-b ui-first-child" data-role="list-divider" role="heading"></li>
-        <li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>
-        <li><a href="#my-header" data-rel="close">Close panel</a></li>
-      </ul>
-      <!-- panel content goes here -->
-    </div><!-- /panel -->
     <div data-role="header">
       <h1>
         <%= link_to (content_for?(:title) ? "#{yield(:title)} - MOOTELOS.com" : "MOOTELOS.com"), root_path %>
       </h1>
       <% if user_signed_in? %>
-      <a href="#admin_panel" class="ui-btn ui-shadow ui-corner-all ui-icon-grid ui-btn-icon-notext">grid</a>
-      <%= link_to t('home.sign_out'), destroy_user_session_path, "class" => "ui-btn-right", :method => :delete %>
+        <%= link_to t('home.sign_out'), destroy_user_session_path, "class" => "ui-btn-right", :method => :delete %>
       <% else %>
-      <%= link_to t('home.sign_in'), new_user_session_path,"class" => "ui-btn-right", :method => :get %>
-      <%= link_to t('home.sign_up'), new_user_registration_path, "class" => "ui-btn-left", :method => :get %>
+        <%= link_to t('home.sign_in'), new_user_session_path,"class" => "ui-btn-right", :method => :get %>
+        <%= link_to t('home.sign_up'), new_user_registration_path, "class" => "ui-btn-left", :method => :get %>
       <% end %>
     </div>
     <div data-role="content">
       <%= yield %>
     </div>
+    <% if user_signed_in? %>
+      <h3><%= t "home.main_menu.title" %></h3>
+      <ul data-role="listview">
+        <li><%= link_to "Home", root_path %></li>
+        <li><%= link_to t("home.main_menu.manage_hotels"), admin_hotels_path %></li>
+        <li><%= link_to t("home.main_menu.reservations"), received_admin_reports_path %></li>
+        <%= content_for :hotel_links %>
+      </ul>
+    <% end %>
   </div>
+  <!-- panel content goes here -->
   <%= content_for :page_specific_javascript_late %>
 </body>
 </html>

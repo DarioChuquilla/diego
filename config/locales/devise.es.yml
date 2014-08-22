@@ -52,6 +52,7 @@ es:
       sign_in: "Iniciar sesión"
       sign_out: "Salir"
       forgot_your_password: "Recordar contraseña"
+      send_instructions: "Enviar instrucciones para restablecer la contraseña"
       confirmation_instructions:
         not_received: "Enviar correo de confirmación nuevamente."
       unlock_instructions:
