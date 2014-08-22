@@ -15,6 +15,7 @@ class Admin::RoomsController < Admin::BaseController
   # GET /rooms/1.json
   def show
     @room = Room.find(params[:id])
+    @hotel = Hotel.find params[:hotel_id]
 
     respond_to do |format|
       format.html # show.html.erb

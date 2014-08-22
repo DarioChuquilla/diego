@@ -1,5 +1,7 @@
 class Room < ActiveRecord::Base
-  attr_accessible :name, :description, :amount
+  mount_uploader :photo, PhotoUploader
+  attr_accessible :photo, :name, :description, :amount
   belongs_to :hotel
-  validates_presence_of :name, :description, :amount, :hotel_id
+  has_many :room_photos
+  validates_presence_of :photo, :name, :description, :amount, :hotel_id
 end

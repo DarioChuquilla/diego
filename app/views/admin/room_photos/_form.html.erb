@@ -1,0 +1,27 @@
+<% if @room_photo.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(@room_photo.errors.count, "error") %> prohibited this room_photo from being saved:</h2>
+
+  <ul>
+    <% @room_photo.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<%= image_tag(@room_photo.photo.banner.url) if @room_photo.photo? %>
+
+<div class="field">
+  <%= form.file_field :photo %>
+</div>
+
+<div class="actions">
+  <div data-role="controlgroup" data-mini="true" data-type="horizontal">
+    <%= form.submit %>
+    <% if @room_photo.photo.present? %>
+      <%= link_to 'Show', admin_hotel_room_photo_path(@hotel.id, @room.id, @room_photo.id), data: {role: "button"} %>
+    <% end %>
+    <%= link_to 'Back', admin_hotel_room_photos_path(@hotel, @room), data: {role: "button"} %>
+  </div>
+</div>

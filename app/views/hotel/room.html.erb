@@ -1,0 +1,12 @@
+<% content_for :title do %>
+  <%= @room.name %>
+<% end %>
+<%= render :partial => "navbar" %>
+<div class="slider">
+  <% @room.room_photos.each_with_index do |photo, index| %>
+  <%= image_tag(photo.photo.banner.url) if photo.photo? %>
+  <% end %>
+</div>
+<%= simple_format @room.description %>
+<p style="text-align: center; font-weight: bold;"><%= number_to_currency @room.amount %></p>
+<button>Reserve</button>

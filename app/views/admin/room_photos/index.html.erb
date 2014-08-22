@@ -1,0 +1,33 @@
+<%= render :partial => 'links', :locals => { :hotel => @hotel } %>
+<h1>Listing room_photos</h1>
+
+<table>
+  <tr>
+    <th>Actions</th>
+    <th>Image</th>
+  </tr>
+  <% if @room_photos.present? %>
+    <% @room_photos.each do |room_photo| %>
+    <tr>
+      <td>
+        <a href="#popupBasic-<%= room_photo.id %>" data-rel="popup" data-role="button" data-icon="arrow-d" data-iconpos="notext">Actions</a> 
+        <div data-role="popup" id="popupBasic-<%= room_photo.id %>">
+          <ul data-role="listview">
+            <li><%= link_to 'Show', admin_hotel_room_photo_path(@hotel.id, @room.id, room_photo.id) %> </li>
+            <li><%= link_to 'Edit', edit_admin_hotel_room_photo_path(@hotel.id, @room.id, room_photo.id) %> </li>
+            <li><%= link_to 'Destroy', admin_hotel_room_photo_path(@hotel.id, @room.id, room_photo.id), method: :delete, data: { confirm: 'Are you sure?' } %> </li>
+          </ul>
+        </div>
+      </td>
+      <td>
+        <%= link_to image_tag(room_photo.photo.thumb.url), admin_hotel_room_photo_path(@hotel.id, @room.id, room_photo.id) if room_photo.photo? %>
+      </td>
+    </tr>
+    <% end %>
+  <% end %>
+</table>
+
+<br />
+<div data-role="controlgroup" data-mini="true" data-type="horizontal">
+  <%= link_to 'New Room photo', new_admin_hotel_room_photo_path(@hotel), data: {role: "button"} %>
+</div>

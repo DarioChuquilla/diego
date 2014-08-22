@@ -1,7 +1,5 @@
 Diego::Application.routes.draw do
   
-
-
   scope "(:locale)" do
     # get "reports/index"
 
@@ -18,7 +16,9 @@ Diego::Application.routes.draw do
     namespace :admin do
       resources :hotels do
         resources :promotions
-        resources :rooms
+        resources :rooms do
+          resources :room_photos, path: 'photos', as: 'photos'
+        end
         resources :hotel_photos, path: 'photos', as: 'photos'
       end
       resources :reports, only: [:index ] do
@@ -35,6 +35,9 @@ Diego::Application.routes.draw do
         get :price
         get :cities
         get :promo
+      end
+      member do
+        get :room, path: "room/:room_id"
       end
     end
     

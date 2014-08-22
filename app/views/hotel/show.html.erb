@@ -1,6 +1,7 @@
 <% content_for :title do %>
   <%= @hotel.name %>
 <% end %>
+<%= render :partial => "navbar" %>
 <div class="slider">
   <% @hotel.hotel_photos.each_with_index do |photo, index| %>
   <%= image_tag(photo.photo.main.url) if photo.photo? %>
@@ -8,38 +9,26 @@
 </div>
 <h3><%= @hotel.name %></h3>
 <%= simple_format @hotel.description %>
-
-<table class="ui-responsive" id="hotel-rooms">
-  <thead>
-    <tr>
-      <th data-priority="7">Available</th>
-      <th data-priority="7">Room</th>
-      <th data-priority="7">Price</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>2</td>
-      <td>Carmelo</td>
-      <td>$ 50.00</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>Carmelo</td>
-      <td>$ 50.00</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>Carmelo</td>
-      <td>$ 50.00</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>Carmelo</td>
-      <td>$ 50.00</td>
-    </tr>
-  </tbody>
-</table>
+<% if  @hotel.rooms.present? %>
+  <table class="ui-responsive" id="hotel-rooms">
+    <thead>
+      <tr>
+        <th data-priority="7">Available</th>
+        <th data-priority="7">Room</th>
+        <th data-priority="7">Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @hotel.rooms.each do |room| %>
+        <tr>
+          <td>2</td>
+          <td><%= link_to room.name, room_hotel_path(@hotel, room) %></td>
+          <td><%= number_to_currency(room.amount) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
 <% if @hotel.promotions.present? %>
   <div class="slider">
     <% @hotel.promotions.each_with_index do |promotion, index| %>

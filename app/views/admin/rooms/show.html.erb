@@ -1,4 +1,5 @@
-
+<%= render :partial => 'links', :locals => { :hotel => @hotel, :room => @room } %>
+<%= image_tag(@room.photo.banner.url) if @room.photo? %>
 
 <p id="notice"><%= notice %></p>
 

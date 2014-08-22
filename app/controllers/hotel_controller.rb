@@ -7,6 +7,11 @@ class HotelController < ApplicationController
     @hotels = Hotel.all
   end
 
+  def room
+    @hotel = Hotel.find params[:id]
+    @room = Room.find params[:room_id]
+  end
+
   def price
   end
 

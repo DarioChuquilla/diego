@@ -1,0 +1,4 @@
+<h1>New room_photo</h1>
+<%= form_for [:admin, @hotel, @room, @room_photo], :url => admin_hotel_room_photos_path(@hotel, @room), :html => {:multipart => true} do |f| %>
+<%= render :partial => "form", :object => f, :locals => { :hotel => @hotel, :room => @room } %>
+<% end %>

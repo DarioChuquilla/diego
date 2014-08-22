@@ -1,0 +1,10 @@
+<p id="notice"><%= notice %></p>
+
+<img sizes="(min-width: 40em) 80vw, 100vw"
+srcset="<%= @room_photo.photo.logo.url %> 375w, <%= @room_photo.photo.main.url %> 480w, <%= @room_photo.photo.banner.url %> 600w, <%= @room_photo.photo_url %> 768w" 
+alt="hotel image" />
+
+<div data-role="controlgroup" data-mini="true" data-type="horizontal">
+  <%= link_to 'Edit', edit_admin_hotel_room_photo_path(@hotel.id, @room.id, @room_photo.id), data: {role: "button"} %>
+  <%= link_to 'Back', admin_hotel_room_photos_path(@hotel, @room), data: {role: "button"} %>
+</div>

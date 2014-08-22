@@ -1,0 +1,4 @@
+<% content_for :hotel_links do %>
+  <li><%= link_to 'Room Photos', admin_hotel_room_photos_path(@hotel.id, @room.id) %></li>
+  <li><%= link_to 'Rooms', admin_hotel_rooms_path(@hotel) %></li>
+<% end %>

@@ -11,13 +11,18 @@
 </div>
 <% end %>
 
+<%= image_tag(@room.photo.banner.url) if @room.photo? %>
+
+<div class="field">
+  <%= f.file_field :photo %>
+</div>
 
 <div class="field">
   <%= f.label :name %>
   <%= f.text_field :name %>
 </div>
 <div class="field">
-<%= f.label :description %>
+  <%= f.label :description %>
   <%= f.text_area :description %>
 </div>
 <div class="field">
@@ -30,9 +35,9 @@
   <div data-role="controlgroup" data-mini="true" data-type="horizontal">
     <%= f.submit %>
     <% if @room.name.present? %>
-      <%= link_to 'Show',  admin_hotel_room_path(@hotel, @room), data: {role: "button"} %>
+    <%= link_to 'Show',  admin_hotel_room_path(@hotel, @room), data: {role: "button"} %>
     <% end %>
-      <%= link_to 'Cancel', admin_hotel_rooms_path(@room.hotel_id), data: {role: "button"} %>
+    <%= link_to 'Cancel', admin_hotel_rooms_path(@room.hotel_id), data: {role: "button"} %>
   </div>
 </div>
 
