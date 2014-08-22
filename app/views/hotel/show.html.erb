@@ -13,9 +13,9 @@
   <table class="ui-responsive" id="hotel-rooms">
     <thead>
       <tr>
-        <th data-priority="7">Available</th>
-        <th data-priority="7">Room</th>
-        <th data-priority="7">Price</th>
+        <th data-priority="7"></th>
+        <th data-priority="7"><%= t "hotels.room"  %></th>
+        <th data-priority="7"><%= t "hotels.price"  %></th>
       </tr>
     </thead>
     <tbody>
@@ -38,6 +38,6 @@
 <% end %>
 <iframe width="100%" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=Quito%2C%20Pichincha%2C%20Ecuador&key=AIzaSyDXGufBORq45JOUYe3Kc_bG87r-9skTr3w"></iframe>
 <ul data-role="listview">
-  <li><%= link_to "Comments", "#" %></li>
-  <li><%= link_to "Reserve", "#" %></li>
+  <li><%= link_to t("hotels.comments"), "#" %></li>
+  <li><%= link_to t("hotels.reserve"), "#" %></li>
 </ul>

@@ -16,6 +16,13 @@ es:
     sign_up: "Registrarse"
     sign_in: "Iniciar sesión"
     sign_out: "Salir"
+  hotels:
+    nearest: "Cercanía"
+    comments: "Comentarios"
+    city: "Ciudad"
+    price: "Precio"
+    reserve: "Reservar"
+    room: "Habitación"
   helpers:
     submit:
       site_wide_coupon:

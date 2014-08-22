@@ -1,8 +1,8 @@
 <div data-role="navbar">
   <ul>
-    <li><a href="<%= nearest_hotel_index_path %>" class="<%= are_you_here?('hotel', 'nearest') ? 'ui-btn-active ui-state-persist' : '' %>">Nearest</a></li>
-    <li><a href="#" class="<%= are_you_here?('hotel', 'comments') ? 'ui-btn-active ui-state-persist' : '' %>">Comments</a></li>
-    <li><a href="#" class="<%= are_you_here?('hotel', 'cities') ? 'ui-btn-active ui-state-persist' : '' %>">City</a></li>
-    <li><a href="#" class="<%= are_you_here?('hotel', 'price') ? 'ui-btn-active ui-state-persist' : '' %>">Price</a></li>
+    <li><a href="<%= nearest_hotel_index_path %>" class="<%= are_you_here?('hotel', 'nearest') ? 'ui-btn-active ui-state-persist' : '' %>"><%= t "hotels.nearest" %></a></li>
+    <li><a href="#" class="<%= are_you_here?('hotel', 'comments') ? 'ui-btn-active ui-state-persist' : '' %>"><%= t "hotels.comments" %></a></li>
+    <li><a href="#" class="<%= are_you_here?('hotel', 'cities') ? 'ui-btn-active ui-state-persist' : '' %>"><%= t "hotels.city" %></a></li>
+    <li><a href="#" class="<%= are_you_here?('hotel', 'price') ? 'ui-btn-active ui-state-persist' : '' %>"><%= t "hotels.price" %></a></li>
   </ul>
 </div><!-- /navbar -->

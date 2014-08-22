@@ -19,6 +19,13 @@ en:
     sign_up: "Sign up"
     sign_in: "Sign in"
     sign_out: "Sign out"
+  hotels:
+    nearest: "Nearest"
+    comments: "Comments"
+    city: "City"
+    price: "Price"
+    reserve: "Reserve"
+    room: "Room"
   helpers:
     submit:
       site_wide_coupon:
