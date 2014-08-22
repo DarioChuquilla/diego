@@ -13,14 +13,14 @@ class RegistrationController < Devise::RegistrationsController
     @user.password = params[:user][:password]
     @user.password_confirmation =params[:user][:password_confirmation]
 
-    # @hotel = Hotel.new
-    # @hotel.name = params[:hotel][:hotels][:name]
-    # @hotel.description = params[:hotel][:hotels][:description]
+    @hotel = Hotel.new
+    @hotel.name = params[:user][:hotels][:name]
+    @hotel.description = params[:user][:hotels][:description]
     @user.valid?
     if @user.save
       # @user.save
-      # @hotel.user = @user
-      # @hotel.save
+      @hotel.user = @user
+      @hotel.save
       redirect_to root_path
     else
       render :action => "new"
