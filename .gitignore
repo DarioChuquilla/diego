@@ -15,4 +15,4 @@
 /tmp
 *.rvmrc
 /npm-debug.log
-/public/uploads/*
+/public/system/uploads/*

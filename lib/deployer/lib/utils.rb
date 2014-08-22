@@ -44,7 +44,7 @@ end
 def global_defaults
   set :repository,  "git@github.com:DarioChuquilla/diego.git"
 # set :files_repository,  "https://svn.nettheory.com/#{application}/files"
-  set :ruby_path, "/usr/local/ruby/bin"
+  set :ruby_path, "/usr/local/bin/ruby"
   set :apache_user, "www-data"
   set :apache_group, "dev"
   set :apache_dir, "/etc/apache2"
