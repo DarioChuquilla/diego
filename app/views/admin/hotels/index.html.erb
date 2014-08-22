@@ -1,14 +1,14 @@
-<h1>Listing hotels</h1>
+<h1><%= t "admin.hotels.index.title" %></h1>
 
 <table>
   <tr>
-    <th>Actions</th>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Latitude</th>
-    <th>Longitude</th>
-    <th>Telephone</th>
-    <th>Email</th>
+    <th><%= t "admin.labels.actions" %></th>
+    <th><%= t "admin.labels.name" %></th>
+    <th><%= t "admin.labels.description" %></th>
+    <th><%= t "admin.labels.latitude" %></th>
+    <th><%= t "admin.labels.longitude" %></th>
+    <th><%= t "admin.labels.telephone" %></th>
+    <th><%= t "admin.labels.email" %></th>
   </tr>
 
   <% @hotels.each do |hotel| %>
@@ -17,9 +17,9 @@
       <a href="#popupBasic-<%= hotel.id %>" data-rel="popup" data-role="button" data-icon="arrow-d" data-iconpos="notext">Actions</a> 
       <div data-role="popup" id="popupBasic-<%= hotel.id %>">
         <ul data-role="listview">
-          <li><%= link_to 'Show', admin_hotel_path(hotel) %> </li>
-          <li><%= link_to 'Edit', edit_admin_hotel_path(hotel) %> </li>
-          <li><%= link_to 'Destroy', admin_hotel_path(hotel), method: :delete, data: { confirm: 'Are you sure?' } %> </li>
+          <li><%= link_to t("admin.labels.show"), admin_hotel_path(hotel) %> </li>
+          <li><%= link_to t("admin.labels.edit"), edit_admin_hotel_path(hotel) %> </li>
+          <li><%= link_to t("admin.labels.destroy"), admin_hotel_path(hotel), method: :delete, data: { confirm: t("admin.labels.are_you_sure") } %> </li>
         </ul>
       </div>
     </td>
@@ -35,5 +35,5 @@
 
 <br />
 <div data-role="controlgroup" data-mini="true" data-type="horizontal">
-<%= link_to 'New Hotel', new_admin_hotel_path, data: {role: "button"} %>
+<%= link_to t("admin.hotels.index.new_hotel"), new_admin_hotel_path, data: {role: "button"} %>
 </div>

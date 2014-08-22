@@ -33,6 +33,23 @@ en:
     price: "Price"
     reserve: "Reserve"
     room: "Room"
+  admin:
+    hotels:
+      index:
+        title: "My motels list"
+        new_hotel: "New motel"
+    labels:
+      actions: "Actions"
+      name: "Name"
+      description: "Description"
+      latitude: "Latitude"
+      longitude: "Longitude"
+      telephone: "Telephone"
+      email: "Email"
+      show: "Show"
+      edit: "Edit"
+      destroy: "Destroy"
+      are_you_sure: "Are you sure?"
   helpers:
     submit:
       user:

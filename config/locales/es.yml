@@ -30,6 +30,23 @@ es:
     price: "Precio"
     reserve: "Reservar"
     room: "Habitación"
+  admin:
+    hotels:
+      index:
+        title: "Mi lista de moteles"
+        new_hotel: "Nuevo motel"
+    labels:
+      actions: "Acciones"
+      name: "Nombre"
+      description: "Descripción"
+      latitude: "Latitud"
+      longitude: "Longitud"
+      telephone: "Teléfono"
+      email: "Correo electrónico"
+      show: "Detalles"
+      edit: "Editar"
+      destroy: "Eliminar"
+      are_you_sure: "¿Desea eliminar?"
   helpers:
     submit:
       user:
