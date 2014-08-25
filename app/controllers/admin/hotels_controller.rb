@@ -1,12 +1,13 @@
 class Admin::HotelsController < Admin::BaseController
+  before_filter :authorizations, :only => [:show, :edit, :update, :destroy]
   # GET /hotels
   # GET /hotels.json
   def index
     @hotels = Hotel.find_all_by_user_id current_user.id
-
+    # authorize! :read, @hotels
     respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @hotels }
+      format.html and return # index.html.erb
+      format.json { render json: @hotels } and return
     end
   end
 
@@ -14,10 +15,9 @@ class Admin::HotelsController < Admin::BaseController
   # GET /hotels/1.json
   def show
     @hotel = Hotel.find(params[:id])
-
     respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @hotel }
+      format.html and return # show.html.erb
+      format.json { render json: @hotel } and return
     end
   end
 
@@ -25,10 +25,9 @@ class Admin::HotelsController < Admin::BaseController
   # GET /hotels/new.json
   def new
     @hotel = Hotel.new
-
     respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @hotel }
+      format.html and return # new.html.erb
+      format.json { render json: @hotel } and return
     end
   end
 
@@ -58,7 +57,6 @@ class Admin::HotelsController < Admin::BaseController
   # PUT /hotels/1.json
   def update
     @hotel = Hotel.find(params[:id])
-
     respond_to do |format|
       if @hotel.update_attributes(params[:hotel])
         format.html { redirect_to admin_hotel_path(@hotel), notice: 'Hotel was successfully updated.' }
@@ -75,10 +73,22 @@ class Admin::HotelsController < Admin::BaseController
   def destroy
     @hotel = Hotel.find(params[:id])
     @hotel.destroy
-
     respond_to do |format|
       format.html { redirect_to hotels_url }
       format.json { head :no_content }
     end
   end
+
+  private
+
+  def authorizations
+    begin
+      @hotel = Hotel.find(params[:id])
+      authorize! :manage, @hotel
+    rescue CanCan::AccessDenied => e
+      p e.message.inspect
+      redirect_to(not_found_page_path, :alert => e.message) and return
+    end
+  end
+
 end

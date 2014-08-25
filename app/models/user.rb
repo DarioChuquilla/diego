@@ -10,6 +10,14 @@
   has_many :hotels
   before_create :generate_remember_token
 
+  def admin?
+    self.role == 'admin'
+  end
+
+  def hotel?
+    self.role == 'hotel'
+  end
+
   private
   def generate_remember_token
     self.remember_token = loop do

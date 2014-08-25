@@ -19,6 +19,14 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def page_not_found
+    respond_to do |format|
+      format.html { render template: 'home/not_found_error', layout: 'layouts/application', status: 404 }
+      format.all  { render nothing: true, status: 404 }
+    end
+    return false
+  end
+
   private
   def extract_locale_from_accept_language_header
     request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/).first
@@ -27,7 +35,6 @@ class ApplicationController < ActionController::Base
   def set_locale
     I18n.locale = params[:locale] || extract_locale_from_accept_language_header || I18n.default_locale
     Rails.application.routes.default_url_options[:locale]= I18n.locale
-    logger.debug{"============ I18N.LOCALE #{I18n.locale.inspect}"}
   end
 
 end

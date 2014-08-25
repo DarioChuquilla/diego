@@ -6,6 +6,8 @@ Diego::Application.routes.draw do
     # get "reports/received"
 
     # get "reports/done"
+    
+    get '404', :to => 'application#page_not_found', as: 'not_found_page'
 
     root :to =>'home#index'
     

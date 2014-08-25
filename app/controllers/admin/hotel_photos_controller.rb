@@ -1,4 +1,5 @@
 class Admin::HotelPhotosController < Admin::BaseController
+  before_filter :authorizations, :only => [:show, :edit, :update, :destroy]
   # GET /hotel_photos
   # GET /hotel_photos.json
   def index
@@ -87,4 +88,17 @@ class Admin::HotelPhotosController < Admin::BaseController
       format.json { head :no_content }
     end
   end
+
+  private
+
+  def authorizations
+    begin
+      @hotel_photo = HotelPhoto.find(params[:id])
+      authorize! :manage, @hotel_photo
+    rescue CanCan::AccessDenied => e
+      p e.message.inspect
+      redirect_to(not_found_page_path, :alert => e.message) and return
+    end
+  end
+
 end
