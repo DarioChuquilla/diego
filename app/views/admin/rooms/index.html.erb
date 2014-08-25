@@ -11,16 +11,17 @@
   <% @rooms.each do |room| %>
   <tr>
     <td>
-      <a href="#popupBasic-<%= room.id %>" data-rel="popup" data-role="button" data-icon="arrow-d" data-iconpos="notext">Actions</a> 
+      <a href="#popupBasic-<%= room.id %>" data-rel="popup" data-role="button" data-icon="arrow-d" data-iconpos="notext" data-position-to="#room-<%= room.id %>" data-overlay-theme="a" data-transition="slideup">Actions</a> 
       <div data-role="popup" id="popupBasic-<%= room.id %>">
         <ul data-role="listview">
           <li><%= link_to t("admin.labels.show"), admin_hotel_room_path(@hotel, room) %> </li>
           <li><%= link_to 'Edit', edit_admin_hotel_room_path(@hotel, room) %> </li>
+          <li><%= link_to 'Photos', admin_hotel_room_photos_path(@hotel, room) %> </li>
           <li><%= link_to 'Destroy', admin_hotel_room_path(@hotel, room), method: :delete, data: { confirm: 'Are you sure?' } %> </li>
         </ul>
       </div>
     </td>
-    <td><%= link_to room.name, admin_hotel_room_path(@hotel, room) %></td>
+    <td id="room-<%= room.id %>"><%= link_to room.name, admin_hotel_room_path(@hotel, room) %></td>
     <td><%= room.description %></td>
     <td><%= room.amount %></td>
   </tr>

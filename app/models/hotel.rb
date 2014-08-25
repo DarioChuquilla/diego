@@ -7,5 +7,5 @@ class Hotel < ActiveRecord::Base
   has_many :hotel_photos
 
   reverse_geocoded_by :latitude, :longitude, :address => :location
-  after_validation :reverse_geocode, :if => :address_changed? and :location.nil?
+  after_validation :reverse_geocode, :if => :address_changed?
 end

@@ -14,7 +14,7 @@
   <% @hotels.each do |hotel| %>
   <tr>
     <td>
-      <a href="#popupBasic-<%= hotel.id %>" data-rel="popup" data-role="button" data-icon="arrow-d" data-iconpos="notext">Actions</a> 
+      <a href="#popupBasic-<%= hotel.id %>" data-rel="popup" data-role="button" data-icon="arrow-d" data-iconpos="notext" data-position-to="#hotel-<%= hotel.id %>" data-overlay-theme="a" data-transition="slideup">Actions</a> 
       <div data-role="popup" id="popupBasic-<%= hotel.id %>">
         <ul data-role="listview">
           <li><%= link_to t("admin.labels.show"), admin_hotel_path(hotel) %> </li>
@@ -26,7 +26,7 @@
         </ul>
       </div>
     </td>
-    <td><%= link_to hotel.name, admin_hotel_path(hotel) %></td>
+    <td id="hotel-<%= hotel.id %>"><%= link_to hotel.name, admin_hotel_path(hotel) %></td>
     <td><%= hotel.description.truncate(50, separator: ' ') %></td>
     <td><%= hotel.latitude %></td>
     <td><%= hotel.longitude %></td>

@@ -12,7 +12,7 @@
     <% @hotel_photos.each do |hotel_photo| %>
     <tr>
       <td>
-        <a href="#popupBasic-<%= hotel_photo.id %>" data-rel="popup" data-role="button" data-icon="arrow-d" data-iconpos="notext">Actions</a> 
+        <a href="#popupBasic-<%= hotel_photo.id %>" data-rel="popup" data-role="button" data-icon="arrow-d" data-iconpos="notext" data-position-to="#hotel_photo-<%= hotel_photo.id %>" data-overlay-theme="a" data-transition="slideup">Actions</a> 
         <div data-role="popup" id="popupBasic-<%= hotel_photo.id %>">
           <ul data-role="listview">
             <li><%= link_to t("admin.labels.show"), admin_hotel_photo_path(@hotel, hotel_photo) %> </li>
@@ -25,7 +25,7 @@
           </div>
         </div>
       </td>
-      <td><%= link_to image_tag(hotel_photo.photo.thumb.url), admin_hotel_photo_path(@hotel, hotel_photo) if hotel_photo.photo? %></td>
+      <td id="hotel_photo-<%= hotel_photo.id %>"><%= link_to image_tag(hotel_photo.photo.thumb.url), admin_hotel_photo_path(@hotel, hotel_photo) if hotel_photo.photo? %></td>
     </tr>
     <% end %>
   </tbody>

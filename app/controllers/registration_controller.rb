@@ -6,24 +6,31 @@ class RegistrationController < Devise::RegistrationsController
   end
 
   def create
+    User.transaction do
+      Hotel.transaction do
+        begin
+          @user = User.new
+          @user.username = params[:user][:username]
+          @user.email = params[:user][:email]
+          @user.password = params[:user][:password]
+          @user.password_confirmation =params[:user][:password_confirmation]
+          @user.role = 'hotel'
+          @user.save
 
-    @user = User.new
-    @user.username = params[:user][:username]
-    @user.email = params[:user][:email]
-    @user.password = params[:user][:password]
-    @user.password_confirmation =params[:user][:password_confirmation]
-
-    @hotel = Hotel.new
-    @hotel.name = params[:user][:hotels][:name]
-    @hotel.description = params[:user][:hotels][:description]
-    @user.valid?
-    if @user.save
-      # @user.save
-      @hotel.user = @user
-      @hotel.save
-      redirect_to root_path
-    else
-      render :action => "new"
+          @hotel = Hotel.new
+          @hotel.name = params[:user][:hotels][:name]
+          @hotel.description = params[:user][:hotels][:description]
+          @hotel.user = @user
+          @hotel.save
+          
+          redirect_to root_path
+        rescue Exception => e
+          p "A BIG ERROR!!! #{e.inspect}"
+          User.connection.rollback_db_transaction
+          Hotel.connection.rollback_db_transaction
+          render :action => "new"
+        end
+      end
     end
   end
 

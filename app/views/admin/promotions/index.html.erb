@@ -10,7 +10,7 @@
   <% @promotions.each do |promotion| %>
   <tr>
     <td>
-      <a href="#popupBasic-<%= promotion.id %>" data-rel="popup" data-role="button" data-icon="arrow-d" data-iconpos="notext">Actions</a> 
+      <a href="#popupBasic-<%= promotion.id %>" data-rel="popup" data-role="button" data-icon="arrow-d" data-iconpos="notext" data-position-to="#promotion-<%= promotion.id %>" data-overlay-theme="a" data-transition="slideup">Actions</a> 
       <div data-role="popup" id="popupBasic-<%= promotion.id %>">
         <ul data-role="listview">
           <li><%= link_to t("admin.labels.show"), admin_hotel_promotion_path(@hotel, promotion) %> </li>
@@ -19,7 +19,7 @@
         </ul>
       </div>
     </td>
-    <td><%= promotion.name %></td>
+    <td id="promotion-<%= promotion.id %>"><%= promotion.name %></td>
     <td><%= image_tag(promotion.photo.banner.url) if promotion.photo? %></td>
   </tr>
   <% end %>
