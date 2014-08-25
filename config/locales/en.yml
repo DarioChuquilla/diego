@@ -35,6 +35,7 @@ en:
       sign_in: "Sign in"
   hotels:
     nearest: "Nearest"
+    you_are_here: "You are here"
     comments: "Comments"
     city: "City"
     price: "Price"

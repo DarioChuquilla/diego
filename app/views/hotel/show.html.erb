@@ -1,5 +1,5 @@
 <% content_for :title do %>
-  <%= @hotel.name %>
+<%= @hotel.name %>
 <% end %>
 <%= render :partial => "navbar" %>
 <div class="slider">
@@ -10,33 +10,39 @@
 <h3><%= @hotel.name %></h3>
 <%= simple_format @hotel.description %>
 <% if  @hotel.rooms.present? %>
-  <table class="ui-responsive" id="hotel-rooms">
-    <thead>
-      <tr>
-        <th data-priority="7"></th>
-        <th data-priority="7"><%= t "hotels.room"  %></th>
-        <th data-priority="7"><%= t "hotels.price"  %></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @hotel.rooms.each do |room| %>
-        <tr>
-          <td><%= image_tag(room.photo.thumb.url) if room.photo.present? %></td>
-          <td><%= link_to room.name, room_hotel_path(@hotel, room) %></td>
-          <td><%= number_to_currency(room.amount) %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+<table class="ui-responsive" id="hotel-rooms">
+  <thead>
+    <tr>
+      <th data-priority="7"></th>
+      <th data-priority="7"><%= t "hotels.room"  %></th>
+      <th data-priority="7"><%= t "hotels.price"  %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @hotel.rooms.each do |room| %>
+    <tr>
+      <td><%= image_tag(room.photo.thumb.url) if room.photo.present? %></td>
+      <td><%= link_to room.name, room_hotel_path(@hotel, room) %></td>
+      <td><%= number_to_currency(room.amount) %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
 <% end %>
 <% if @hotel.promotions.present? %>
-  <div class="slider">
-    <% @hotel.promotions.each_with_index do |promotion, index| %>
-    <%= image_tag(promotion.photo.banner.url, data:{'plugin-slide-caption' => promotion.name}) if promotion.photo? %>
-    <% end %>
-  </div>
+<div class="slider">
+  <% @hotel.promotions.each_with_index do |promotion, index| %>
+  <%= image_tag(promotion.photo.banner.url, data:{'plugin-slide-caption' => promotion.name}) if promotion.photo? %>
+  <% end %>
+</div>
 <% end %>
+
+
+
 <iframe width="100%" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=Quito%2C%20Pichincha%2C%20Ecuador&key=AIzaSyDXGufBORq45JOUYe3Kc_bG87r-9skTr3w"></iframe>
+
+
+
 <ul data-role="listview">
   <li><%= link_to t("hotels.comments"), "#" %></li>
   <li><%= link_to t("hotels.reserve"), "#" %></li>

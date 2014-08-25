@@ -32,6 +32,7 @@ es:
       sign_in: "Iniciar sesión"
   hotels:
     nearest: "Cercanía"
+    you_are_here: "Ud. está aquí"
     comments: "Comentarios"
     city: "Ciudad"
     price: "Precio"
