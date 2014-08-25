@@ -52,6 +52,7 @@ es:
       description: "Descripción"
       latitude: "Latitud"
       longitude: "Longitud"
+      address: "Dirección"
       telephone: "Teléfono"
       email: "Correo electrónico"
       show: "Detalles"

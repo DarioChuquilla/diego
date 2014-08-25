@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140822044748) do
+ActiveRecord::Schema.define(:version => 20140825023002) do
 
   create_table "hotel_photos", :force => true do |t|
     t.integer  "hotel_id"
@@ -30,6 +30,8 @@ ActiveRecord::Schema.define(:version => 20140822044748) do
     t.string   "email"
     t.float    "latitude"
     t.float    "longitude"
+    t.string   "address"
+    t.string   "location"
   end
 
   create_table "promotions", :force => true do |t|

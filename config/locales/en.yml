@@ -55,6 +55,7 @@ en:
       description: "Description"
       latitude: "Latitude"
       longitude: "Longitude"
+      address: "Address"
       telephone: "Telephone"
       email: "Email"
       show: "Show"
