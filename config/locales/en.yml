@@ -48,6 +48,18 @@ en:
         new_hotel: "New motel"
       show:
         back: "Motels list"
+      new:
+        title: "New motel"
+      edit:
+        title: "Edit %{name}"
+    hotel_photos:
+      index:
+        title: "%{name}'s photos"
+        new_photo: "Nueva foto"
+      show:
+        back: "Photos list"
+      new:
+        title: "New motel"
       edit:
         title: "Edit %{name}"
     labels:
@@ -59,6 +71,7 @@ en:
       address: "Address"
       telephone: "Telephone"
       email: "Email"
+      photo: "Photo"
       show: "Show"
       edit: "Edit"
       photos: "Hotel photos"

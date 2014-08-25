@@ -45,6 +45,18 @@ es:
         new_hotel: "Nuevo motel"
       show:
         back: "Lista de moteles"
+      new:
+        title: "Nuevo motel"
+      edit:
+        title: "Editar %{name}"
+    hotel_photos:
+      index:
+        title: "Fotos de %{name}"
+        new_photo: "Nueva foto"
+      show:
+        back: "Lista de fotos"
+      new:
+        title: "Nuevo motel"
       edit:
         title: "Editar %{name}"
     labels:
@@ -56,6 +68,7 @@ es:
       address: "Dirección"
       telephone: "Teléfono"
       email: "Correo electrónico"
+      photo: "Foto"
       show: "Detalles"
       edit: "Editar"
       photos: "Fotos del motel"

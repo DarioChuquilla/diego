@@ -3,7 +3,7 @@
 
 <table>
   <tr>
-    <th>Actions</th>
+    <th><%= t "admin.labels.actions" %></th>
     <th>Image</th>
   </tr>
   <% if @room_photos.present? %>
@@ -14,8 +14,8 @@
         <div data-role="popup" id="popupBasic-<%= room_photo.id %>">
           <ul data-role="listview">
             <li><%= link_to t("admin.labels.show"), admin_hotel_room_photo_path(@hotel.id, @room.id, room_photo.id) %> </li>
-            <li><%= link_to 'Edit', edit_admin_hotel_room_photo_path(@hotel.id, @room.id, room_photo.id) %> </li>
-            <li><%= link_to 'Destroy', admin_hotel_room_photo_path(@hotel.id, @room.id, room_photo.id), method: :delete, data: { confirm: 'Are you sure?' } %> </li>
+            <li><%= link_to t("admin.labels.edit"), edit_admin_hotel_room_photo_path(@hotel.id, @room.id, room_photo.id) %> </li>
+            <li><%= link_to t("admin.labels.destroy"), admin_hotel_room_photo_path(@hotel.id, @room.id, room_photo.id), method: :delete, data: { confirm: t("admin.labels.are_you_sure") } %> </li>
           </ul>
         </div>
       </td>

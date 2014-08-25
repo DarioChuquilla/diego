@@ -14,8 +14,8 @@
       <div data-role="popup" id="popupBasic-<%= promotion.id %>">
         <ul data-role="listview">
           <li><%= link_to t("admin.labels.show"), admin_hotel_promotion_path(@hotel, promotion) %> </li>
-          <li><%= link_to 'Edit', edit_admin_hotel_promotion_path(@hotel, promotion) %> </li>
-          <li><%= link_to 'Destroy', admin_hotel_promotion_path(@hotel, promotion), method: :delete, data: { confirm: 'Are you sure?' } %> </li>
+          <li><%= link_to t("admin.labels.edit"), edit_admin_hotel_promotion_path(@hotel, promotion) %> </li>
+          <li><%= link_to t("admin.labels.destroy"), admin_hotel_promotion_path(@hotel, promotion), method: :delete, data: { confirm: t("admin.labels.are_you_sure") } %> </li>
         </ul>
       </div>
     </td>

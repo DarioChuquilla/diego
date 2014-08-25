@@ -8,6 +8,6 @@ srcset="<%= @hotel_photo.photo.logo.url %> 375w, <%= @hotel_photo.photo.main.url
 alt="hotel image" />
 
 <div data-role="controlgroup" data-mini="true" data-type="horizontal">
-  <%= link_to 'Edit', edit_admin_hotel_photo_path(@hotel, @hotel_photo), data: {role: "button"} %>
-  <%= link_to 'Back', admin_hotel_photos_path(@hotel), data: {role: "button"} %>
+  <%= link_to t("admin.labels.edit"), edit_admin_hotel_photo_path(@hotel, @hotel_photo), data: {role: "button"} %>
+  <%= link_to t("admin.hotel_photos.show.back"), admin_hotel_photos_path(@hotel), data: {role: "button"} %>
 </div>

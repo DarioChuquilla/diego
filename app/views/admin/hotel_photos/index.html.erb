@@ -1,11 +1,11 @@
 <%= render :partial => 'links', :locals => { :hotel => @hotel } %>
-<h1>Listing hotel_photos</h1>
+<h1><%= t "admin.hotel_photos.index.title", :name => @hotel.name %></h1>
 
 <table class="ui-responsive">
   <thead>
     <tr>
-      <th>Actions</th>
-      <th>Photo</th>
+      <th><%= t "admin.labels.actions" %></th>
+      <th><%= t "admin.labels.photo" %></th>
     </tr>
   </thead>
   <tbody>
@@ -16,8 +16,8 @@
         <div data-role="popup" id="popupBasic-<%= hotel_photo.id %>">
           <ul data-role="listview">
             <li><%= link_to t("admin.labels.show"), admin_hotel_photo_path(@hotel, hotel_photo) %> </li>
-            <li><%= link_to 'Edit', edit_admin_hotel_photo_path(@hotel, hotel_photo) %> </li>
-            <li><%= link_to 'Destroy', admin_hotel_photo_path(@hotel, hotel_photo), method: :delete, data: { confirm: 'Are you sure?' } %> </li>
+            <li><%= link_to t("admin.labels.edit"), edit_admin_hotel_photo_path(@hotel, hotel_photo) %> </li>
+            <li><%= link_to t("admin.labels.destroy"), admin_hotel_photo_path(@hotel, hotel_photo), method: :delete, data: { confirm: t("admin.labels.are_you_sure") } %> </li>
           </ul>
         </div>
         <div data-mini="true" data-type="horizontal" data-role="controlgroup" class="ui-corner-all ui-controlgroup ui-controlgroup-horizontal ui-mini">
@@ -33,5 +33,5 @@
 
 <br />
 <div data-role="controlgroup" data-mini="true" data-type="horizontal">
-<%= link_to 'New photo', new_admin_hotel_photo_path(@hotel), data: {role: "button"} %>
+<%= link_to t("admin.hotel_photos.index.new_photo"), new_admin_hotel_photo_path(@hotel), data: {role: "button"} %>
 </div>

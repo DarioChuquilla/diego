@@ -5,6 +5,6 @@ srcset="<%= @room_photo.photo.logo.url %> 375w, <%= @room_photo.photo.main.url %
 alt="hotel image" />
 
 <div data-role="controlgroup" data-mini="true" data-type="horizontal">
-  <%= link_to 'Edit', edit_admin_hotel_room_photo_path(@hotel.id, @room.id, @room_photo.id), data: {role: "button"} %>
+  <%= link_to t("admin.labels.edit"), edit_admin_hotel_room_photo_path(@hotel.id, @room.id, @room_photo.id), data: {role: "button"} %>
   <%= link_to 'Back', admin_hotel_room_photos_path(@hotel, @room), data: {role: "button"} %>
 </div>
