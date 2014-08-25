@@ -1,56 +1,57 @@
 class Admin::RoomPhotosController < Admin::BaseController
+  before_filter :authorizations, :only => [:show, :edit, :update, :destroy]
   # GET /room_photos
   # GET /room_photos.json
   def index
+    get_hotel
+    get_room
     @room_photos = RoomPhoto.find_all_by_room_id params[:room_id]
-    @hotel = Hotel.find params[:hotel_id]
-    @room = Room.find params[:room_id]
 
     respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @room_photos }
+      format.html and return # index.html.erb
+      format.json { render json: @room_photos } and return
     end
   end
 
   # GET /room_photos/1
   # GET /room_photos/1.json
   def show
+    get_hotel
+    get_room
     @room_photo = RoomPhoto.find(params[:id])
-    @hotel = Hotel.find params[:hotel_id]
-    @room = Room.find params[:room_id]
 
     respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @room_photo }
+      format.html and return # show.html.erb
+      format.json { render json: @room_photo } and return
     end
   end
 
   # GET /room_photos/new
   # GET /room_photos/new.json
   def new
+    get_hotel
+    get_room
     @room_photo = RoomPhoto.new
-    @hotel = Hotel.find params[:hotel_id]
-    @room = Room.find params[:room_id]
 
     respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @room_photo }
+      format.html and return # new.html.erb
+      format.json { render json: @room_photo } and return
     end
   end
 
   # GET /room_photos/1/edit
   def edit
+    get_hotel
+    get_room
     @room_photo = RoomPhoto.find(params[:id])
-    @hotel = Hotel.find params[:hotel_id]
-    @room = Room.find params[:room_id]
   end
 
   # POST /room_photos
   # POST /room_photos.json
   def create
+    get_hotel
+    get_room
     @room_photo = RoomPhoto.new(params[:room_photo])
-    @hotel = Hotel.find params[:hotel_id]
-    @room = Room.find params[:room_id]
     @room_photo.room = @room
 
     respond_to do |format|
@@ -67,9 +68,9 @@ class Admin::RoomPhotosController < Admin::BaseController
   # PUT /room_photos/1
   # PUT /room_photos/1.json
   def update
+    get_hotel
+    get_room
     @room_photo = RoomPhoto.find(params[:id])
-    @hotel = Hotel.find params[:hotel_id]
-    @room = Room.find params[:room_id]
 
     respond_to do |format|
       if @room_photo.update_attributes(params[:room_photo])
@@ -85,9 +86,9 @@ class Admin::RoomPhotosController < Admin::BaseController
   # DELETE /room_photos/1
   # DELETE /room_photos/1.json
   def destroy
+    get_hotel
+    get_room
     @room_photo = RoomPhoto.find(params[:id])
-    @hotel = Hotel.find params[:hotel_id]
-    @room = Room.find params[:room_id]
     @room_photo.destroy
 
     respond_to do |format|
@@ -95,4 +96,17 @@ class Admin::RoomPhotosController < Admin::BaseController
       format.json { head :no_content }
     end
   end
+
+  private
+
+  def authorizations
+    begin
+      @room_photo = RoomPhoto.find(params[:id])
+      authorize! :manage, @room_photo
+    rescue CanCan::AccessDenied => e
+      p e.message.inspect
+      redirect_to(not_found_page_path, :alert => e.message) and return
+    end
+  end
+
 end

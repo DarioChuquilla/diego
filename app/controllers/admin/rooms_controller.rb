@@ -1,4 +1,5 @@
 class Admin::RoomsController < Admin::BaseController
+  before_filter :authorizations, :only => [:show, :edit, :update, :destroy]
   # GET /rooms
   # GET /rooms.json
   def index
@@ -6,16 +7,16 @@ class Admin::RoomsController < Admin::BaseController
     #@rooms = Room.all
     @rooms = Room.find_all_by_hotel_id params[:hotel_id]
     respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @rooms }
+      format.html and return # index.html.erb
+      format.json { render json: @rooms } and return
     end
   end
 
   # GET /rooms/1
   # GET /rooms/1.json
   def show
+    get_hotel
     @room = Room.find(params[:id])
-    @hotel = Hotel.find params[:hotel_id]
 
     respond_to do |format|
       format.html # show.html.erb
@@ -30,8 +31,8 @@ class Admin::RoomsController < Admin::BaseController
     @room = Room.new
     @room.hotel_id = params[:hotel_id]
     respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @room }
+      format.html and return # new.html.erb
+      format.json { render json: @room } and return
     end
   end
 
@@ -82,8 +83,21 @@ class Admin::RoomsController < Admin::BaseController
     @room.destroy
 
     respond_to do |format|
-      format.html { redirect_to admin_hotel_rooms_url(@hotel) }
-      format.json { head :no_content }
+      format.html { redirect_to admin_hotel_rooms_url(@hotel) } and return
+      format.json { head :no_content } and return
     end
   end
+
+  private
+
+  def authorizations
+    begin
+      @room = Room.find(params[:id])
+      authorize! :manage, @room
+    rescue CanCan::AccessDenied => e
+      p e.message.inspect
+      redirect_to(not_found_page_path, :alert => e.message) and return
+    end
+  end
+
 end

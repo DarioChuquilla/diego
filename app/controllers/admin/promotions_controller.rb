@@ -1,4 +1,5 @@
 class Admin::PromotionsController < Admin::BaseController
+  before_filter :authorizations, :only => [:show, :edit, :update, :destroy]
   # GET /promotions
   # GET /promotions.json
   def index 
@@ -87,5 +88,16 @@ class Admin::PromotionsController < Admin::BaseController
       format.json { head :no_content }
     end
   end
-  
+
+  private
+
+  def authorizations
+    begin
+      @promotion = Promotion.find(params[:id])
+      authorize! :manage, @promotion
+    rescue CanCan::AccessDenied => e
+      p e.message.inspect
+      redirect_to(not_found_page_path, :alert => e.message) and return
+    end
+  end
 end

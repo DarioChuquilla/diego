@@ -16,3 +16,4 @@
 *.rvmrc
 /npm-debug.log
 /public/system/uploads/*
+/public/uploads/tmp/*
