@@ -27,14 +27,14 @@
     var pos = new google.maps.LatLng(<%= @hotel.latitude %>,
            <%= @hotel.longitude %>);
 
-    var contentString = '<div id="content">'+
-      '<div id="siteNotice">'+
-      '</div>'+
-      '<h2 id="firstHeading" class="firstHeading"><%= @hotel.name %></h2>'+
-      '<div id="bodyContent">'+
-      '<div><%= simple_format @hotel.description %></div>'+
-      '</div>'+
-      '</div>';
+    var contentString = "<div id=\"content\">"+
+      "<div id=\"siteNotice\">"+
+      "</div>"+
+      "<h2 id=\"firstHeading\" class=\"firstHeading\"><%= @hotel.name %></h2>"+
+      "<div id=\"bodyContent\">"+
+      "<%= @hotel.description.truncate(60, separator: ' ') %>"+
+      "</div>"+
+      "</div>";
 
 
     var openInfoWindowHtml = new google.maps.InfoWindow({
