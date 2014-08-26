@@ -76,7 +76,9 @@ es:
       promotions: "Promociones"
       comments: "Comentarios"
       destroy: "Eliminar"
-      are_you_sure: "¿Desea eliminar?"
+      activate: "Activar motel"
+      deactivate: "Desactivar motel"
+      are_you_sure: "¿Está seguro?"
       cancel: "Cancelar"
   helpers:
     submit:

@@ -20,7 +20,7 @@ class RegistrationController < Devise::RegistrationsController
           @hotel = Hotel.new
           @hotel.name = params[:user][:hotels][:name]
           @hotel.description = params[:user][:hotels][:description]
-          @hotel.user = @user
+          @hotel.user_id = @user.id
           @hotel.save
           
           redirect_to root_path

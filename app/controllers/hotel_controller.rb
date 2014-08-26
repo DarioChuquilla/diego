@@ -4,7 +4,7 @@ class HotelController < ApplicationController
   end
 
   def nearest
-    @hotels = Hotel.all
+    @hotels = Hotel.where('hotels.active = ?', true)
   end
 
   def room

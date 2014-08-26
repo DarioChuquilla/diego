@@ -79,6 +79,8 @@ en:
       promotions: "Promotions"
       comments: "Comments"
       destroy: "Destroy"
+      activate: "Activate motel"
+      deactivate: "Deactivate motel"
       are_you_sure: "Are you sure?"
       cancel: "Cancel"
   helpers:

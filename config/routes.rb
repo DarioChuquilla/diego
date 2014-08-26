@@ -13,10 +13,13 @@ Diego::Application.routes.draw do
     
     get "home/index"
 
-    devise_for :users, :controllers => { :registrations => 'registration' }#, :sessions => "sessions" }
+    devise_for :users, :controllers => { :registrations => 'registration', :sessions => "sessions" }
 
     namespace :admin do
       resources :hotels do
+        member  do
+          get :toggle_active
+        end
         resources :promotions
         resources :rooms do
           resources :room_photos, path: 'photos', as: 'photos'

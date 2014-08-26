@@ -4,4 +4,11 @@ class Room < ActiveRecord::Base
   belongs_to :hotel
   has_many :room_photos
   validates_presence_of :photo, :name, :description, :amount, :hotel_id
+  before_destroy :remove_photos
+
+  private
+
+  def remove_photos
+    self.room_photos.destroy_all
+  end
 end

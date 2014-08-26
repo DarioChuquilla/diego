@@ -3,7 +3,14 @@ class Admin::HotelsController < Admin::BaseController
   # GET /hotels
   # GET /hotels.json
   def index
-    @hotels = Hotel.find_all_by_user_id current_user.id
+    @admin = false
+    if current_user.role == 'admin'
+      @hotels = Hotel.all
+      @admin = true
+    else
+      @hotels = Hotel.find_all_by_user_id current_user.id
+      @admin = false
+    end
     # authorize! :read, @hotels
     respond_to do |format|
       format.html and return # index.html.erb
@@ -74,7 +81,19 @@ class Admin::HotelsController < Admin::BaseController
     @hotel = Hotel.find(params[:id])
     @hotel.destroy
     respond_to do |format|
-      format.html { redirect_to hotels_url }
+      format.html { redirect_to admin_hotels_url }
+      format.json { head :no_content }
+    end
+  end
+
+  # DELETE /hotels/1
+  # DELETE /hotels/1.json
+  def toggle_active
+    @hotel = Hotel.find(params[:id])
+    @hotel.toggle :active
+    @hotel.save
+    respond_to do |format|
+      format.html { redirect_to admin_hotels_url }
       format.json { head :no_content }
     end
   end

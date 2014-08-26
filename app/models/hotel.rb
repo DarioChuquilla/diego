@@ -8,4 +8,15 @@ class Hotel < ActiveRecord::Base
 
   reverse_geocoded_by :latitude, :longitude, :address => :location
   after_validation :reverse_geocode, :if => :address_changed?
+
+  before_destroy :remove_related
+
+  private
+
+  def remove_related
+    self.promotions.destroy_all
+    self.rooms.destroy_all
+    self.hotel_photos.destroy_all
+  end
+
 end

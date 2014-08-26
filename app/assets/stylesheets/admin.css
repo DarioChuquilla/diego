@@ -1,3 +1,6 @@
 img{
 	width: 100%
 }
+tr.inactive {
+  background: #ccc;
+}

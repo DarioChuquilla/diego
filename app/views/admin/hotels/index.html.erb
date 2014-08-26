@@ -12,7 +12,7 @@
   </tr>
 
   <% @hotels.each do |hotel| %>
-  <tr>
+  <tr class="<%= hotel.active? ? 'active' : 'inactive' %>">
     <td>
       <a href="#popupBasic-<%= hotel.id %>" data-rel="popup" data-role="button" data-icon="arrow-d" data-iconpos="notext" data-position-to="#hotel-<%= hotel.id %>" data-overlay-theme="a" data-transition="slideup">Actions</a> 
       <div data-role="popup" id="popupBasic-<%= hotel.id %>">
@@ -23,6 +23,9 @@
           <li><%= link_to t("admin.labels.rooms"), admin_hotel_rooms_path(hotel) %> </li>
           <li><%= link_to t("admin.labels.promotions"), admin_hotel_promotions_path(hotel) %> </li>
           <li><%= link_to t("admin.labels.destroy"), admin_hotel_path(hotel), method: :delete, data: { confirm: t("admin.labels.are_you_sure") } %> </li>
+          <% if @admin == true %>
+            <li><%= link_to hotel.active? ? t("admin.labels.deactivate") : t("admin.labels.activate"), toggle_active_admin_hotel_path(hotel), method: :get, data: { confirm: t("admin.labels.are_you_sure") } %> </li>
+          <% end %>
         </ul>
       </div>
     </td>
@@ -37,6 +40,8 @@
 </table>
 
 <br />
+<% if @admin == false %>
 <div data-role="controlgroup" data-mini="true" data-type="horizontal">
 <%= link_to t("admin.hotels.index.new_hotel"), new_admin_hotel_path, data: {role: "button"} %>
 </div>
+<% end %>
