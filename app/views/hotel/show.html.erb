@@ -2,11 +2,13 @@
 <%= @hotel.name %>
 <% end %>
 <%= render :partial => "navbar" %>
-<div class="slider">
-  <% @hotel.hotel_photos.each_with_index do |photo, index| %>
-  <%= image_tag(photo.photo.main.url) if photo.photo? %>
-  <% end %>
-</div>
+<% if @hotel.hotel_photos.present? %>
+  <div class="slider">
+    <% @hotel.hotel_photos.each_with_index do |photo, index| %>
+    <%= image_tag(photo.photo.main.url) if photo.photo? %>
+    <% end %>
+  </div>
+<% end %>
 <h3><%= @hotel.name %></h3>
 <%= simple_format @hotel.description %>
 <% if  @hotel.rooms.present? %>
