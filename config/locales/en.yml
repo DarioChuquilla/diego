@@ -21,7 +21,8 @@ en:
         telephone: "Telephone"
         email: "Email"
   home:
-    sign_up: "Sign up"
+    sign_up_motel: "Sign up motel"
+    sign_up_user: "Sign up user"
     sign_in: "Sign in"
     sign_out: "Sign out"
     main_menu:

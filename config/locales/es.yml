@@ -18,7 +18,8 @@ es:
         telephone: "Teléfono"
         email: "Correo electrónico"
   home:
-    sign_up: "Registrarse"
+    sign_up_motel: "Registrar motel"
+    sign_up_user: "Registrar usuario"
     sign_in: "Iniciar sesión"
     sign_out: "Salir"
     main_menu:

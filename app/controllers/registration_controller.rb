@@ -2,7 +2,9 @@ class RegistrationController < Devise::RegistrationsController
   skip_before_filter :require_no_authentication, :only => [:new, :create]
   def new
     @user= User.new
-    @user.hotels.build
+    if params[:type] == 'motel'
+      @user.hotels.build
+    end
   end
 
   def create
@@ -14,14 +16,15 @@ class RegistrationController < Devise::RegistrationsController
           @user.email = params[:user][:email]
           @user.password = params[:user][:password]
           @user.password_confirmation =params[:user][:password_confirmation]
-          @user.role = 'hotel'
+          @user.role = params[:type] == 'motel' ? 'hotel' : 'client'
           @user.save
-
-          @hotel = Hotel.new
-          @hotel.name = params[:user][:hotels][:name]
-          @hotel.description = params[:user][:hotels][:description]
-          @hotel.user_id = @user.id
-          @hotel.save
+          if params[:type] == 'motel'
+            @hotel = Hotel.new
+            @hotel.name = params[:user][:hotels][:name]
+            @hotel.description = params[:user][:hotels][:description]
+            @hotel.user_id = @user.id
+            @hotel.save
+          end
           
           redirect_to root_path
         rescue Exception => e

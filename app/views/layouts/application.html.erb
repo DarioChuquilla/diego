@@ -53,10 +53,10 @@
         <%= link_to (content_for?(:title) ? "#{yield(:title)} - MOOTELOS.com" : "MOOTELOS.com"), root_path %>
       </h1>
       <% if user_signed_in? %>
-      <%= link_to t('home.sign_out'), destroy_user_session_path, "class" => "ui-btn-right", :method => :delete %>
+      <%= link_to "#{current_user.username} #{t('home.sign_out')}", destroy_user_session_path, "class" => "ui-btn-right", :method => :delete %>
       <% else %>
       <%= link_to t('home.sign_in'), new_user_session_path,"class" => "ui-btn-right", :method => :get %>
-      <%= link_to t('home.sign_up'), new_user_registration_path, "class" => "ui-btn-left", :method => :get %>
+      <%= link_to t('home.sign_up_user'), new_user_registration_path(:type => "user"), "class" => "ui-btn-left", :method => :get %>
       <% end %>
     </div>
     <div data-role="content">
@@ -65,11 +65,15 @@
     <% if user_signed_in? %>
     <h3><%= t "home.main_menu.title" %></h3>
     <ul data-role="listview">
-      <li><%= link_to "Home", root_path %></li>
-      <li><%= link_to t("home.main_menu.manage_hotels"), admin_hotels_path %></li>
-      <li><%= link_to t("home.main_menu.reservations"), received_admin_reports_path %></li>
-      <%= content_for :hotel_links %>
+        <li><%= link_to "Home", root_path %></li>
+        <li><%= link_to(t("home.main_menu.manage_hotels"), admin_hotels_path) if can? :manage, Hotel %></li>
+        <li><%= link_to(t("home.main_menu.reservations"), received_admin_reports_path) %></li>
+        <%= content_for :hotel_links %>
     </ul>
+    <% else %>
+      <ul data-role="listview">
+        <li><%= link_to t('home.sign_up_motel'), new_user_registration_path(:type => "motel"), "class" => "ui-btn-left", :method => :get %></li>
+      </ul>
     <% end %>
   </div>
   <!-- panel content goes here -->

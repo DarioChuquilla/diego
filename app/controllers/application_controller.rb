@@ -1,23 +1,12 @@
 class ApplicationController < ActionController::Base
+  # check_authorization :unless => :do_not_check_authorization?
+  rescue_from CanCan::AccessDenied do |exception|
+    # redirect_to root_url, :alert => exception.message
+    redirect_to(not_found_page_path, :alert => exception.message) and return
+  end
   require 'i18n_data'
   protect_from_forgery
   before_filter :set_locale
-
-  def login_process
-    p "ApplicationController::login_process"
-    yield
-    if user_signed_in?
-      logger.info "user signed in successfully"
-      session[:user_id] = current_user.id
-      session[:logged_in_by_password] = 'yes'
-      current_user.current_sign_in_at = 1.second.ago.change(offset: "+0000")
-      if params[:user][:remember_me] == "1"
-        cookies.permanent.signed[:auth_token] = {
-          :value => current_user.remember_token
-        }
-      end
-    end
-  end
 
   def page_not_found
     respond_to do |format|
@@ -35,6 +24,10 @@ class ApplicationController < ActionController::Base
   def set_locale
     I18n.locale = params[:locale] || extract_locale_from_accept_language_header || I18n.default_locale
     Rails.application.routes.default_url_options[:locale]= I18n.locale
+  end
+
+  def do_not_check_authorization?
+    respond_to?(:devise_controller?)
   end
 
 end

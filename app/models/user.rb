@@ -15,6 +15,8 @@
   end
 
   def hotel?
+    p "==========================="
+    p self.role.inspect
     self.role == 'hotel'
   end
 

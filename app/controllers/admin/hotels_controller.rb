@@ -1,4 +1,5 @@
 class Admin::HotelsController < Admin::BaseController
+  load_and_authorize_resource
   before_filter :authorizations, :only => [:show, :edit, :update, :destroy]
   # GET /hotels
   # GET /hotels.json
