@@ -36,36 +36,36 @@
       });
           //Funcion para recorrer hoteles y poner marcadores
           <% @hotels.each do |hotel| %>
-          if ('<%= hotel.latitude.to_s %>' != '' &&  '<%= hotel.longitude.to_s %>'){
-          var newLatLng = new google.maps.LatLng(<%= hotel.latitude %> ,<%= hotel.longitude %>); 
-          var marker_<%= hotel.id %> = new google.maps.Marker({
-            position: newLatLng,
-            map: map,
-            title: "<%= hotel.name %>",
-            icon: "/assets/images/icons-png/pin2.png",
-            draggable: true
-          });
-          //Ventana de informacion
-          var contentString = "<div id=\"content\">"+
-          "<div id=\"siteNotice\">"+
-          "</div>"+
-          "<h2 id=\"firstHeading\" class=\"firstHeading\"><%= hotel.name %></h2>"+
-          "<div id=\"bodyContent\">"+
-          "<%= hotel.description.truncate(60, separator: ' ') %> <br/>"+
-          "<a href='http://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194'>"+
-          "http://en.wikipedia.org/w/index.php?title=Uluru</a>"
-          "</div>"+
-          "</div>";
-          var openInfoWindowHtml_<%= hotel.id %> = new google.maps.InfoWindow({
-            content: contentString,
-          });
-          //Evento click en marcador
-          google.maps.event.addListener(marker_<%= hotel.id %>, 'click', function() {
-            //map.setZoom(10);
-            openInfoWindowHtml_<%= hotel.id %>.open(map,marker_<%= hotel.id %>);
-            map.setCenter(marker_<%= hotel.id %>.getPosition());
-          });
-          }
+            <% if hotel.latitude.present? && hotel.longitude.present? %>
+              var newLatLng = new google.maps.LatLng(<%= hotel.latitude %> ,<%= hotel.longitude %>); 
+              var marker_<%= hotel.id %> = new google.maps.Marker({
+                position: newLatLng,
+                map: map,
+                title: "<%= hotel.name %>",
+                icon: "/assets/images/icons-png/pin2.png",
+                draggable: true
+              });
+              //Ventana de informacion
+              var contentString = "<div id=\"content\">"+
+              "<div id=\"siteNotice\">"+
+              "</div>"+
+              "<h2 id=\"firstHeading\" class=\"firstHeading\"><%= hotel.name %></h2>"+
+              "<div id=\"bodyContent\">"+
+              "<%= hotel.description.truncate(60, separator: ' ') %> <br/>"+
+              "<a href='http://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194'>"+
+              "http://en.wikipedia.org/w/index.php?title=Uluru</a>"
+              "</div>"+
+              "</div>";
+              var openInfoWindowHtml_<%= hotel.id %> = new google.maps.InfoWindow({
+                content: contentString,
+              });
+              //Evento click en marcador
+              google.maps.event.addListener(marker_<%= hotel.id %>, 'click', function() {
+                //map.setZoom(10);
+                openInfoWindowHtml_<%= hotel.id %>.open(map,marker_<%= hotel.id %>);
+                map.setCenter(marker_<%= hotel.id %>.getPosition());
+              });
+            <% end %>
           <% end %>
         }
       });

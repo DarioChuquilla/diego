@@ -2,18 +2,15 @@
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
 <script>
   function initialize() {
+    <% if @hotel.latitude.blank? || @hotel.longitude.blank? %>
+      document.getElementById('map-canvas').setAttribute("style",'height:0px');  
+    <% else %>
     var mapOptions = {
       zoom: 15,
       center: new google.maps.LatLng(<%= @hotel.latitude %>, <%= @hotel.longitude %>)
     };
-    
-    if ('<%= @hotel.latitude.to_s %>' == '' ||  '<%= @hotel.longitude.to_s %>' == ''){
-      document.getElementById('map-canvas').setAttribute("style",'height:0px');  
-      return
-    }else{
-      document.getElementById('map-canvas').setAttribute("style",'height:450px');
-    }
-    
+
+    document.getElementById('map-canvas').setAttribute("style",'height:450px');
 
     var map = new google.maps.Map(document.getElementById('map-canvas'),
       mapOptions);
@@ -24,23 +21,22 @@
       title: 'Click to zoom'
     });
 
-    var pos = new google.maps.LatLng(<%= @hotel.latitude %>,
-           <%= @hotel.longitude %>);
+    var pos = new google.maps.LatLng(<%= @hotel.latitude %>, <%= @hotel.longitude %>);
 
     var contentString = "<div id=\"content\">"+
-      "<div id=\"siteNotice\">"+
-      "</div>"+
-      "<h2 id=\"firstHeading\" class=\"firstHeading\"><%= @hotel.name %></h2>"+
-      "<div id=\"bodyContent\">"+
-      "<%= @hotel.description.truncate(60, separator: ' ') %>"+
-      "</div>"+
-      "</div>";
+    "<div id=\"siteNotice\">"+
+    "</div>"+
+    "<h2 id=\"firstHeading\" class=\"firstHeading\"><%= @hotel.name %></h2>"+
+    "<div id=\"bodyContent\">"+
+    "<%= @hotel.description.truncate(60, separator: ' ') %>"+
+    "</div>"+
+    "</div>";
 
 
     var openInfoWindowHtml = new google.maps.InfoWindow({
-            content: contentString,
-         
-          });
+      content: contentString,
+
+    });
 
 
     google.maps.event.addListener(marker, 'click', function() {
@@ -49,6 +45,7 @@
       map.setCenter(marker.getPosition());
       
     });
+  <% end %>
   }
 
   google.maps.event.addDomListener(window, 'load', initialize);
@@ -62,11 +59,11 @@
 <% end %>
 <%= render :partial => "navbar" %>
 <% if @hotel.hotel_photos.present? %>
-  <div class="slider">
-    <% @hotel.hotel_photos.each_with_index do |photo, index| %>
-    <%= image_tag(photo.photo.main.url) if photo.photo? %>
-    <% end %>
-  </div>
+<div class="slider">
+  <% @hotel.hotel_photos.each_with_index do |photo, index| %>
+  <%= image_tag(photo.photo.main.url) if photo.photo? %>
+  <% end %>
+</div>
 <% end %>
 <h3><%= @hotel.name %></h3>
 <%= simple_format @hotel.description %>
