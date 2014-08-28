@@ -24,6 +24,7 @@ es:
     sign_out: "Salir"
     main_menu:
       title: "Menú principal"
+      account: "Mi cuenta"
       manage_hotels: "Administrar moteles"
       reservations: "Reservaciones"
       sign_out: "Salir"
@@ -81,6 +82,7 @@ es:
       deactivate: "Desactivar motel"
       are_you_sure: "¿Está seguro?"
       cancel: "Cancelar"
+      change_password: "Cambiar contraseña"
   helpers:
     submit:
       user:

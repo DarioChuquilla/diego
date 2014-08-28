@@ -18,7 +18,7 @@
   </tr>
   <tr>
     <th>Password:</th>
-    <td><%= link_to 'Edit password', edit_user_password_path %></td>
+    <td><%= link_to t("admin.labels.change_password"), change_password_admin_account_path(current_user) %></td>
   </tr>
 </table>
 

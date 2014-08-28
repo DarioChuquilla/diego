@@ -16,7 +16,11 @@ Diego::Application.routes.draw do
     devise_for :users, :controllers => { :registrations => 'registration', :sessions => "sessions", :passwords => "password" }
 
     namespace :admin do
-      resources :accounts, only: [:show, :edit, :update]
+      resources :accounts, only: [:show, :edit, :update] do
+        member do
+          get :change_password
+        end
+      end
       resources :hotels do
         member  do
           get :toggle_active

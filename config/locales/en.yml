@@ -27,6 +27,7 @@ en:
     sign_out: "Sign out"
     main_menu:
       title: "Main menu"
+      account: "My account"
       manage_hotels: "Manage hotels"
       reservations: "Reservations"
       sign_out: "Sign out"
@@ -84,6 +85,7 @@ en:
       deactivate: "Deactivate motel"
       are_you_sure: "Are you sure?"
       cancel: "Cancel"
+      change_password: "Change password"
   helpers:
     submit:
       user:

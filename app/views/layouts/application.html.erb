@@ -67,6 +67,7 @@
     <ul data-role="listview">
         <li><%= link_to "Home", root_path %></li>
         <li><%= link_to(t("home.main_menu.manage_hotels"), admin_hotels_path) if can? :manage, Hotel %></li>
+        <li><%= link_to(t("home.main_menu.account"), admin_account_path(current_user)) if can? :manage, Hotel %></li>
         <li><%= link_to(t("home.main_menu.reservations"), received_admin_reports_path) %></li>
         <%= content_for :hotel_links %>
     </ul>
