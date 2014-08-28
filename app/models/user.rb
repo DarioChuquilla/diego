@@ -15,8 +15,6 @@
   end
 
   def hotel?
-    p "==========================="
-    p self.role.inspect
     self.role == 'hotel'
   end
 
@@ -25,6 +23,10 @@
     self.remember_token = loop do
       random_token = SecureRandom.urlsafe_base64(nil, false)
       break random_token unless User.exists?(remember_token: random_token)
+    end
+    self.reset_password_token = loop do
+      random_token = SecureRandom.urlsafe_base64(nil, false)
+      break random_token unless User.exists?(reset_password_token: random_token)
     end
   end
 end

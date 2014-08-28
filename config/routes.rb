@@ -13,9 +13,10 @@ Diego::Application.routes.draw do
     
     get "home/index"
 
-    devise_for :users, :controllers => { :registrations => 'registration', :sessions => "sessions" }
+    devise_for :users, :controllers => { :registrations => 'registration', :sessions => "sessions", :passwords => "password" }
 
     namespace :admin do
+      resources :accounts, only: [:show, :edit, :update]
       resources :hotels do
         member  do
           get :toggle_active

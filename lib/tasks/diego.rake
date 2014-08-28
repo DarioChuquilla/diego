@@ -22,4 +22,32 @@ namespace :diego do
       p user.errors.inspect
     end
   end
+  desc "completes users password token"
+  task :users_password_token => :environment do
+    users = User.where('users.reset_password_token IS NULL')
+    users.each do |user|
+      user.reset_password_token = loop do
+        random_token = SecureRandom.urlsafe_base64(nil, false)
+        break random_token unless User.exists?(reset_password_token: random_token)
+      end
+      if user.save
+        p "User: #{user.username} updated"
+      else
+        p "User: #{user.username} fails"
+      end
+    end
+    users = User.where('users.remember_token IS NULL')
+    users.each do |user|
+      user.remember_token = loop do
+        random_token = SecureRandom.urlsafe_base64(nil, false)
+        break random_token unless User.exists?(remember_token: random_token)
+      end
+      if user.save
+        p "User: #{user.username} updated"
+      else
+        p "User: #{user.username} fails"
+      end
+    end
+  end
+
 end
