@@ -36,6 +36,7 @@
       });
           //Funcion para recorrer hoteles y poner marcadores
           <% @hotels.each do |hotel| %>
+          if ('<%= hotel.latitude.to_s %>' != '' &&  '<%= hotel.longitude.to_s %>'){
           var newLatLng = new google.maps.LatLng(<%= hotel.latitude %> ,<%= hotel.longitude %>); 
           var marker_<%= hotel.id %> = new google.maps.Marker({
             position: newLatLng,
@@ -64,6 +65,7 @@
             openInfoWindowHtml_<%= hotel.id %>.open(map,marker_<%= hotel.id %>);
             map.setCenter(marker_<%= hotel.id %>.getPosition());
           });
+          }
           <% end %>
         }
       });

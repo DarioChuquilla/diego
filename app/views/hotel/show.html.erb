@@ -7,7 +7,7 @@
       center: new google.maps.LatLng(<%= @hotel.latitude %>, <%= @hotel.longitude %>)
     };
     
-    if ('<%= @hotel.latitude.to_s %>' == ''){
+    if ('<%= @hotel.latitude.to_s %>' == '' ||  '<%= @hotel.longitude.to_s %>' == ''){
       document.getElementById('map-canvas').setAttribute("style",'height:0px');  
       return
     }else{
