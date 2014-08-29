@@ -20,4 +20,19 @@ class HotelController < ApplicationController
 
   def promo
   end
+
+  def get_hotels_nearby
+    level = params[:level]
+    base = 14
+    range = 0
+    @radious = 0
+    if level <= base
+      range = base - level
+      @radious = 2**range
+    end
+    respond_to do |format|
+      format.js # show.html.erb
+      format.json { render json: @hotel_photo }
+    end
+  end
 end
