@@ -71,16 +71,14 @@
               google.maps.event.addListener(map, 'idle', function() {
                 var centerlat = map.getCenter().lat();
                 var centerlng = map.getCenter().lng();
-                console.log(centerlat);
-                console.log(centerlng);
                 var zoom=map.getZoom();
                 //alert(center+"-"+zoom);  
 
                 $.ajax({ 
-                  url:"/<%= params[:locale] %>/hotel/get_hotels_nearby/",
+                  url:"/<%= params[:locale] %>/get_hotels_nearby/",
                   data:{
-                    lat:  String(centerlat) ,
-                    lng:  String(centerlng) ,
+                    lat:  String(centerlat),
+                    lng:  String(centerlng),
                     level: zoom
                   },
                   dataType: "script",
@@ -97,7 +95,7 @@
 <% end %>
 <%= render :partial => "navbar" %>
 <div id="map-canvas" style="width:100%;height:450px;"></div> 
-<ul data-role="listview" data-filter="true" data-filter-placeholder="Buscar..." data-inset="true">
+<ul id="hotels_list" data-role="listview" data-filter="true" data-filter-placeholder="Buscar..." data-inset="true">
   <% @hotels.each do |hotel| %>
   <li >
     <a href="<%= hotel_path hotel  %>">
