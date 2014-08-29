@@ -2,7 +2,7 @@ require 'test_helper'
 
 class AccountsControllerTest < ActionController::TestCase
   setup do
-    @account = accounts(:one)
+    @user = accounts(:one)
   end
 
   test "should get index" do
@@ -25,23 +25,23 @@ class AccountsControllerTest < ActionController::TestCase
   end
 
   test "should show account" do
-    get :show, id: @account
+    get :show, id: @user
     assert_response :success
   end
 
   test "should get edit" do
-    get :edit, id: @account
+    get :edit, id: @user
     assert_response :success
   end
 
   test "should update account" do
-    put :update, id: @account, account: {  }
+    put :update, id: @user, account: {  }
     assert_redirected_to account_path(assigns(:account))
   end
 
   test "should destroy account" do
     assert_difference('Account.count', -1) do
-      delete :destroy, id: @account
+      delete :destroy, id: @user
     end
 
     assert_redirected_to accounts_path

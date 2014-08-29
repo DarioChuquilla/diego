@@ -5,7 +5,7 @@
   :recoverable, :rememberable, :trackable, :validatable
   validates :username, presence: true
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :username, :email, :password, :password_confirmation, :remember_me
+  attr_accessible :first_name, :last_name, :username, :email, :password, :password_confirmation, :remember_me
   # attr_accessible :title, :body
   has_many :hotels
   before_create :generate_remember_token

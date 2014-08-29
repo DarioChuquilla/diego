@@ -23,8 +23,8 @@
     @user = User.find(params[:id])
 
     respond_to do |format|
-      if @user.update_attributes(params[:account])
-        format.html { redirect_to @user, notice: 'Account was successfully updated.' }
+      if @user.update_attributes(params[:user])
+        format.html { redirect_to admin_account_path(@user), notice: 'Account was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
