@@ -51,7 +51,7 @@ Diego::Application.routes.draw do
       end
     end
 
-    get "get_hotels_nearby", to: "hotel#get_hotels_nearby", path: "hotel/get_hotels_nearby/:lng/:level", as: "get_hotels_nearby"
+    get "get_hotels_nearby", to: "hotel#get_hotels_nearby", path: "hotel/get_hotels_nearby/:lat/:lng/:level", as: "get_hotels_nearby"
     
   end
 end
