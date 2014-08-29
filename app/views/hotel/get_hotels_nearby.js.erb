@@ -4,3 +4,4 @@ $('#hotels_list').html('');
 	$('#hotels_list').append('<li><a href="<%= hotel_path hotel  %>"><%= image_tag(hotel.hotel_photos.first.photo.thumb.url, width: '80') if hotel.hotel_photos.present? %><h2><%= hotel.name %></h2><p><%= hotel.description.truncate(100, separator: ' ') %></p></a></li>');
 <% end %>
 $("#hotels_list").listview("refresh");
+console.log('<%= @radious %>')
