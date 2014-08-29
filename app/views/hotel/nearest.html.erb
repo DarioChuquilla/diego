@@ -110,13 +110,5 @@
 <%= render :partial => "navbar" %>
 <div id="map-canvas" style="width:450px;height:450px;margin:0 auto;"></div> 
 <ul id="hotels_list" data-role="listview" data-filter="true" data-filter-placeholder="Buscar..." data-inset="true">
-  <% @hotels.each do |hotel| %>
-  <li>
-    <a href="<%= hotel_path hotel  %>">
-      <%= image_tag(hotel.hotel_photos.first.photo.thumb.url) if hotel.hotel_photos.present? %>
-      <h2><%= hotel.name %></h2>
-      <p><%= hotel.description.truncate(100, separator: ' ') %></p>
-    </a>
-  </li>
-  <% end %>
+  
 </ul>
