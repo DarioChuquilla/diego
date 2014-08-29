@@ -7,13 +7,13 @@ Diego::Application.routes.draw do
 
     # get "reports/done"
     
-    get '404', :to => 'application#page_not_found', as: 'not_found_page'
+    get "404", :to => "application#page_not_found", as: "not_found_page"
 
-    root :to =>'home#index'
+    root :to =>"home#index"
     
     get "home/index"
 
-    devise_for :users, :controllers => { :registrations => 'registration', :sessions => "sessions", :passwords => "password" }
+    devise_for :users, :controllers => { :registrations => "registration", :sessions => "sessions", :passwords => "password" }
 
     namespace :admin do
       resources :accounts, only: [:show, :edit, :update] do
@@ -27,9 +27,9 @@ Diego::Application.routes.draw do
         end
         resources :promotions
         resources :rooms do
-          resources :room_photos, path: 'photos', as: 'photos'
+          resources :room_photos, path: "photos", as: "photos"
         end
-        resources :hotel_photos, path: 'photos', as: 'photos'
+        resources :hotel_photos, path: "photos", as: "photos"
       end
       resources :reports, only: [:index ] do
         collection do
@@ -50,6 +50,8 @@ Diego::Application.routes.draw do
         get :room, path: "room/:room_id"
       end
     end
+
+    get "get_hotels_nearby", to: "hotel#get_hotels_nearby", path: "hotel/get_hotels_nearby/:lng/:level", as: "get_hotels_nearby"
     
   end
 end
