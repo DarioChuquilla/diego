@@ -1,12 +1,13 @@
 <% content_for :page_specific_javascript_late do %>
-<script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?libraries=geometry&sensor=false"></script>
 <script>
   /*
    * Google Maps documentation: http://code.google.com/apis/maps/documentation/javascript/basics.html
    * Geolocation documentation: http://dev.w3.org/geo/api/spec-source.html
    */
    $( document ).on( "pageinit", "#main-page", function() {
-    var defaultLatLng = new google.maps.LatLng(34.0983425, -118.3267434);  // Default to Hollywood, CA when no geolocation support
+    var defaultLatLng = new google.maps.LatLng(-0.2166667,-78.5);  // Default to Hollywood, CA when no geolocation support
     if ( navigator.geolocation ) {
       function success(pos) {
         // Location found, show map with these coordinates
@@ -34,70 +35,83 @@
         animation: google.maps.Animation.DROP,
         title: ""
       });
-          //Funcion para recorrer hoteles y poner marcadores
-          <% @hotels.each do |hotel| %>
-          <% if hotel.latitude.present? && hotel.longitude.present? %>
-          var newLatLng = new google.maps.LatLng(<%= hotel.latitude %> ,<%= hotel.longitude %>); 
-          var marker_<%= hotel.id %> = new google.maps.Marker({
-            position: newLatLng,
-            map: map,
-            title: "<%= hotel.name %>",
-            icon: "/assets/images/icons-png/pin2.png",
-            draggable: true
-          });
-              //Ventana de informacion
-              var contentString = "<div id=\"content\">"+
-              "<div id=\"siteNotice\">"+
-              "</div>"+
-              "<h2 id=\"firstHeading\" class=\"firstHeading\"><%= hotel.name %></h2>"+
-              "<div id=\"bodyContent\">"+
-              "<%= hotel.description.truncate(60, separator: ' ') %> <br/>"+
-              "<a href='http://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194'>"+
-              "http://en.wikipedia.org/w/index.php?title=Uluru</a>"
-              "</div>"+
-              "</div>";
-              var openInfoWindowHtml_<%= hotel.id %> = new google.maps.InfoWindow({
-                content: contentString,
-              });
-              //Evento click en marcador
-              google.maps.event.addListener(marker_<%= hotel.id %>, 'click', function() {
-                //map.setZoom(10);
-                openInfoWindowHtml_<%= hotel.id %>.open(map,marker_<%= hotel.id %>);
-                map.setCenter(marker_<%= hotel.id %>.getPosition());
-              });
-              <% end %>
-              <% end %>
+      //Funcion para recorrer hoteles y poner marcadores
+      <% @hotels.each do |hotel| %>
+      <% if hotel.latitude.present? && hotel.longitude.present? %>
+      var newLatLng = new google.maps.LatLng(<%= hotel.latitude %> ,<%= hotel.longitude %>); 
+      var marker_<%= hotel.id %> = new google.maps.Marker({
+        position: newLatLng,
+        map: map,
+        title: "<%= hotel.name %>",
+        icon: "/assets/images/icons-png/pin2.png",
+      });
+      //Ventana de informacion
+      var contentString = "<div id=\"content\">"+
+      "<div id=\"siteNotice\">"+
+      "</div>"+
+      "<h2 id=\"firstHeading\" class=\"firstHeading\"><%= hotel.name %></h2>"+
+      "<div id=\"bodyContent\">"+
+      "<%= hotel.description.truncate(60, separator: ' ') %> <br/>"+
+      "<a href='http://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194'>"+
+      "http://en.wikipedia.org/w/index.php?title=Uluru</a>"
+      "</div>"+
+      "</div>";
+      var openInfoWindowHtml_<%= hotel.id %> = new google.maps.InfoWindow({
+        content: contentString,
+      });
+      //Evento click en marcador
+      google.maps.event.addListener(marker_<%= hotel.id %>, 'click', function() {
+        //map.setZoom(10);
+        openInfoWindowHtml_<%= hotel.id %>.open(map,marker_<%= hotel.id %>);
+        map.setCenter(marker_<%= hotel.id %>.getPosition());
+      });
+      <% end %>
+      <% end %>
 
-              google.maps.event.addListener(map, 'idle', function() {
-                var centerlat = map.getCenter().lat();
-                var centerlng = map.getCenter().lng();
-                var zoom=map.getZoom();
-                //alert(center+"-"+zoom);  
+      google.maps.event.addListener(map, 'idle', function() {
+        var centerlat = map.getCenter().lat();
+        var centerlng = map.getCenter().lng();
+        var center_point = new google.maps.LatLng(centerlat, centerlng);
+        var radious_point = new google.maps.LatLng(map.getBounds().Ca.k, map.getBounds().pa.j)
+        var zoom=map.getZoom();
+        var distance = google.maps.geometry.spherical.computeDistanceBetween(center_point, radious_point);
 
-                $.ajax({ 
-                  url:"/<%= params[:locale] %>/get_hotels_nearby/",
-                  data:{
-                    lat:  String(centerlat),
-                    lng:  String(centerlng),
-                    level: zoom
-                  },
-                  dataType: "script",
-                  success:function(result){
+        // var user_marker = new google.maps.Marker({
+        //   position: center_point,
+        //   map: map,
+        //   animation: google.maps.Animation.DROP,
+        //   title: ""
+        // });
+        // var user_marker = new google.maps.Marker({
+        //   position: radious_point,
+        //   map: map,
+        //   animation: google.maps.Animation.DROP,
+        //   title: ""
+        // });
+        
+        $.ajax({ 
+          url:"/<%= params[:locale] %>/get_hotels_nearby/",
+          data:{
+            lat:  String(centerlat),
+            lng:  String(centerlng),
+            distance: distance
+          },
+          dataType: "script",
+          success:function(result){
+          }
+        });
+        // (/:locale)/hotel/get_hotels_nearby/:lng/:level(.:format) 
+      });
 
-                  }
-                });
-                // (/:locale)/hotel/get_hotels_nearby/:lng/:level(.:format) 
-              });
-
-            }
-          });
+    }
+  });
 </script>
 <% end %>
 <%= render :partial => "navbar" %>
-<div id="map-canvas" style="width:100%;height:450px;"></div> 
+<div id="map-canvas" style="width:450px;height:450px;margin:0 auto;"></div> 
 <ul id="hotels_list" data-role="listview" data-filter="true" data-filter-placeholder="Buscar..." data-inset="true">
   <% @hotels.each do |hotel| %>
-  <li >
+  <li>
     <a href="<%= hotel_path hotel  %>">
       <%= image_tag(hotel.hotel_photos.first.photo.thumb.url) if hotel.hotel_photos.present? %>
       <h2><%= hotel.name %></h2>

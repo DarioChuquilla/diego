@@ -11,6 +11,8 @@ class Hotel < ActiveRecord::Base
 
   before_destroy :remove_related
 
+  scope :active, where('active = ?', true)
+
   private
 
   def remove_related
