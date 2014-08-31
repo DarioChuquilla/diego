@@ -12,7 +12,7 @@ class Ability
       can :manage, Promotion, :hotel => {:user => user}
       can :manage, Room, :hotel => {:user => user}
       can :manage, RoomPhoto, :hotel => {:user => user}
-      can :show, :edit, :update, User, :user => user
+      # can :show, :edit, :update, User, :user => user
     end
   end
 end

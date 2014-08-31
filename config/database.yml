@@ -18,7 +18,7 @@ development:
   database: diego_development
   pool: 5
   username: postgres
-  password: 'sa'
+  password: '110985.'
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
@@ -44,7 +44,7 @@ preview:
   database: diego_preview
   pool: 5
   username: postgres
-  password: z1VunY8kMPAGE
+  password: Motels.2014
 
 production:
   adapter: postgresql
