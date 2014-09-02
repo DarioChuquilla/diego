@@ -21,6 +21,11 @@ class HotelController < ApplicationController
   def promo
   end
 
+  def reservations
+    @hotel = Hotel.find params[:id]
+    @room = Room.find params[:room_id]
+  end
+
   def get_hotels_nearby
     # @radious = (params[:distance].to_f) / 1000 #Distance is requested in meters, setting it to KMs
     @radious = ((params[:distance].to_f * 1.02) / 1000.0) * Math.sin(Geocoder::Calculations.to_radians(45)) #Distance for circular maps canvas

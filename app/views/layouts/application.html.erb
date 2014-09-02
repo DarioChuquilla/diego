@@ -43,6 +43,7 @@
       });
     });
   </script>
+
   <script async="true" src="/assets/picturefill.min.js?body=1"></script>
   <%= content_for :page_specific_javascript_early %>
 </head>
@@ -65,16 +66,16 @@
     <% if user_signed_in? %>
     <h3><%= t "home.main_menu.title" %></h3>
     <ul data-role="listview">
-        <li><%= link_to "Home", root_path %></li>
-        <li><%= link_to(t("home.main_menu.manage_hotels"), admin_hotels_path) if can? :manage, Hotel %></li>
-        <li><%= link_to(t("home.main_menu.account"), admin_account_path(current_user)) if can? :manage, Hotel %></li>
-        <li><%= link_to(t("home.main_menu.reservations"), received_admin_reports_path) %></li>
-        <%= content_for :hotel_links %>
+      <li><%= link_to "Home", root_path %></li>
+      <li><%= link_to(t("home.main_menu.manage_hotels"), admin_hotels_path) if can? :manage, Hotel %></li>
+      <li><%= link_to(t("home.main_menu.account"), admin_account_path(current_user)) if can? :manage, Hotel %></li>
+      <li><%= link_to(t("home.main_menu.reservations"), received_admin_reports_path) %></li>
+      <%= content_for :hotel_links %>
     </ul>
     <% else %>
-      <ul data-role="listview">
-        <li><%= link_to t('home.sign_up_motel'), new_user_registration_path(:type => "motel"), "class" => "ui-btn-left", :method => :get %></li>
-      </ul>
+    <ul data-role="listview">
+      <li><%= link_to t('home.sign_up_motel'), new_user_registration_path(:type => "motel"), "class" => "ui-btn-left", :method => :get %></li>
+    </ul>
     <% end %>
   </div>
   <!-- panel content goes here -->

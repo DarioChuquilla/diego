@@ -1,0 +1,36 @@
+<% content_for :page_specific_javascript_late do %>
+<script >
+  function generarhorarios() {
+      
+      var valor = '<a href="#">6:00 AM - 12:00 PM</a>'
+      // Creamos un nuevo elemento LI
+      var li = document.createElement('li');
+      // Añadimos el valor introducido al nuevo elemento
+      li.innerHTML = valor;
+      // Añadimos el elemento LI a la lista UL
+      var ul = document.getElementById('horarios');
+      ul.appendChild(li);
+}
+</script> 
+<% end %>
+
+<% content_for :title do %>
+<%= @room.name%>
+<% end %>
+
+<h3><%= @room.name %></h3>
+<a onclick="generarhorarios();" href="#">3h</a>
+<ul id="horarios" data-role="listview" >
+  <li data-role="list-divider"="heading">Numero de Horas
+    <a onclick="generarhorarios();" href="#">3h</a>
+    <a onclick="alert('hola');" href="#">6h</a>
+    <a onclick="generarhorarios();" href="#">9h</a>
+  </li>
+  
+  <li> Horarios Disponibles </li>
+  
+  <li><a href="#">6:00 AM - 12:00 PM</a></li>
+  <li><a href="#">6:00 AM - 12:00 PM</a></li>
+  
+</ul>
+
