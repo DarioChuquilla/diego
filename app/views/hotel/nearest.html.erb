@@ -52,8 +52,7 @@
       "<h2 id=\"firstHeading\" class=\"firstHeading\"><%= hotel.name %></h2>"+
       "<div id=\"bodyContent\">"+
       "<%= hotel.description.truncate(60, separator: ' ') %> <br/>"+
-      "<a href='http://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194'>"+
-      "http://en.wikipedia.org/w/index.php?title=Uluru</a>"
+      "<a href='<%= hotel_path hotel %>'>Go to motel</a>"
       "</div>"+
       "</div>";
       var openInfoWindowHtml_<%= hotel.id %> = new google.maps.InfoWindow({
