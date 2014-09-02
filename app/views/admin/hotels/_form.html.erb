@@ -10,11 +10,15 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDXGufBORq45JOUYe3Kc_bG87r
   };
   var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
   function initialize() {
+    <% if @hotel.latitude.present? && @hotel.longitude.present? %>
+      var _location = new google.maps.LatLng(<%= @hotel.latitude %>, <%= @hotel.longitude %>);
+      addMarker(_location);
+    <% end %>
     google.maps.event.addListener(map, "click", function(event) {
       var _lat = event.latLng.lat();
       var _lng = event.latLng.lng();
-      var _tocation = new google.maps.LatLng(_lat, _lng);
-      addMarker(_tocation);
+      var _location = new google.maps.LatLng(_lat, _lng);
+      addMarker(_location);
       setTimeout(function() {
         $('#popupBasic-1').popup( "close" );
         $('#hotel_latitude').val(_lat);
@@ -53,14 +57,16 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDXGufBORq45JOUYe3Kc_bG87r
   <%= f.text_area :description %>
 </div>
 <div class="field">
-  <%= f.label :latitude, style: "display: inline !important; float: left !important; line-height: 28px; margin-right: 10px;" %>
   <a href="#popupBasic-1" data-rel="popup" data-role="button" data-icon="arrow-d" data-iconpos="notext" data-position-to="window" data-overlay-theme="a" data-transition="slideup">Show map</a> 
   <div data-role="popup" id="popupBasic-1" style="width: 300px; height: 300px;">
     <div id="map-canvas" style="height: 100%"></div>
   </div>
+</div>
+<div class="field" style="display: none;">
+  <%= f.label :latitude, style: "display: inline !important; float: left !important; line-height: 28px; margin-right: 10px;" %>
   <%= f.text_field :latitude %>
 </div>
-<div class="field">
+<div class="field" style="display: none;">
   <%= f.label :longitude %>
   <%= f.text_field :longitude %>
 </div>
