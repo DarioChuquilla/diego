@@ -71,7 +71,8 @@
         var centerlat = map.getCenter().lat();
         var centerlng = map.getCenter().lng();
         var center_point = new google.maps.LatLng(centerlat, centerlng);
-        var radious_point = new google.maps.LatLng(map.getBounds().Ca.k, map.getBounds().pa.j)
+        console.log(map.getBounds());
+        var radious_point = new google.maps.LatLng(map.getBounds().Ca.k, map.getBounds().ra.j)
         var zoom=map.getZoom();
         var distance = google.maps.geometry.spherical.computeDistanceBetween(center_point, radious_point);
 

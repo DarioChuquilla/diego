@@ -1,0 +1,16 @@
+<h1>Listing comments</h1>
+<ul data-role="listview">
+  <% @comments.each do |comment| %>
+    <li>
+      <a href="<%= hotel_comment comment %>">
+        <%= comment.user.username %>
+        <%= simple_format comment %>
+      </a>
+    </li>
+  <% end %>
+</ul>
+
+<br />
+<div data-role="controlgroup" data-mini="true" data-type="horizontal">
+<%= link_to 'New Comment', new_hotel_comment_path, data: {role: "button"} %>
+</div>

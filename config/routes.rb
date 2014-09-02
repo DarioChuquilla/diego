@@ -49,6 +49,7 @@ Diego::Application.routes.draw do
       member do
         get :room, path: "room/:room_id"
       end
+      resources :comments, only: [:index, :show, :new, :create]#, path: "room/:room_id/comments"
     end
 
     get "get_hotels_nearby", to: "hotel#get_hotels_nearby", path: "/get_hotels_nearby", as: "get_hotels_nearby"

@@ -11,7 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140828042006) do
+ActiveRecord::Schema.define(:version => 20140902051855) do
+
+  create_table "comments", :force => true do |t|
+    t.datetime "date"
+    t.integer  "rank"
+    t.text     "description"
+    t.integer  "user_id"
+    t.integer  "hotel_id"
+    t.boolean  "active",      :default => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
+  end
 
   create_table "hotel_photos", :force => true do |t|
     t.integer  "hotel_id"

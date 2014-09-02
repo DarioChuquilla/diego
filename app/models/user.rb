@@ -8,6 +8,7 @@
   attr_accessible :first_name, :last_name, :username, :email, :password, :password_confirmation, :remember_me
   # attr_accessible :title, :body
   has_many :hotels
+  has_many :comments
   before_create :generate_remember_token
 
   def admin?

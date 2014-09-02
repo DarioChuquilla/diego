@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  date: 2014-09-02 00:18:55
+  rank: 1
+  description: MyText
+  user_id: 1
+  hotel_id: 1
+  status: false
+
+two:
+  date: 2014-09-02 00:18:55
+  rank: 1
+  description: MyText
+  user_id: 1
+  hotel_id: 1
+  status: false
