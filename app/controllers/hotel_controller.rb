@@ -1,12 +1,25 @@
 class HotelController < ApplicationController
-  def show
-    @hotel = Hotel.find params[:id]
-  end
-
   def nearest
     @type_name = params[:type_name].present? ? params[:type_name] : 'Motel'
-    logger.debug{"============ TYPE_NAME #{@type_name.inspect}"}
-    @hotels = Hotel.active.where('hotels.type_name = ?', @type_name)
+    p "=========================="
+    p @type_name
+    @latitude = request.location.latitude == 0 ? -0.2166667 : request.location.latitude
+    @longitude = request.location.longitude  == 0 ? -78.5 : request.location.longitude
+    if params[:city].present?
+      city = params[:city]
+    else
+      city = request.location.city.blank? ? "Quito" : request.location.city
+    end
+    @hotels = Array.new
+    @hotel_dots = Hotel.active.where('hotels.type_name = ?', @type_name)
+    _hotels = Hotel.active.where('hotels.type_name = ?', @type_name)
+    _hotels.each do |hotel|
+      @hotels << hotel if hotel.city == city
+    end
+  end
+
+  def show
+    @hotel = Hotel.find params[:id]
   end
 
   def room
@@ -26,6 +39,14 @@ class HotelController < ApplicationController
   def reservations
     @hotel = Hotel.find params[:id]
     @room = Room.find params[:room_id]
+  end
+
+  def get_hotels_by_city
+    point = Hotel.city_point params[:city], params[:type]
+    respond_to do |format|
+      format.js { render text: point.to_s }
+      format.json { render json: point }
+    end
   end
 
   def get_hotels_nearby

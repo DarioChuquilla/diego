@@ -38,6 +38,8 @@ en:
       sign_in: "Sign in"
   hotels:
     nearest: "Nearest"
+    filters: "Filtes"
+    sort_by_ranking: "Sort by ranking"
     you_are_here: "You are here"
     comments: "Comments"
     city: "City"

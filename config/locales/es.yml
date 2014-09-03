@@ -35,6 +35,8 @@ es:
       sign_in: "Iniciar sesión"
   hotels:
     nearest: "Cercanía"
+    filters: "Filtes"
+    sort_by_ranking: "Ordenar por raking"
     you_are_here: "Ud. está aquí"
     comments: "Comentarios"
     city: "Ciudad"
