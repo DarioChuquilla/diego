@@ -21,8 +21,10 @@ table {
 
 .square-box{
     position: relative;
-    width: 100%;
+    max-width: 500px;
+    max-height: 500px;
     overflow: hidden;
+    margin: 0 auto;
 }
 .square-box:before{
     content: "";
@@ -35,16 +37,7 @@ table {
     left: 0;
     bottom: 0;
     right: 0;
+    max-width: 500px;
+    max-height: 500px;
     // border-radius: 50% !important;
 }
-// .square-content div {
-//    display: table;
-//    width: 100%;
-//    height: 100%;
-// }
-// .square-content span {
-//     display: table-cell;
-//     text-align: center;
-//     vertical-align: middle;
-//     color: white
-// }

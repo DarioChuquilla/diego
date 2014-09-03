@@ -66,7 +66,7 @@
         });
       <% end %>
       <% end %>
-
+      var _counter = 0;
       google.maps.event.addListener(map, 'idle', function() {
         var centerlat = map.getCenter().lat();
         var centerlng = map.getCenter().lng();
@@ -74,18 +74,21 @@
         var _bounds = map.getBounds();
         var radious_point = new google.maps.LatLng(_bounds.getNorthEast().lat(), _bounds.getNorthEast().lng());
         var distance = google.maps.geometry.spherical.computeDistanceBetween(center_point, radious_point);
-
-        $.ajax({ 
-          url:"/<%= params[:locale] %>/get_hotels_nearby/",
-          data:{
-            lat:  String(centerlat),
-            lng:  String(centerlng),
-            distance: distance
-          },
-          dataType: "script",
-          success:function(result){
-          }
-        });
+        if (_counter > 0) {
+          $.ajax({ 
+            url:"/<%= params[:locale] %>/get_hotels_nearby/",
+            data:{
+              lat:  String(centerlat),
+              lng:  String(centerlng),
+              distance: distance,
+              type_name: "<%= @type_name %>",
+            },
+            dataType: "script",
+            success:function(result){
+            }
+          });
+        };
+        _counter++;
       });
 
     }
@@ -97,5 +100,13 @@
   <div id="map-canvas" class='square-content'></div> 
 </div>
 <ul id="hotels_list" data-role="listview" data-filter="true" data-filter-placeholder="Buscar..." data-inset="true">
-  
+  <% @hotels.each do |hotel| %>
+  <li >
+    <a href="<%= hotel_path hotel  %>">
+      <%= image_tag(hotel.hotel_photos.first.photo.thumb.url) if hotel.hotel_photos.present? %>
+      <h2><%= hotel.name %></h2>
+      <p><%= hotel.description.truncate(100, separator: ' ') %></p>
+    </a>
+  </li>
+  <% end %>
 </ul>

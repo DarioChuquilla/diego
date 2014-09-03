@@ -1,8 +1,8 @@
 <div data-role="navbar">
   <ul>
-    <li><a href="<%= nearest_hotel_index_path %>" class="<%= are_you_here?('hotel', 'nearest') ? 'ui-btn-active ui-state-persist' : '' %>"><%= t "hotels.nearest" %></a></li>
-    <li><a href="#" class="<%= are_you_here?('hotel', 'comments') ? 'ui-btn-active ui-state-persist' : '' %>"><%= t "hotels.motels" %></a></li>
-    <li><a href="#" class="<%= are_you_here?('hotel', 'cities') ? 'ui-btn-active ui-state-persist' : '' %>"><%= t "hotels.hostals" %></a></li>
-    <li><a href="#" class="<%= are_you_here?('hotel', 'price') ? 'ui-btn-active ui-state-persist' : '' %>"><%= t "hotels.buildings" %></a></li>
+    <li><a href="<%= nearest_hotel_index_path type_name: "Motel" %>" class="<%= @type_name == 'Motel' ? 'ui-btn-active ui-state-persist' : '' %>"><%= t "hotels.motels" %></a></li>
+    <li><a href="<%= nearest_hotel_index_path type_name: "Hotel" %>" class="<%= @type_name == 'Hotel' ? 'ui-btn-active ui-state-persist' : '' %>"><%= t "hotels.hotels" %></a></li>
+    <li><a href="<%= nearest_hotel_index_path type_name: "Hotel Transitorio" %>" class="<%= @type_name == 'Hotel Transitorio' ? 'ui-btn-active ui-state-persist' : '' %>"><%= t "hotels.hostals" %></a></li>
+    <li><a href="<%= nearest_hotel_index_path type_name: "Edificio" %>" class="<%= @type_name == 'Edificio' ? 'ui-btn-active ui-state-persist' : '' %>"><%= t "hotels.buildings" %></a></li>
   </ul>
 </div><!-- /navbar -->

@@ -2,9 +2,6 @@ class Hotel < ActiveRecord::Base
   attr_accessible :description, :latitude, :longitude, :name, :telephone, :email, :type_name
   validates_presence_of :name, :description, :type_name
 
-
-
-
   belongs_to :user
   has_many :promotions
   has_many :rooms
