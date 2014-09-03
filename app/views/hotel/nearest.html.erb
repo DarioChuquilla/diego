@@ -38,32 +38,32 @@
       //Funcion para recorrer hoteles y poner marcadores
       <% @hotels.each do |hotel| %>
       <% if hotel.latitude.present? && hotel.longitude.present? %>
-      var newLatLng = new google.maps.LatLng(<%= hotel.latitude %> ,<%= hotel.longitude %>); 
-      var marker_<%= hotel.id %> = new google.maps.Marker({
-        position: newLatLng,
-        map: map,
-        title: "<%= hotel.name %>",
-        icon: "/assets/images/icons-png/pin2.png",
-      });
-      //Ventana de informacion
-      var contentString = "<div id=\"content\">"+
-      "<div id=\"siteNotice\">"+
-      "</div>"+
-      "<h2 id=\"firstHeading\" class=\"firstHeading\"><%= hotel.name %></h2>"+
-      "<div id=\"bodyContent\">"+
-      "<%= hotel.description.truncate(60, separator: ' ') %> <br/>"+
-      "<a href='<%= hotel_path hotel %>'>Go to motel</a>"
-      "</div>"+
-      "</div>";
-      var openInfoWindowHtml_<%= hotel.id %> = new google.maps.InfoWindow({
-        content: contentString,
-      });
-      //Evento click en marcador
-      google.maps.event.addListener(marker_<%= hotel.id %>, 'click', function() {
-        //map.setZoom(10);
-        openInfoWindowHtml_<%= hotel.id %>.open(map,marker_<%= hotel.id %>);
-        map.setCenter(marker_<%= hotel.id %>.getPosition());
-      });
+        var newLatLng = new google.maps.LatLng(<%= hotel.latitude %> ,<%= hotel.longitude %>); 
+        var marker_<%= hotel.id %> = new google.maps.Marker({
+          position: newLatLng,
+          map: map,
+          title: "<%= hotel.name %>",
+          icon: "/assets/images/icons-png/pin2.png",
+        });
+        //Ventana de informacion
+        var contentString = "<div id=\"content\">"+
+        "<div id=\"siteNotice\">"+
+        "</div>"+
+        "<h2 id=\"firstHeading\" class=\"firstHeading\"><%= hotel.name %></h2>"+
+        "<div id=\"bodyContent\">"+
+        "<%= hotel.description.truncate(60, separator: ' ') %> <br/>"+
+        "<a href='<%= hotel_path hotel %>'>Go to motel</a>"
+        "</div>"+
+        "</div>";
+        var openInfoWindowHtml_<%= hotel.id %> = new google.maps.InfoWindow({
+          content: contentString,
+        });
+        //Evento click en marcador
+        google.maps.event.addListener(marker_<%= hotel.id %>, 'click', function() {
+          //map.setZoom(10);
+          openInfoWindowHtml_<%= hotel.id %>.open(map,marker_<%= hotel.id %>);
+          map.setCenter(marker_<%= hotel.id %>.getPosition());
+        });
       <% end %>
       <% end %>
 
@@ -71,24 +71,10 @@
         var centerlat = map.getCenter().lat();
         var centerlng = map.getCenter().lng();
         var center_point = new google.maps.LatLng(centerlat, centerlng);
-        console.log(map.getBounds());
-        var radious_point = new google.maps.LatLng(map.getBounds().Ca.k, map.getBounds().ra.j)
-        var zoom=map.getZoom();
+        var _bounds = map.getBounds();
+        var radious_point = new google.maps.LatLng(_bounds.getNorthEast().lat(), _bounds.getNorthEast().lng());
         var distance = google.maps.geometry.spherical.computeDistanceBetween(center_point, radious_point);
 
-        // var user_marker = new google.maps.Marker({
-        //   position: center_point,
-        //   map: map,
-        //   animation: google.maps.Animation.DROP,
-        //   title: ""
-        // });
-        // var user_marker = new google.maps.Marker({
-        //   position: radious_point,
-        //   map: map,
-        //   animation: google.maps.Animation.DROP,
-        //   title: ""
-        // });
-        
         $.ajax({ 
           url:"/<%= params[:locale] %>/get_hotels_nearby/",
           data:{
@@ -100,7 +86,6 @@
           success:function(result){
           }
         });
-        // (/:locale)/hotel/get_hotels_nearby/:lng/:level(.:format) 
       });
 
     }
