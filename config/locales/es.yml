@@ -41,6 +41,9 @@ es:
     price: "Precio"
     reserve: "Reservar"
     room: "Habitación"
+    motels: "Moteles"
+    hostals: "Hostales"
+    buildings: "Edificios"
   admin:
     hotels:
       index:

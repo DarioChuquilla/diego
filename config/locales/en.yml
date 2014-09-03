@@ -44,6 +44,9 @@ en:
     price: "Price"
     reserve: "Reserve"
     room: "Room"
+    motels: "Motels"
+    hostals: "Hostal"
+    buildings: "Building"
   admin:
     hotels:
       index:
