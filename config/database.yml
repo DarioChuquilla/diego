@@ -14,11 +14,11 @@
 #
 development:
   adapter: postgresql
-  encoding: unicode
+  encoding: utf8
   database: diego_development
   pool: 5
   username: postgres
-  password: 'sa'
+  password: '110985.'
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
@@ -40,7 +40,7 @@ development:
 # Do not set this db to the same as development or production.
 preview:
   adapter: postgresql
-  encoding: unicode
+  encoding: utf8
   database: diego_preview
   pool: 5
   username: postgres
@@ -48,7 +48,7 @@ preview:
 
 production:
   adapter: postgresql
-  encoding: unicode
+  encoding: utf8
   database: diego_production
   pool: 5
   username: postgres

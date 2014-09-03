@@ -8,7 +8,7 @@ class Ability
       can :access, :devise
     elsif user.hotel?
       can :manage, Hotel, :user => user
-      can :manage, HotelPhoto, :hotel => {:user => user}
+      can :manage, HotelPhoto, :hotel => {:user_id => user.id}
       can :manage, Promotion, :hotel => {:user => user}
       can :manage, Room, :hotel => {:user => user}
       can :manage, RoomPhoto, :hotel => {:user => user}

@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(:version => 20140903043526) do
     t.string   "address"
     t.string   "location"
     t.boolean  "active",      :default => false
-    t.string   "type"
+    t.string   "type_name"
   end
 
   create_table "promotions", :force => true do |t|
@@ -70,6 +70,13 @@ ActiveRecord::Schema.define(:version => 20140903043526) do
     t.datetime "updated_at",  :null => false
     t.integer  "hotel_id"
     t.string   "photo"
+  end
+
+  create_table "specialties", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "users", :force => true do |t|

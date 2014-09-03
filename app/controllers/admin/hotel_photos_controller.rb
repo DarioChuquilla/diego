@@ -1,5 +1,6 @@
 class Admin::HotelPhotosController < Admin::BaseController
   load_and_authorize_resource
+  skip_authorize_resource :only => [:new, :create]
   before_filter :authorizations, :only => [:show, :edit, :update, :destroy]
   # GET /hotel_photos
   # GET /hotel_photos.json

@@ -50,4 +50,18 @@ namespace :diego do
     end
   end
 
+  desc "Creates a group of specialties"
+  task :add_specialties => :environment do
+    sp1  = Specialty.find_or_create_by_name('Jacuzzi')
+    sp2  = Specialty.find_or_create_by_name('Espejos')
+    sp3  = Specialty.find_or_create_by_name('Luz ambiental')
+    sp4  = Specialty.find_or_create_by_name('Decoracion con velas')
+    sp5  = Specialty.find_or_create_by_name('Decoracion con petalos de rosas')
+    sp6  = Specialty.find_or_create_by_name('Fondue')
+    sp7  = Specialty.find_or_create_by_name('Globos')
+    sp8  = Specialty.find_or_create_by_name('Minibar')
+    sp9  = Specialty.find_or_create_by_name('Cama duplex')
+    sp10 = Specialty.find_or_create_by_name('Telefono')
+  end
+
 end
