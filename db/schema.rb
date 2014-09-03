@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140902051855) do
+ActiveRecord::Schema.define(:version => 20140903043526) do
 
   create_table "comments", :force => true do |t|
     t.datetime "date"
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(:version => 20140902051855) do
     t.string   "address"
     t.string   "location"
     t.boolean  "active",      :default => false
+    t.string   "type"
   end
 
   create_table "promotions", :force => true do |t|

@@ -81,6 +81,11 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDXGufBORq45JOUYe3Kc_bG87r
   <%= f.text_field :email %>
 </div>
 
+<div class="field">
+  <%= f.label :type_name %>
+  <%= f.select :type_name, ["Hotel", "Holel Transitorio", "Motel", "Edificio"], {include_blank: true} %>
+</div>
+
 
 
 <div class="actions">

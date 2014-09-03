@@ -17,6 +17,7 @@ es:
         longitude: "Longitud"
         telephone: "Teléfono"
         email: "Correo electrónico"
+        type_name: "Tipo"
   home:
     sign_up_motel: "Registrar motel"
     sign_up_user: "Registrar usuario"
@@ -83,6 +84,7 @@ es:
       are_you_sure: "¿Está seguro?"
       cancel: "Cancelar"
       change_password: "Cambiar contraseña"
+      type_name: "Tipo"
   helpers:
     submit:
       user:

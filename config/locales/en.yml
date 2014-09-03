@@ -20,6 +20,7 @@ en:
         longitude: "Longitude"
         telephone: "Telephone"
         email: "Email"
+        type_name: "Type"
   home:
     sign_up_motel: "Sign up motel"
     sign_up_user: "Sign up user"
@@ -86,6 +87,7 @@ en:
       are_you_sure: "Are you sure?"
       cancel: "Cancel"
       change_password: "Change password"
+      type_name: "Type"
   helpers:
     submit:
       user:

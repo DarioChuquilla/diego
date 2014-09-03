@@ -5,10 +5,9 @@
     <th><%= t "admin.labels.actions" %></th>
     <th><%= t "admin.labels.name" %></th>
     <th><%= t "admin.labels.description" %></th>
-    <th><%= t "admin.labels.latitude" %></th>
-    <th><%= t "admin.labels.longitude" %></th>
     <th><%= t "admin.labels.telephone" %></th>
     <th><%= t "admin.labels.email" %></th>
+    <th><%= t "admin.labels.type_name" %></th>
   </tr>
 
   <% @hotels.each do |hotel| %>
@@ -31,10 +30,9 @@
     </td>
     <td id="hotel-<%= hotel.id %>"><%= link_to hotel.name, admin_hotel_path(hotel) %></td>
     <td><%= hotel.description.truncate(50, separator: ' ') %></td>
-    <td><%= hotel.latitude %></td>
-    <td><%= hotel.longitude %></td>
     <td><%= hotel.telephone %></td>
     <td><%= hotel.email %></td>
+    <td><%= hotel.type_name %></td>
   </tr>
   <% end %>
 </table>
@@ -45,3 +43,4 @@
 <%= link_to t("admin.hotels.index.new_hotel"), new_admin_hotel_path, data: {role: "button"} %>
 </div>
 <% end %>
+
