@@ -47,6 +47,8 @@ class Hotel < ActiveRecord::Base
       hotels_list << hotel if hotel.city == city
     end
     Geocoder::Calculations.geographic_center(hotels_list)
+  end
+  
   private
 
   def remove_related

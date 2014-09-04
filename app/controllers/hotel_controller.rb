@@ -44,7 +44,7 @@ class HotelController < ApplicationController
   def get_hotels_by_city
     point = Hotel.city_point params[:city], params[:type]
     respond_to do |format|
-      format.js { render text: point.to_s }
+      format.js { render json: point }
       format.json { render json: point }
     end
   end
