@@ -93,20 +93,44 @@
       });
     }
     $(function() {
-      $('#cities-list option').click(function(event) {
-        $.mobile.loading( 'show' );
-        var _url = "/<%= params[:locale] %>/get_hotels_by_city/" + $(this).val();
-        $.ajax({ 
-          url: _url,
-          data:{
-            type_name: "<%= @type_name %>",
-          },
-          dataType: "json",
-          success:function(result){
-            $.mobile.loading( 'hide' );
-            map.setCenter(new google.maps.LatLng(result[0], result[1]));
-          }
-        });
+      var aLat = "";
+      var aLng = "";
+      $('#cities-list').click(function(event) {
+        if (aLat == "" && aLng == "" && $(this).val() != "") {
+          $.mobile.loading( 'show' );
+          var _url = "/<%= params[:locale] %>/get_hotels_by_city/" + $(this).val();
+          $.ajax({ 
+            url: _url,
+            data:{
+              type_name: "<%= @type_name %>",
+            },
+            dataType: "json",
+            success:function(result){
+              $.mobile.loading( 'hide' );
+              map.setCenter(new google.maps.LatLng(result[0], result[1]));
+              aLat = result[0];
+              aLng = result[1];
+            }
+          });
+        }else if ((aLat && aLng) && map.getCenter() != new google.maps.LatLng(aLat, aLng) && $(this).val() != "") {
+          console.log(map.getCenter());
+          console.log(new google.maps.LatLng(aLat, aLng));
+          $.mobile.loading( 'show' );
+          var _url = "/<%= params[:locale] %>/get_hotels_by_city/" + $(this).val();
+          $.ajax({ 
+            url: _url,
+            data:{
+              type_name: "<%= @type_name %>",
+            },
+            dataType: "json",
+            success:function(result){
+              $.mobile.loading( 'hide' );
+              map.setCenter(new google.maps.LatLng(result[0], result[1]));
+              aLat = result[0];
+              aLng = result[1];
+            }
+          });
+        }
       });
     });
     $( document ).bind( 'mobileinit', function(){
@@ -127,7 +151,7 @@
 </div>
 <div id="nearest-controlls">
   <h4><%= t "hotels.filters" %></h4>
-  <%= select_tag "cities-list", options_for_select(Hotel.cities), {include_blank: true, placeholder: ":: City ::"} %>
+  <%= select_tag "cities-list", options_for_select(Hotel.cities(@type_name)), {include_blank: true, placeholder: ":: City ::"} %>
   <%= link_to t("hotels.sort_by_ranking"), '#', data: {role: "button"} %>
 </div>
 

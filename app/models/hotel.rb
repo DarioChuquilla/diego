@@ -26,9 +26,9 @@ class Hotel < ActiveRecord::Base
     end
   end
 
-  def self.cities
+  def self.cities(type_name)
     cities = Array.new
-    hotels = Hotel.active
+    hotels = Hotel.active.where('hotels.type_name = ?', type_name)
     hotels.each do |hotel|
       query = hotel.latitude.to_s + "," + hotel.longitude.to_s
       result = Geocoder.search(query).first 
