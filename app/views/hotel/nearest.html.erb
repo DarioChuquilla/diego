@@ -93,7 +93,8 @@
       });
     }
     $(function() {
-      $('#cities-list').click(function(event) {
+      $('#cities-list option').click(function(event) {
+        $.mobile.loading( 'show' );
         var _url = "/<%= params[:locale] %>/get_hotels_by_city/" + $(this).val();
         $.ajax({ 
           url: _url,
@@ -102,10 +103,17 @@
           },
           dataType: "json",
           success:function(result){
+            $.mobile.loading( 'hide' );
             map.setCenter(new google.maps.LatLng(result[0], result[1]));
           }
         });
       });
+    });
+    $( document ).bind( 'mobileinit', function(){
+      $.mobile.loader.prototype.options.text = "loading";
+      $.mobile.loader.prototype.options.textVisible = false;
+      $.mobile.loader.prototype.options.theme = "a";
+      $.mobile.loader.prototype.options.html = "";
     });
     
   });

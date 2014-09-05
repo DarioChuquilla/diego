@@ -48,8 +48,8 @@ en:
     room: "Room"
     hotels: "Hotels"
     motels: "Motels"
-    hostals: "Hostal"
-    buildings: "Building"
+    hostals: "Hostels"
+    buildings: "Buildings"
   admin:
     hotels:
       index:

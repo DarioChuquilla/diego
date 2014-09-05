@@ -11,13 +11,11 @@
 </div>
 
 <div data-role="footer">
-  <div class="ui-grid-b">
-    <div class="ui-block-a"><a href="<%= nearest_hotel_index_path %>" data-role="button"><%= image_tag "location.png", alt: "Locations" %></a></div>
-    <div class="ui-block-b"><a href="#" data-role="button"><%= image_tag "bubble.png", alt: "Comments" %></a></div>
-    <div class="ui-block-c"><a href="#" data-role="button"><%= image_tag "city.png", alt: "Cities" %></a></div>
-    <div class="ui-block-a"><a href="#" data-role="button"><%= image_tag "banknote.png", alt: "Prices" %></a></div>
-    <div class="ui-block-b"><a href="#" data-role="button"><%= image_tag "tag.png", alt: "Tags" %></a></div>
-    <div class="ui-block-c"><a href="#" data-role="button"><%= image_tag "information.png", alt: "Information" %></a></div>
+  <div class="ui-grid-a">
+    <div class="ui-block-a"><a href="<%= nearest_hotel_index_path(type_name: "Motel") %>" data-role="button" class="hd-link"><%= t "hotels.motels" %></a></div>
+    <div class="ui-block-b"><a href="<%= nearest_hotel_index_path(type_name: "Hotel") %>" data-role="button" class="hd-link"><%= t "hotels.hotels" %></a></div>
+    <div class="ui-block-a"><a href="<%= nearest_hotel_index_path(type_name: "Hotel Transitorio") %>" data-role="button" class="hd-link"><%= t "hotels.hostals" %></a></div>
+    <div class="ui-block-b"><a href="<%= nearest_hotel_index_path(type_name: "Edificio") %>" data-role="button" class="hd-link"><%= t "hotels.buildings" %></a></div>
   </div>
 </div>
 

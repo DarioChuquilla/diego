@@ -7,10 +7,10 @@ class Admin::HotelsController < Admin::BaseController
   def index
     @admin = false
     if current_user.role == 'admin'
-      @hotels = Hotel.all
+      @hotels = Hotel.order(:name)
       @admin = true
     else
-      @hotels = Hotel.find_all_by_user_id current_user.id
+      @hotels = Hotel.order(:name).find_all_by_user_id current_user.id
       @admin = false
     end
     # authorize! :read, @hotels
