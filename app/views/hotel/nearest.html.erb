@@ -93,7 +93,7 @@
       });
     }
     $(function() {
-      $('#cities-list').change(function(event) {
+      $('#cities-list').click(function(event) {
         var _url = "/<%= params[:locale] %>/get_hotels_by_city/" + $(this).val();
         $.ajax({ 
           url: _url,
@@ -107,8 +107,11 @@
         });
       });
     });
+    
   });
 </script>
+  
+
 <% end %>
 <%= render :partial => "navbar" %>
 <div class="square-box">
@@ -119,6 +122,7 @@
   <%= select_tag "cities-list", options_for_select(Hotel.cities), {include_blank: true, placeholder: ":: City ::"} %>
   <%= link_to t("hotels.sort_by_ranking"), '#', data: {role: "button"} %>
 </div>
+
 <ul id="hotels_list" data-role="listview">
   <% @hotels.each do |hotel| %>
   <li>
