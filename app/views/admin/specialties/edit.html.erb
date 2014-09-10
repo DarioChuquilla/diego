@@ -1,0 +1,8 @@
+<h1>Editing specialty</h1>
+
+<%= render 'form' %>
+
+<div data-role="controlgroup" data-mini="true" data-type="horizontal">
+<%= link_to t("admin.labels.show"), admin_specialty_path(@specialty), data: {role: "button"} %>
+<%= link_to t("admin.labels.cancel"), admin_specialties_path, data: {role: "button"} %>
+</div>

@@ -3,6 +3,7 @@ es:
     models:
       user: Usuario
       hotel: Motel
+      specialty: Especialidad
     attributes:
       user:
         username: "Usuario"
@@ -18,6 +19,9 @@ es:
         telephone: "Teléfono"
         email: "Correo electrónico"
         type_name: "Tipo"
+      specialty:
+        name: "Nombre"
+        description: "Descripción"
   home:
     sign_up_motel: "Registrar motel"
     sign_up_user: "Registrar usuario"
@@ -35,7 +39,7 @@ es:
       sign_in: "Iniciar sesión"
   hotels:
     nearest: "Cercanía"
-    filters: "Filtes"
+    filters: "Filtros"
     sort_by_ranking: "Ordenar por raking"
     you_are_here: "Ud. está aquí"
     comments: "Comentarios"
@@ -48,6 +52,10 @@ es:
     hostals: "Hostales"
     buildings: "Edificios"
   admin:
+    specialties:
+      index:
+        title: "Lista de especialidades"
+        new_specialty: "Nueva especialidad"
     hotels:
       index:
         title: "Mi lista de moteles"
@@ -99,6 +107,9 @@ es:
       hotel:
         create: "Crear motel"
         update: "Actualizar motel"
+      specialty:
+        create: "Crear especialidad"
+        update: "Actualizar especialidad"
   errors:
     template:
       header:

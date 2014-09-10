@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b><%= t "admin.labels.name" %></b>
+  <%=@specialty.name %>
+</p>
+
+<p>
+  <b><%= t "admin.labels.description" %></b>
+  <%=@specialty.description %>
+</p>
+
+<div data-role="controlgroup" data-mini="true" data-type="horizontal">
+<%= link_to t("admin.labels.edit"), edit_admin_specialty_path(@specialty), data: {role: "button"} %>
+<%= link_to t("admin.labels.cancel"), admin_specialties_path, data: {role: "button"} %>
+</div>

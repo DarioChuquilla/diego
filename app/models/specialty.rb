@@ -1,3 +1,5 @@
 class Specialty < ActiveRecord::Base
-  attr_accessible :description, :name
+  attr_accessible :name, :description
+  validates_presence_of :name
+
 end

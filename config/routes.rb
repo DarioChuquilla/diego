@@ -37,6 +37,7 @@ Diego::Application.routes.draw do
           get :done
         end
       end
+      resources :specialties
     end
     
     resources :hotel, only:[:show] do

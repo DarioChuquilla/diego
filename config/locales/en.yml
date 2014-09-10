@@ -6,6 +6,7 @@ en:
     models:
       user: User
       hotel: Motel
+      specialty: Specialty
     attributes:
       user:
         username: "Username"
@@ -21,6 +22,9 @@ en:
         telephone: "Telephone"
         email: "Email"
         type_name: "Type"
+      specialty:
+        name: "Name"
+        description: "Description"
   home:
     sign_up_motel: "Sign up motel"
     sign_up_user: "Sign up user"
@@ -38,7 +42,7 @@ en:
       sign_in: "Sign in"
   hotels:
     nearest: "Nearest"
-    filters: "Filtes"
+    filters: "Filters"
     sort_by_ranking: "Sort by ranking"
     you_are_here: "You are here"
     comments: "Comments"
@@ -51,6 +55,10 @@ en:
     hostals: "Hostels"
     buildings: "Buildings"
   admin:
+    specialties:
+      index:
+        title: "Specialties list"
+        new_specialty: "New specialty"
     hotels:
       index:
         title: "My motels list"
@@ -102,6 +110,9 @@ en:
       hotel:
         create: "Create motel"
         update: "Update motel"
+      specialty:
+        create: "Create specialty"
+        update: "Update specialty"
   errors:
     template:
       header:
