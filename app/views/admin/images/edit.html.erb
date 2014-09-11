@@ -1,0 +1,8 @@
+<h1>Editing image</h1>
+
+<%= render 'form' %>
+
+<div data-role="controlgroup" data-mini="true" data-type="horizontal">
+  <%= link_to t("admin.labels.show"), admin_image_path(@image), data: {role: "button"} %>
+  <%= link_to t("admin.labels.cancel"), admin_images_path, data: {role: "button"} %>
+</div>

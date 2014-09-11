@@ -1,0 +1,32 @@
+<h1><%= t "admin.images.index.title" %></h1>
+
+<table>
+  <tr>
+    <th><%= t "admin.labels.actions" %></th>
+    <th><%= t "admin.labels.file" %></th>
+    <th><%= t "admin.labels.caption" %></th>
+  </tr>
+
+  <% @images.each do |image| %>
+  <tr>
+    <td>
+      <a href="#popupBasic-<%= image.id %>" data-rel="popup" data-role="button" data-icon="arrow-d" data-iconpos="notext" data-position-to="#image-<%= image.id %>" data-overlay-theme="a" data-transition="slideup">Actions</a> 
+      <div data-role="popup" id="popupBasic-<%= image.id %>">
+        <ul data-role="listview">
+          <li><%= link_to t("admin.labels.show"), admin_image_path(image) %> </li>
+          <li><%= link_to t("admin.labels.edit"), edit_admin_image_path(image) %> </li>
+          <li><%= link_to t("admin.labels.destroy"), admin_image_path(image), method: :delete, data: { confirm: t("admin.labels.are_you_sure") } %> </li>
+        </ul>
+      </div>
+    </td>
+    <td><%= image_tag(image.file.thumb.url) %></td>
+    <td><%= image.caption %></td>
+  </tr>
+  <% end %>
+</table>
+
+<br />
+
+<div data-role="controlgroup" data-mini="true" data-type="horizontal">
+  <%= link_to t("admin.images.index.new_image"), new_admin_image_path, data: {role: "button"} %>
+</div>

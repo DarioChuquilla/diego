@@ -2,7 +2,7 @@
 
 <table>
   <tr>
-    <th></th>
+    <th><%= t "admin.labels.actions" %></th>
     <th><%= t "admin.labels.name" %></th>
     <th><%= t "admin.labels.description" %></th>
     <th><%= t "admin.labels.amount" %></th>
@@ -31,5 +31,5 @@
 
 <br />
 <div data-role="controlgroup" data-mini="true" data-type="horizontal">
-  <%= link_to 'New Room', new_admin_hotel_room_path, data: {role: "button"} %>
+  <%= link_to t("admin.rooms.index.new_room"), new_admin_hotel_room_path, data: {role: "button"} %>
 </div>

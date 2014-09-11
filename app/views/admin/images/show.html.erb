@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b><%= t "admin.labels.caption" %>:</b>
+  <%= @image.caption %>
+</p>
+
+<p>
+  <b><%= t "admin.labels.file" %>:</b>
+  <%= image_tag(@image.file.url) %>
+</p>
+
+
+<div data-role="controlgroup" data-mini="true" data-type="horizontal">
+  <%= link_to t("admin.labels.edit"), edit_admin_image_path(@image), data: {role: "button"} %>
+  <%= link_to t("admin.labels.cancel"), admin_images_path, data: {role: "button"} %>
+</div>

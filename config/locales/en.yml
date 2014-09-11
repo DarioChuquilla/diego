@@ -25,6 +25,9 @@ en:
       specialty:
         name: "Name"
         description: "Description"
+      image:
+        caption: "Caption"
+        file: "Image"
   home:
     sign_up_motel: "Sign up motel"
     sign_up_user: "Sign up user"
@@ -34,6 +37,7 @@ en:
       title: "Main menu"
       account: "My account"
       manage_hotels: "Manage hotels"
+      manage_images: "Manage images"
       reservations: "Reservations"
       sign_out: "Sign out"
     forms:
@@ -71,6 +75,10 @@ en:
         title: "New motel"
       edit:
         title: "Edit %{name}"
+    images:
+      index:
+        title: "Listing images"
+        new_image: "New image"
     hotel_photos:
       index:
         title: "%{name}'s photos"
@@ -84,6 +92,9 @@ en:
     rooms:
       index:
         title: "Listing rooms"
+        new_room: "New room"
+      new:
+        title: "New image"
     labels:
       actions: "Actions"
       name: "Name"
@@ -109,6 +120,8 @@ en:
       type_name: "Type"
       specialties: "Specialties"
       amount: "Amount"
+      caption: "Caption"
+      file: "File"
   helpers:
     submit:
       user:
@@ -120,6 +133,9 @@ en:
       specialty:
         create: "Create specialty"
         update: "Update specialty"
+      image:
+        create: "Create image"
+        update: "Update image"
   errors:
     template:
       header:

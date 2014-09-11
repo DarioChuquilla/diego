@@ -24,6 +24,7 @@ Diego::Application.routes.draw do
           get :change_password
         end
       end
+      resources :images
       resources :hotels do
         member  do
           get :toggle_active

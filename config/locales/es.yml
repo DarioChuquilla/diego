@@ -22,6 +22,9 @@ es:
       specialty:
         name: "Nombre"
         description: "Descripción"
+      image:
+        caption: "Rótulo"
+        file: "Imagen"
   home:
     sign_up_motel: "Registrar motel"
     sign_up_user: "Registrar usuario"
@@ -31,6 +34,7 @@ es:
       title: "Menú principal"
       account: "Mi cuenta"
       manage_hotels: "Administrar moteles"
+      manage_images: "Administrar imagenes"
       reservations: "Reservaciones"
       sign_out: "Salir"
     forms:
@@ -68,6 +72,12 @@ es:
         title: "Nuevo motel"
       edit:
         title: "Editar %{name}"
+    images:
+      index:
+        title: "Lista de imágenes"
+        new_image: "Nueva imagen"
+      new:
+        title: "Nueva imagen"
     hotel_photos:
       index:
         title: "Fotos de %{name}"
@@ -81,6 +91,7 @@ es:
     rooms:
       index:
         title: "Lista de habitaciones"
+        new_room: "Nueva habitación"
     labels:
       actions: "Acciones"
       name: "Nombre"
@@ -106,6 +117,8 @@ es:
       type_name: "Tipo"
       specialties: "Especialidades"
       amount: "Costo"
+      caption: "Rótulo"
+      file: "Imagen"
   helpers:
     submit:
       user:
@@ -117,6 +130,9 @@ es:
       specialty:
         create: "Crear especialidad"
         update: "Actualizar especialidad"
+      image:
+        create: "Crear imagen"
+        update: "Actualizar imagen"
   errors:
     template:
       header:
