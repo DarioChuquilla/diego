@@ -20,7 +20,7 @@ class Admin::SpecialtiesController < Admin::BaseController
   def show
     get_hotel
     get_room
-    @specialty = Specialty.find(params[:id])
+    @specialty = Specialty.find params[:id]
 
     respond_to do |format|
       format.html # show.html.erb
@@ -109,7 +109,7 @@ class Admin::SpecialtiesController < Admin::BaseController
 
   def authorizations
     begin
-      @specialty = Specialty.find(params[:id])
+      @specialty = Specialty.find params[:id]
       authorize! :manage, @specialty
     rescue CanCan::AccessDenied => e
       p e.message.inspect

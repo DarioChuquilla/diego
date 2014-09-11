@@ -11,6 +11,6 @@
 </p>
 
 <div data-role="controlgroup" data-mini="true" data-type="horizontal">
-<%= link_to t("admin.labels.edit"), edit_admin_hotel_specialty_path((@hotel, @specialty), data: {role: "button"} %>
-<%= link_to t("admin.labels.cancel"), admin_hotel_specialties_path(@hotel), data: {role: "button"} %>
+<%= link_to t("admin.labels.edit"), edit_admin_hotel_room_specialty_path(@hotel, @room, @specialty), data: {role: "button"} %>
+<%= link_to t("admin.labels.cancel"), admin_hotel_room_specialties_path(@hotel, @room), data: {role: "button"} %>
 </div>
