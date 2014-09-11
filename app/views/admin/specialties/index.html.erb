@@ -14,9 +14,9 @@
       <a href="#popupBasic-<%= specialty.id %>" data-rel="popup" data-role="button" data-icon="arrow-d" data-iconpos="notext" data-position-to="#specialty-<%= specialty.id %>" data-overlay-theme="a" data-transition="slideup">Actions</a> 
       <div data-role="popup" id="popupBasic-<%= specialty.id %>">
         <ul data-role="listview">
-          <li><%= link_to t("admin.labels.show"), admin_hotel_specialty_path(@hotel, specialty) %></li>
-          <li><%= link_to t("admin.labels.edit"), edit_admin_hotel_specialty_path(@hotel, specialty) %></li>
-          <li><%= link_to t("admin.labels.destroy"), admin_hotel_specialty_path(@hotel, specialty), method: :delete, data: { confirm: t("admin.labels.are_you_sure") } %></li>
+          <li><%= link_to t("admin.labels.show"), admin_hotel_room_specialty_path(@hotel, @room, specialty) %></li>
+          <li><%= link_to t("admin.labels.edit"), edit_admin_hotel_room_specialty_path(@hotel, @room, specialty) %></li>
+          <li><%= link_to t("admin.labels.destroy"), admin_hotel_room_specialty_path(@hotel, @room, specialty), method: :delete, data: { confirm: t("admin.labels.are_you_sure") } %></li>
         </ul>
       </div>
     </td>
@@ -30,5 +30,5 @@
 <br />
 
 <div data-role="controlgroup" data-mini="true" data-type="horizontal">
-  <%= link_to t("admin.specialties.index.new_specialty"), new_admin_hotel_specialty_path(@hotel), data: {role: "button"} %>
+  <%= link_to t("admin.specialties.index.new_specialty"), new_admin_hotel_room_specialty_path(@hotel, @room), data: {role: "button"} %>
 </div>

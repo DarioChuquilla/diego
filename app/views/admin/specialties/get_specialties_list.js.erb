@@ -1,0 +1,13 @@
+<% if @specialties.present? && @specialties.count > 0 %>
+	<% @specialties.each do |specialty| %>
+		$('#suggestions').append("<li class=\"suggestion\"><%= specialty.name %></li>");
+	<% end %>
+	$('#suggestions').listview("refresh");
+	$('.suggestion').click(function(event) {
+		$("#specialty_criteria").val($(this).text());
+		$("#specialty_name").val($(this).text());
+		$('#suggestions').html("");
+	});
+<% else %>
+	$("#specialty_name").val('<%= params[:name] %>');
+<% end %>

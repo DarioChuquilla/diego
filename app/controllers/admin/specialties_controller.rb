@@ -6,7 +6,8 @@ class Admin::SpecialtiesController < Admin::BaseController
   # GET /specialties.json
   def index
     get_hotel
-    @specialties = Specialty.find_by_hotel_id(params[:hotel_id])
+    get_room
+    @specialties = Specialty.find_all_by_hotel_id_and_room_id(params[:hotel_id], params[:room_id])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -18,6 +19,7 @@ class Admin::SpecialtiesController < Admin::BaseController
   # GET /specialties/1.json
   def show
     get_hotel
+    get_room
     @specialty = Specialty.find(params[:id])
 
     respond_to do |format|
@@ -30,6 +32,7 @@ class Admin::SpecialtiesController < Admin::BaseController
   # GET /specialties/new.json
   def new
     get_hotel
+    get_room
     @specialty = Specialty.new
 
     respond_to do |format|
@@ -41,6 +44,7 @@ class Admin::SpecialtiesController < Admin::BaseController
   # GET /specialties/1/edit
   def edit
     get_hotel
+    get_room
     @specialty = Specialty.find(params[:id])
   end
 
@@ -48,11 +52,13 @@ class Admin::SpecialtiesController < Admin::BaseController
   # POST /specialties.json
   def create
     get_hotel
+    get_room
     @specialty = Specialty.new(params[:specialty])
-    @specialty = params[:hotel_id]
+    @specialty.hotel_id = params[:hotel_id]
+    @specialty.room_id = params[:room_id]
     respond_to do |format|
       if @specialty.save
-        format.html { redirect_to admin_hotel_specialties_path, notice: 'Specialty was successfully created.' }
+        format.html { redirect_to admin_hotel_room_specialties_path(@hotel, @room), notice: 'Specialty was successfully created.' }
         format.json { render json: @specialty, status: :created, location: @specialty }
       else
         format.html { render action: "new" }
@@ -65,11 +71,12 @@ class Admin::SpecialtiesController < Admin::BaseController
   # PUT /specialties/1.json
   def update
     get_hotel
+    get_room
     @specialty = Specialty.find(params[:id])
 
     respond_to do |format|
       if @specialty.update_attributes(params[:specialty])
-        format.html { redirect_to admin_hotel_specialties_path(params[:hotel_id], @specialty), notice: 'Specialty was successfully updated.' }
+        format.html { redirect_to admin_hotel_room_specialty_path(@hotel, @room, @specialty), notice: 'Specialty was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -82,17 +89,20 @@ class Admin::SpecialtiesController < Admin::BaseController
   # DELETE /specialties/1.json
   def destroy
     get_hotel
+    get_room
     @specialty = Specialty.find(params[:id])
     @specialty.destroy
 
     respond_to do |format|
-      format.html { redirect_to specialties_url }
+      format.html { redirect_to admin_hotel_room_specialties_path(@hotel, @room) }
       format.json { head :no_content }
     end
   end
 
   def get_specialties_list
-    
+    criteria = params[:name]
+    criteria = "%#{criteria}%"
+    @specialties = Specialty.select(:name).where('specialties.name ILIKE ?', criteria).order(:name).uniq
   end
 
   private

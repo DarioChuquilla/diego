@@ -1,27 +1,26 @@
 <% content_for :page_specific_javascript_late do %>
 <script type="text/javascript">
   $(document).ready(function($) {
-    $("#specialty_name").on("input", function(e) {
-     var text = $(this).val();
-     if(text.length < 1) {
-       sugList.html("");
-       sugList.listview("refresh");
-     } else {
-      $.get("service.cfc?method=getSuggestions", {search:text}, function(res,code) {
-        var str = "";
-        for(var i=0, len=res.length; i<len; i++) {
-          str += "<li>"+res[i]+"</li>";
-        }
-        sugList.html(str);
-        sugList.listview("refresh");
-        console.dir(res);
-      },"json");
-    }
-  });
+    $("#specialty_criteria").on("input", function(e) {
+      $('#suggestions').html("");
+      var text = $(this).val();
+      if(text.length < 1) {
+        $('#suggestions').html("");
+        $('#suggestions').listview("refresh");
+      } else {
+        $.ajax({ 
+          url:"<%= get_specialties_list_admin_hotel_room_specialties_path(@hotel) %>",
+          data:{
+            name:  text,
+          },
+          dataType: "script"
+        });
+      }
+    });
   });
 </script>
 <% end %>
-<%= form_for [:admin, @hotel, @specialty] do |f| %>
+<%= form_for [:admin, @hotel, @room, @specialty] do |f| %>
 <% if @specialty.errors.any? %>
 <div id="error_explanation">
   <h2><%= pluralize(@specialty.errors.count, "error") %> prohibited this specialty from being saved:</h2>
@@ -36,7 +35,8 @@
 
 <div class="field">
   <%= f.label :name %>
-  <%= text_field_tag "specialty_name", nil, {placeholder: "Search"} %>
+  <%= text_field_tag "specialty_criteria", nil, {placeholder: "Search", value: @specialty.name} %>
+  <ul id="suggestions" data-role="listview" data-inset="true"></ul>
   <%= f.hidden_field :name %>
 </div>
 <div class="field">

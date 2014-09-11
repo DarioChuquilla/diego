@@ -59,6 +59,8 @@ en:
       index:
         title: "Specialties list"
         new_specialty: "New specialty"
+      new:
+        title: "New specialty"
     hotels:
       index:
         title: "My motels list"
@@ -79,6 +81,9 @@ en:
         title: "New motel"
       edit:
         title: "Edit %{name}"
+    rooms:
+      index:
+        title: "Listing rooms"
     labels:
       actions: "Actions"
       name: "Name"
@@ -91,7 +96,7 @@ en:
       photo: "Photo"
       show: "Show"
       edit: "Edit"
-      photos: "Hotel photos"
+      photos: "Photos"
       rooms: "Rooms"
       promotions: "Promotions"
       comments: "Comments"
@@ -102,6 +107,8 @@ en:
       cancel: "Cancel"
       change_password: "Change password"
       type_name: "Type"
+      specialties: "Specialties"
+      amount: "Amount"
   helpers:
     submit:
       user:

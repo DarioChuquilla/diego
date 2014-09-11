@@ -1,7 +1,7 @@
-<h1>New specialty</h1>
+<h1><%= t "admin.specialties.new.title" %></h1>
 
 <%= render 'form' %>
 
 <div data-role="controlgroup" data-mini="true" data-type="horizontal">
-<%= link_to t("admin.labels.cancel"), admin_hotel_specialties_path(@hotel), data: {role: "button"} %>
+<%= link_to t("admin.labels.cancel"), admin_hotel_room_specialties_path(@hotel, @room), data: {role: "button"} %>
 </div>

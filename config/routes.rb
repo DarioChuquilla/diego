@@ -28,13 +28,13 @@ Diego::Application.routes.draw do
         resources :promotions
         resources :rooms do
           resources :room_photos, path: "photos", as: "photos"
-        end
-        resources :hotel_photos, path: "photos", as: "photos"
-        resources :specialties do
-          collection do
-            get :get_specialties_list, path: "get_specialties_list/:name", as: "get_specialties_list"
+          resources :specialties do
+            collection do
+              get :get_specialties_list, path: "get_specialties_list", as: "get_specialties_list"
+            end
           end
         end
+        resources :hotel_photos, path: "photos", as: "photos"
       end
       resources :reports, only: [:index ] do
         collection do

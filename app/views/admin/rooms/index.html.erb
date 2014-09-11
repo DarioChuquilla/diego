@@ -1,11 +1,11 @@
-<h1>Listing rooms</h1>
+<h1><%= t "admin.rooms.index.title" %></h1>
 
 <table>
   <tr>
     <th></th>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Amount</th>
+    <th><%= t "admin.labels.name" %></th>
+    <th><%= t "admin.labels.description" %></th>
+    <th><%= t "admin.labels.amount" %></th>
   </tr>
 
   <% @rooms.each do |room| %>
@@ -16,14 +16,15 @@
         <ul data-role="listview">
           <li><%= link_to t("admin.labels.show"), admin_hotel_room_path(@hotel, room) %> </li>
           <li><%= link_to t("admin.labels.edit"), edit_admin_hotel_room_path(@hotel, room) %> </li>
-          <li><%= link_to 'Photos', admin_hotel_room_photos_path(@hotel, room) %> </li>
+          <li><%= link_to t("admin.labels.photos"), admin_hotel_room_photos_path(@hotel, room) %> </li>
+          <li><%= link_to t("admin.labels.specialties"), admin_hotel_room_specialties_path(@hotel, room) %> </li>
           <li><%= link_to t("admin.labels.destroy"), admin_hotel_room_path(@hotel, room), method: :delete, data: { confirm: t("admin.labels.are_you_sure") } %> </li>
         </ul>
       </div>
     </td>
     <td id="room-<%= room.id %>"><%= link_to room.name, admin_hotel_room_path(@hotel, room) %></td>
     <td><%= room.description %></td>
-    <td><%= room.amount %></td>
+    <td><%= number_to_currency(room.amount) %></td>
   </tr>
   <% end %>
 </table>
