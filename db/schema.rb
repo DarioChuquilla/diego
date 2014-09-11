@@ -55,6 +55,17 @@ ActiveRecord::Schema.define(:version => 20140911050808) do
     t.string   "photo"
   end
 
+  create_table "reservations", :force => true do |t|
+    t.datetime "date_in"
+    t.datetime "date_out"
+    t.integer  "room_id"
+    t.integer  "hotel_id"
+    t.integer  "user_id"
+    t.decimal  "total_price"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
   create_table "room_photos", :force => true do |t|
     t.integer  "room_id"
     t.string   "photo"

@@ -1,5 +1,8 @@
 Diego::Application.routes.draw do
 
+ 
+
+
   scope "(:locale)" do
     # get "reports/index"
 
@@ -54,11 +57,13 @@ Diego::Application.routes.draw do
       member do
         get :room, path: "room/:room_id"
       end
-      member do
-        get :reservations, path: "room/:room_id/reservations"
-      end
       resources :comments, only: [:index, :show, :new, :create]#, path: "room/:room_id/comments"
+      resources :room, only:[:show] do
+        resources :reservations, only: [:index,:edit ,:show, :new, :create]#, path: "room/:room_id/comments"
+      end
     end
+
+    
 
     get "get_hotels_nearby", to: "hotel#get_hotels_nearby", path: "/get_hotels_nearby", as: "get_hotels_nearby"
     get "get_hotels_by_city", to: "hotel#get_hotels_by_city", path: "/get_hotels_by_city/:city", as: "get_hotels_by_city"
