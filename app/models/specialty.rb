@@ -1,5 +1,6 @@
 class Specialty < ActiveRecord::Base
-  attr_accessible :name, :description
+  belongs_to :hotel
+  attr_accessible :hotel_id, :name, :description
   validates_presence_of :name
 
 end

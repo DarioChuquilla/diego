@@ -1,21 +1,22 @@
 <h1><%= t "admin.specialties.index.title" %></h1>
 
+<% if @specialties.present? %>
 <table>
   <tr>
     <th><%= t "admin.labels.actions" %></th>
     <th><%= t "admin.labels.name" %></th>
     <th><%= t "admin.labels.description" %></th>
   </tr>
-
+  
   <% @specialties.each do |specialty| %>
   <tr>
     <td>
       <a href="#popupBasic-<%= specialty.id %>" data-rel="popup" data-role="button" data-icon="arrow-d" data-iconpos="notext" data-position-to="#specialty-<%= specialty.id %>" data-overlay-theme="a" data-transition="slideup">Actions</a> 
       <div data-role="popup" id="popupBasic-<%= specialty.id %>">
         <ul data-role="listview">
-          <li><%= link_to t("admin.labels.show"), admin_specialty_path(specialty) %></li>
-          <li><%= link_to t("admin.labels.edit"), edit_admin_specialty_path(specialty) %></li>
-          <li><%= link_to t("admin.labels.destroy"), admin_specialty_path(specialty), method: :delete, data: { confirm: t("admin.labels.are_you_sure") } %></li>
+          <li><%= link_to t("admin.labels.show"), admin_hotel_specialty_path(@hotel, specialty) %></li>
+          <li><%= link_to t("admin.labels.edit"), edit_admin_hotel_specialty_path(@hotel, specialty) %></li>
+          <li><%= link_to t("admin.labels.destroy"), admin_hotel_specialty_path(@hotel, specialty), method: :delete, data: { confirm: t("admin.labels.are_you_sure") } %></li>
         </ul>
       </div>
     </td>
@@ -25,8 +26,9 @@
   <% end %>
 </table>
 
+<% end %>
 <br />
 
 <div data-role="controlgroup" data-mini="true" data-type="horizontal">
-<%= link_to t("admin.specialties.index.new_specialty"), new_admin_specialty_path, data: {role: "button"} %>
+  <%= link_to t("admin.specialties.index.new_specialty"), new_admin_hotel_specialty_path(@hotel), data: {role: "button"} %>
 </div>

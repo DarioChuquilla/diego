@@ -7,6 +7,7 @@ class Hotel < ActiveRecord::Base
   has_many :rooms
   has_many :hotel_photos
   has_many :comments
+  has_many :specialties
 
   reverse_geocoded_by :latitude, :longitude, :address => :location
   after_validation :reverse_geocode
@@ -55,6 +56,7 @@ class Hotel < ActiveRecord::Base
     self.promotions.destroy_all
     self.rooms.destroy_all
     self.hotel_photos.destroy_all
+    self.specialties.destroy_all
   end
 
   def address_by_geo

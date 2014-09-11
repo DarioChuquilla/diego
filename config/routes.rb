@@ -30,6 +30,11 @@ Diego::Application.routes.draw do
           resources :room_photos, path: "photos", as: "photos"
         end
         resources :hotel_photos, path: "photos", as: "photos"
+        resources :specialties do
+          collection do
+            get :get_specialties_list, path: "get_specialties_list/:name", as: "get_specialties_list"
+          end
+        end
       end
       resources :reports, only: [:index ] do
         collection do
@@ -37,7 +42,6 @@ Diego::Application.routes.draw do
           get :done
         end
       end
-      resources :specialties
     end
     
     resources :hotel, only:[:show] do
